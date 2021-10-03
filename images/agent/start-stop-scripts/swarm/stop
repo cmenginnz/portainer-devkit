@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -x
+
+# stop s01
+docker stop s01

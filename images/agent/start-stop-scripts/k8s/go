@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -x
+
+# create network for dind and minikube
+docker network create --driver=bridge --subnet=192.168.50.0/24 --gateway=192.168.50.1 agent-ssh
+
+# start a kube
+minikube start --driver=docker --memory=4g --nodes 1 --network agent-ssh --profile k01
+
+# switch kubectl context to k01
+minikube profile k01
+
+# start agent pod with image mcpacino/portainer-devkit-agent:latest
+kubectl apply -f portainer-k8s-agent-builder.yaml

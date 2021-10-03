@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -x
+
+docker stop ssh-server
+
+docker run \
+    --name ssh-server \
+    -d --rm \
+    -v /home/simon/Work/ssh-server/image/entry.sh:/new.entry.sh \
+    mcpacino/portainer-devkit-agent:latest
+
+docker exec -it ssh-server bash
