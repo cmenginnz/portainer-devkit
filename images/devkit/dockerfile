@@ -1,20 +1,12 @@
 FROM portainer/agent:alpine as original_agent
 
-FROM golang:1.17.2
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+FROM cr.portainer.io/portainer/dev-toolkit:2021.11
 
 # Install system requirements
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt install -y --no-install-recommends \
     less \
     augeas-tools \
     rsync \
-    openssh-server
-
-RUN apt install -y yarn
-
-RUN apt install -y --no-install-recommends \
     iproute2 \
     psmisc \
     tmux \
@@ -28,25 +20,17 @@ RUN apt install -y --no-install-recommends \
 # copy some binary files such as `docker` from original agent image
 COPY --from=original_agent /app /app
 COPY --from=original_agent /app/kubectl /usr/bin/
-COPY --from=original_agent /app/docker /usr/bin/
 
 # install dlv
 RUN /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
-
-# install minikube
-# RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && \
-#     install minikube /usr/local/bin/ && \
-#     rm minikube
 
 # install kind
 RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
     install kind /usr/local/bin/ && \
     rm kind
 
-EXPOSE 22
-
 COPY scripts /scripts
-COPY entry.sh /entry.sh
-ENTRYPOINT ["/entry.sh"]
 
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+#COPY entry.sh /entry.sh
+#ENTRYPOINT ["/entry.sh"]
+#CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
