@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-docker build -t mcpacino/portainer-devkit-agent:latest ./
+docker build -t mcpacino/portainer-devkit-agent:dev ./
