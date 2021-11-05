@@ -5,6 +5,20 @@
 # devkit.sh run agent docker|swarm|k8s
 # devkit.sh run edge-agent docker|swarm|k8s EDGE_KEY
 
+
+# CLI Usage
+
+
+devkit.sh
+
+# devkit.sh  ensure   docker|swarm|k8s|workspace
+
+# devkit.sh  run      portainer|agent|edge-agent    docker|swarm|k8s|workspace   [EDGE_KEY]
+
+# devkit.sh  clean    [all]
+
+
+
 COMMAND=$1
 PROGRAM=$2
 TARGET=$3
