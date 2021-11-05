@@ -70,7 +70,7 @@ start_agent_service() {
       --publish mode=host,target="$DLV_PORT",published="$DLV_PORT" \
       -e SSH_PASSWORD=root \
       -e DEVKIT_DEBUG="$DEVKIT_DEBUG" \
-      mcpacino/portainer-devkit-agent:latest
+      mcpacino/portainer-devkit-agent:dev
 }
 
 ensure_agent_service() {

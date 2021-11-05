@@ -62,7 +62,7 @@ start_docker_agent_container() {
     --publish mode=host,target=80,published=80 \
     --publish mode=host,target=9001,published=9001 \
     --publish mode=host,target="$DLV_PORT",published="$DLV_PORT" \
-    mcpacino/portainer-devkit-agent:latest
+    mcpacino/portainer-devkit-agent:dev
 }
 
 
