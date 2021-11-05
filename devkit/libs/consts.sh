@@ -1,1 +1,0 @@
-../../images/devkit/scripts/libs/consts.sh
