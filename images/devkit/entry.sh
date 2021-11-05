@@ -3,7 +3,7 @@
 #set -x
 
 init_sshd() {
-  $(ls /etc/ssh/ssh_ho1st_* >/dev/null 2>&1) && return
+  $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
 
   mkdir -p /run/sshd
 
@@ -41,6 +41,8 @@ init_sshd
 set_agent_env
 #set_root_password
 set_hosts
+
+echo "OPENVSCODE_SERVER_ROOT=/home/${RELEASE_TAG}-linux-x64"
 
 # run cmd
 exec "$@"
