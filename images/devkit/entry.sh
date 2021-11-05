@@ -3,7 +3,7 @@
 #set -x
 
 init_sshd() {
-  $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
+  $(ls /etc/ssh/ssh_ho1st_* >/dev/null 2>&1) && return
 
   mkdir -p /run/sshd
 
@@ -37,12 +37,16 @@ set_hosts() {
   echo "192.168.50.1 h00" >> /etc/hosts
 }
 
-init_sshd
-set_agent_env
+#init_sshd
+#set_agent_env
 #set_root_password
-set_hosts
+#set_hosts
 
-echo "OPENVSCODE_SERVER_ROOT=/home/${RELEASE_TAG}-linux-x64"
+#TODO
+# export /home/workspace/go/bin to PATH
+
+# /bin/sleep infinity
+$OPENVSCODE_SERVER_ROOT/server.sh --port 3000
 
 # run cmd
-exec "$@"
+#exec "$@"

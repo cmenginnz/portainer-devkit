@@ -6,8 +6,8 @@
 PORTAINER_VER=$1 # ce|ee
 TARGET=$2        # devkit|k8s
 
-[[ $PORTAINER_VER == "ce" ]] && PORTAINER_SRC_PATH="/portainer" || PORTAINER_SRC_PATH="/portainer-ee"
-[[ $PORTAINER_VER == "ce" ]] && DATA_PATH="/data-ce" || DATA_PATH="/data-ee"
+[[ $PORTAINER_VER == "ce" ]] && PORTAINER_SRC_PATH="$HOME/portainer" || PORTAINER_SRC_PATH="$HOME/portainer-ee"
+[[ $PORTAINER_VER == "ce" ]] && DATA_PATH="$HOME/data-ce" || DATA_PATH="$HOME/data-ee"
 
 # init is shared between several files in this project. Sync it all the time.
 init() {
@@ -50,10 +50,12 @@ build_portainer() {
 }
 
 do_start_portainer_dlv() {
+  debug "[start-portainer.sh] [do_start_portainer_dlv] PORTAINER_SRC_PATH=$PORTAINER_SRC_PATH DATA_PATH=$DATA_PATH PORTAINER_DLV_PORT_IN_DEVKIT=$PORTAINER_DLV_PORT_IN_DEVKIT"
+
   ln -f -s ${PORTAINER_SRC_PATH}/dist/public /app
 
   tmux new -d -s backend-devkit \
-    dlv --listen=0.0.0.0:"$PORTAINER_DLV_PORT_IN_DEVKIT" --headless=true --api-version=2 --check-go-version=false --only-same-user=false \
+    "$HOME/go/bin/dlv" --listen=0.0.0.0:"$PORTAINER_DLV_PORT_IN_DEVKIT" --headless=true --api-version=2 --check-go-version=false --only-same-user=false \
     exec ${PORTAINER_SRC_PATH}/dist/portainer -- --data $DATA_PATH --assets /app
 
   ps -ef | grep dlv | grep listen

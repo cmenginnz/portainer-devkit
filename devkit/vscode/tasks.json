@@ -11,7 +11,7 @@
       "EE_K8S_EDGE_KEY": "",
       "EE_SWARM_EDGE_KEY": "",
       "EE_DOCKER_EDGE_KEY": "",
-      "DEVKIT_DEBUG": "false",
+      "DEVKIT_DEBUG": "true",
     }
   },
   "presentation": {

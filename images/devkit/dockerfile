@@ -17,6 +17,11 @@ RUN apt install -y --no-install-recommends \
     apt autoremove -y && \
     apt clean
 
+RUN apt install -y --no-install-recommends \
+    openssh-server && \
+    apt autoremove -y && \
+    apt clean
+
 # copy some binary files such as `docker` from original agent image
 COPY --from=original_agent /app /app
 COPY --from=original_agent /app/kubectl /usr/bin/
