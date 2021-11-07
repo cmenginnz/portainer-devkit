@@ -24,11 +24,11 @@ scp_agent_to_target() {
 
 rsync_portainer_to_target() {
   local TARGET_IP=$1
-  local PORTAINER_SRC_PATH=$2
+  local PROJECT_ROOT_PATH=$2
 
   sshpass -p "root" rsync /app/public/* root@192.168.100.1:/app/public/
   sshpass -p "root" scp /go/bin/dlv root@"$TARGET_IP":/usr/bin/ >>"$STDOUT" 2>&1
-  sshpass -p "root" scp "${PORTAINER_SRC_PATH}/dist/portainer" root@"$TARGET_IP":/app/
+  sshpass -p "root" scp "${PROJECT_ROOT_PATH}/dist/portainer" root@"$TARGET_IP":/app/
   sshpass -p "root" scp /scripts/libs/start-portainer-dlv.sh root@"$TARGET_IP":/app/
 }
 
@@ -50,7 +50,7 @@ wait_for_target_up() {
 }
 
 calc_target_ip() {
-  local TARGET=$1   # k8s|swarm|docker
+  local TARGET=$1   # k8s|swarm|docker|devkit
 
   local TARGET_IP=""
 
@@ -63,6 +63,9 @@ calc_target_ip() {
       ;;
     docker)
       TARGET_IP="$TARGET_DOCKER_IP"
+      ;;
+    devkit)
+      TARGET_IP="$DEVKIT_IP"
       ;;
   esac
 

@@ -34,7 +34,7 @@ RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
     install kind /usr/local/bin/ && \
     rm kind
 
-COPY scripts /scripts
+# COPY scripts /scripts
 
 COPY entry.sh /entry.sh
 ENTRYPOINT ["/entry.sh"]

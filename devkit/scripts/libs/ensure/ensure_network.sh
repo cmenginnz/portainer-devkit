@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 inspect_network() {
   docker network inspect $NETWORK_NAME >>$STDOUT 2>&1
 }

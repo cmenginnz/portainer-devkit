@@ -1,6 +1,13 @@
 STDOUT="/tmp/portainer-dev-kit.log"
 
 
+I_AM_IN_DEVKIT="PORTAINER_DEVKIT"
+I_AM_IN_TARGET="PORTAINER_TARGET"
+
+DEVKIT_SH_PATH="/home/workspace/portainer-devkit/devkit/scripts/devkit.sh"
+
+TMUX_SES_NAME_WEBPACK="tmux-webpack-dev-watch"
+
 NETWORK_NAME="portainer-devkit"
 SUBNET="192.168.100.0/24"
 GATEWAY="192.168.100.100"
@@ -33,7 +40,13 @@ AGENT_DLV_PORT_IN_SWARM=23462
 AGENT_DLV_PORT_IN_DOCKER=23463
 
 
+E_START="⭐ "
+E_CHECK="✅"
+E_CROSS="❌"
+E_FLAG="🏁️"
+E_BUG="🐞"
 
 # portainer-agent
 # portainer_edge_agent
 # ssh password
+SSH_PASSWORD="root"

@@ -34,11 +34,15 @@
 
 * Download git repo of Portainer, Agent and DevKit
 ````
-  docker run --rm --pull always \
-    --name portainer-devkit-installer \
+  export PORTAINER_WORKSAPCE=/home/simon/workspace && \
+  docker run --rm \
+    --name portainer-devkit-init \
     -e USER_UID_GID=`id -u`:`id -g` \
-    -v `pwd`:/workspace mcpacino/portainer-devkit:latest \
-    /scripts/init_workspace.sh
+    -p 3000:3000 \
+    -v ${PORTAINER_WORKSAPCE:-$PWD}:/home/workspace \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+    mcpacino/portainer-devkit:dev
 ````
 ![01-install](/data/01-install.png)
 
