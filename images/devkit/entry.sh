@@ -16,6 +16,8 @@ make_vscode() {
 }
 
 init_workspace() {
+  echo "[init_workspace()]"
+
   cd /home/workspace
 
   git clone https://github.com/portainer/portainer.git
@@ -36,7 +38,8 @@ init_workspace() {
 
 
 init_sshd() {
-  $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
+  echo "[init_sshd()]"
+  # $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
 
   mkdir -p /run/sshd
 
@@ -48,20 +51,22 @@ init_sshd() {
 
   ls /etc/ssh/ssh_host_* >/dev/null 2>&1 || ssh-keygen -A
 
-  echo StrictHostKeyChecking accept-new >> ~/.ssh/config
+  # echo StrictHostKeyChecking accept-new >> ~/.ssh/config
 
   #echo "✅ Initialized sshd"
 }
 
 set_agent_env() {
-  mkdir -p /root/.ssh
-  echo "" > /root/.ssh/environment;
-
-  env | grep KUBERNETES >> /root/.ssh/environment;
-
+  mkdir -p ~/.ssh
+  echo "" > ~/.ssh/environment;
+  env | grep KUBERNETES >> ~/.ssh/environment;
   echo StrictHostKeyChecking accept-new >> ~/.ssh/config
 
-  #echo "✅ Initialized ssh environment"
+  mkdir -p /root/.ssh
+  echo "" > /root/.ssh/environment;
+  env | grep KUBERNETES >> /root/.ssh/environment;
+  echo StrictHostKeyChecking accept-new >> /root/.ssh/config
+
 }
 
 #set_root_password() {
@@ -74,18 +79,18 @@ set_hosts() {
 
 
 
-
-
-init_workspace
-[[ "$*" == "init" ]] && exit
+if [ "$*" == "init" ]; then
+  init_workspace
+  exit
+fi
 
 export I_AM_IN=PORTAINER_DEVKIT
 init_sshd
+set_agent_env
 /usr/sbin/sshd -e -f /etc/ssh/sshd_config
 $OPENVSCODE_SERVER_ROOT/server.sh --port 3000
 #/bin/sleep infinity
 
-#set_agent_env
 #set_root_password
 #set_hosts
 

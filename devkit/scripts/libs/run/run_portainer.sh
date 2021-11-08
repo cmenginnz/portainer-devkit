@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-show_portainer_urls_devkit() {
+_show_portainer_urls_devkit() {
   echo
   echo "http://localhost:$PORTAINER_HTTP_PORT_IN_DEVKT"
   echo "https://localhost:$PORTAINER_HTTPS_PORT_IN_DEVKT"
 }
 
-show_portainer_urls_k8s() {
+_show_portainer_urls_k8s() {
   echo
   echo "http://localhost:$PORTAINER_HTTP_PORT_IN_K8S"
   echo "https://localhost:$PORTAINER_HTTPS_PORT_IN_K8S"
