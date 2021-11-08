@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-rsync_portainer() {
+_pre_rsync_portainer() {
+  kill_dlv
+}
+
+_do_rsync_portainer() {
   sshpass -p "$SSH_PASSWORD" \
     rsync -r \
       "$PROJECT_ROOT_PATH/dist/" \
@@ -9,3 +13,6 @@ rsync_portainer() {
       "root@$TARGET_IP:/app"
 }
 
+rsync_portainer() {
+  _pre_rsync_portainer && _do_rsync_portainer
+}
