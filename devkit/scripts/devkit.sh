@@ -2,25 +2,29 @@
 
 
 # CLI Usage
+#            COMMAND  SUB_CMD        PROGRAM                       TARGET
+# devkit.sh  run                     portainer|agent|edge-agent    docker|swarm|k8s|devkit                [EDGE_KEY]
 
-# devkit.sh  init     workspace
+# devkit.sh  dlv      exec|kill      portainer|agent|edge-agent                                           ENV_VAR_LIST
+# env: DLV_PORT DATA_PATH EDGE_KEY DEVKIT_DEBUG
 
-# devkit.sh  ensure   docker|swarm|k8s|devkit|network
+# devkit.sh  init                                                  devkit
 
-# devkit.sh  run      portainer|agent|edge-agent    docker|swarm|k8s|devkit   [EDGE_KEY]
+# devkit.sh  ensure                                                docker|swarm|k8s|devkit|network
 
-# devkit.sh  clean    [all]
+# devkit.sh  clean                                                 targets|all
 
 
 
-COMMAND=$1
-PROGRAM=$2
-TARGET=$3
-EDGE_KEY=$4
 
-ARGS="$@"
-
-echo "🏁️ $COMMAND $PROGRAM in $TARGET..." && echo
+#COMMAND=$1
+#PROGRAM=$2
+#TARGET=$3
+#EDGE_KEY=$4
+#
+#ARGS="$@"
+#
+#echo "🏁️ $COMMAND $PROGRAM in $TARGET..." && echo
 
 # init is shared between several files in this project. Sync it all the time.
 _init() {
@@ -35,14 +39,16 @@ _init() {
 #  source "${CURRENT_FILE_PATH}/libs/run_portainer_in_devkit.sh"
 #  source "${CURRENT_FILE_PATH}/libs/run_agent_in_devkit.sh"
   source "${CURRENT_FILE_PATH}/libs/rpc.sh"
-  source "${CURRENT_FILE_PATH}/libs/command/run.sh"
+  source "${CURRENT_FILE_PATH}/libs/cmd/cmd_run.sh"
   source "${CURRENT_FILE_PATH}/libs/run/run_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/build/build_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/rsync/rsync_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/dlv/dlv_portainer.sh"
+  source "${CURRENT_FILE_PATH}/libs/init/init_args.sh"
 
+  init_args "$@"
 }
-_init
+_init "$@"
 
 _init_global_variables() {
   debug "[devkit.sh] args='$ARGS'"
@@ -116,7 +122,10 @@ _ensure() {
 main() {
   case $COMMAND in
   run)
-    command_run
+    cmd_run
+    ;;
+  dlv)
+    cmd_dlv
     ;;
   ensure)
     _ensure

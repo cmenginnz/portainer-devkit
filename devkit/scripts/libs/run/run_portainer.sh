@@ -18,7 +18,7 @@ _run_portainer_in_k8s() {
   ensure_k8s &&
   ensure_k8s_agent &&
   rsync_portainer &&
-  dlv_portainer &&
+  rpc_dlv &&
   _show_portainer_urls_k8s
 }
 
@@ -26,7 +26,7 @@ _run_portainer_in_devkit() {
   ensure_webpack &&
   build_portainer &&
   rsync_portainer &&
-  dlv_portainer &&
+  rpc_dlv &&
   _show_portainer_urls_devkit
 }
 

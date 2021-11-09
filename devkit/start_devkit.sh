@@ -2,6 +2,9 @@
 
 WORKSPACE_ROOT_PATH=${PORTAINER_WORKSAPCE:-$PWD}
 
+# mcdebug
+WORKSPACE_ROOT_PATH=/home/simon/workspace
+
 docker run --rm \
   --name portainer-devkit-init \
   -e USER_UID_GID=`id -u`:`id -g` \
