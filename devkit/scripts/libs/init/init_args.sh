@@ -14,7 +14,19 @@ init_args() {
 
   if [ $COMMAND == "dlv" ]; then
     SUB_CMD=$2
+    PROGRAM=$3
+    ENV_VAR_LIST=$4
+
+    DLV_PORT=23451
+
+    _export_env_var_list
+  fi
+
+  if [ $COMMAND == "ensure" ]; then
     PROGRAM=$2
   fi
 }
 
+_export_env_var_list() {
+  export "${ENV_VAR_LIST/:/' '}"
+}

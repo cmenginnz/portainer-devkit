@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run in Docker",
+            "name": "Run in Workspace",
             "type": "go",
             "mode": "remote",
             "request": "attach",
             "apiVersion": 2,
-            "preLaunchTask": "devkit-portainer-docker",
+            "preLaunchTask": "devkit-portainer-workspace",
             "port": 23451,
             "host": "127.0.0.1",
         },

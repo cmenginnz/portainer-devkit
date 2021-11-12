@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cmd_dlv() {
-  debug "[cmd_dlv.sh] [cmd_dlv()] I_AM_IN=$I_AM_IN"
+  debug "[cmd_dlv.sh] [cmd_dlv()] I_AM_IN=$I_AM_IN ENV_VAR_LIST=$ENV_VAR_LIST"
 
   if [ "$SUB_CMD" == "exec" ]; then
     _cmd_dlv_exec

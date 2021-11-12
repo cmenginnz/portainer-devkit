@@ -38,8 +38,10 @@ _init() {
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_webpack.sh"
 #  source "${CURRENT_FILE_PATH}/libs/run_portainer_in_devkit.sh"
 #  source "${CURRENT_FILE_PATH}/libs/run_agent_in_devkit.sh"
-  source "${CURRENT_FILE_PATH}/libs/rpc.sh"
+  source "${CURRENT_FILE_PATH}/libs/rpc/rpc.sh"
+  source "${CURRENT_FILE_PATH}/libs/rpc/rpc_dlv.sh"
   source "${CURRENT_FILE_PATH}/libs/cmd/cmd_run.sh"
+  source "${CURRENT_FILE_PATH}/libs/cmd/cmd_dlv.sh"
   source "${CURRENT_FILE_PATH}/libs/run/run_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/build/build_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/rsync/rsync_portainer.sh"
@@ -114,7 +116,7 @@ _clean() {
 _ensure() {
   if [[ $PROGRAM == "network" ]]; then
     ensure_network
-  elif [ $PROGRAM == "devkit" ]; then
+  elif [[ "$PROGRAM" == "devkit" ]]; then
     ensure_devkit
   fi
 }

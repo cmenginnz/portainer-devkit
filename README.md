@@ -133,4 +133,5 @@
 * How to enable debug log for Devkit
 * What do folders `data-ce` and `data-ee` do 
 * How to clean all environments
+* How to access portainer.db
 

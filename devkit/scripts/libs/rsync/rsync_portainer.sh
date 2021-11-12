@@ -14,5 +14,11 @@ _do_rsync_portainer() {
 }
 
 rsync_portainer() {
-  _pre_rsync_portainer && _do_rsync_portainer
+  MSG1="⭐️ Copying Portainer..."
+  MSG2="✅ Copied Portainer"
+  MSG3="❌ Failed to Copy Portainer"
+
+  echo && echo "$MSG1" &&
+  (_pre_rsync_portainer && _do_rsync_portainer && echo "$MSG2") ||
+  (echo "$MSG3" && false)
 }
