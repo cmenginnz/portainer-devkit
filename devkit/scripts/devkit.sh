@@ -120,6 +120,7 @@ _ensure() {
 }
 
 main() {
+  echo $COMMAND
   case $COMMAND in
   run)
     cmd_run
