@@ -3,7 +3,7 @@
 ## Run Portainer
 * In Host? 
   * ensure network
-  * ensure devkit
+  * ensure workspace
   * RPC->Workspace: devkit.sh run portainer
 * In Workspace?
   * ensure dev watch
@@ -16,7 +16,7 @@
 ## Run Agent
 * In Host?
   * ensure network
-  * ensure devkit
+  * ensure workspace
   * RPC: run agent in Workspace
 * In Workspace?
   * build agent

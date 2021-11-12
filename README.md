@@ -36,13 +36,13 @@
 ````
   export PORTAINER_WORKSAPCE=/home/simon/workspace && \
   docker run --rm \
-    --name portainer-devkit-init \
+    --name portainer-workspace-init \
     -e USER_UID_GID=`id -u`:`id -g` \
     -p 3000:3000 \
     -v ${PORTAINER_WORKSAPCE:-$PWD}:/home/workspace \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    mcpacino/portainer-devkit:dev
+    mcpacino/portainer-devkit-workspace:dev
 ````
 ![01-install](/data/01-install.png)
 

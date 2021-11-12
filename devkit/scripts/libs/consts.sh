@@ -1,7 +1,7 @@
 STDOUT="/tmp/portainer-dev-kit.log"
 
 
-I_AM_IN_DEVKIT="PORTAINER_DEVKIT"
+I_AM_IN_WORKSPACE="PORTAINER_WORKSPACE"
 I_AM_IN_TARGET="PORTAINER_TARGET"
 
 DEVKIT_SH_PATH="/home/workspace/portainer-devkit/devkit/scripts/devkit.sh"
@@ -13,8 +13,8 @@ SUBNET="192.168.100.0/24"
 GATEWAY="192.168.100.100"
 
 
-DEVKIT_NAME="portainer-devkit"
-DEVKIT_IP="192.168.100.10"
+WORKSPACE_NAME="portainer-workspace"
+WORKSPACE_IP="192.168.100.10"
 
 
 TARGET_K8S_IP="192.168.100.1"  # hard code in yaml file
@@ -33,7 +33,7 @@ PORTAINER_HTTP_PORT_IN_K8S=19000
 PORTAINER_HTTPS_PORT_IN_K8S=19443
 
 # dlv ports are hard coded in launch.json and some yaml file
-PORTAINER_DLV_PORT_IN_DEVKIT=23451
+PORTAINER_DLV_PORT_IN_WORKSPACE=23451
 PORTAINER_DLV_PORT_IN_K8S=23452
 AGENT_DLV_PORT_IN_K8S=23461
 AGENT_DLV_PORT_IN_SWARM=23462
@@ -45,6 +45,7 @@ E_CHECK="✅"
 E_CROSS="❌"
 E_FLAG="🏁️"
 E_BUG="🐞"
+E_ING="⏳"
 
 # portainer-agent
 # portainer_edge_agent

@@ -84,7 +84,7 @@ if [ "$*" == "init" ]; then
   exit
 fi
 
-export I_AM_IN=PORTAINER_DEVKIT
+export I_AM_IN=PORTAINER_WORKSPACE
 init_sshd
 set_agent_env
 /usr/sbin/sshd -e -f /etc/ssh/sshd_config

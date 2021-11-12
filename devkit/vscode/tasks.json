@@ -22,7 +22,7 @@
   "tasks": [
     {
       "label": "devkit-portainer-workspace",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run portainer devkit"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run portainer workspace"
     },
     {
       "label": "devkit-portainer-k8s",

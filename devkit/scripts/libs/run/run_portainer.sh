@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_show_portainer_urls_devkit() {
+_show_portainer_urls_workspace() {
   echo
   echo "http://localhost:$PORTAINER_HTTP_PORT_IN_DEVKT"
   echo "https://localhost:$PORTAINER_HTTPS_PORT_IN_DEVKT"
@@ -22,18 +22,18 @@ _run_portainer_in_k8s() {
   _show_portainer_urls_k8s
 }
 
-_run_portainer_in_devkit() {
+_run_portainer_in_workspace() {
   ensure_webpack &&
   build_portainer &&
   rsync_portainer &&
   rpc_dlv &&
-  _show_portainer_urls_devkit
+  _show_portainer_urls_workspace
 }
 
 run_portainer() {
   if [[ $TARGET == "k8s" ]]; then
     _run_portainer_in_k8s
   else
-    _run_portainer_in_devkit
+    _run_portainer_in_workspace
   fi
 }

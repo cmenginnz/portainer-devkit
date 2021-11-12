@@ -3,14 +3,14 @@
 
 # CLI Usage
 #            COMMAND  SUB_CMD        PROGRAM                       TARGET
-# devkit.sh  run                     portainer|agent|edge-agent    docker|swarm|k8s|devkit                [EDGE_KEY]
+# devkit.sh  run                     portainer|agent|edge-agent    docker|swarm|k8s|workspace             [EDGE_KEY]
 
 # devkit.sh  dlv      exec|kill      portainer|agent|edge-agent                                           ENV_VAR_LIST
 # env: DLV_PORT DATA_PATH EDGE_KEY DEVKIT_DEBUG
 
-# devkit.sh  init                                                  devkit
+# devkit.sh  init
 
-# devkit.sh  ensure                                                docker|swarm|k8s|devkit|network
+# devkit.sh  ensure                                                docker|swarm|k8s|workspace|network
 
 # devkit.sh  clean                                                 targets|all
 
@@ -33,11 +33,9 @@ _init() {
   source "${CURRENT_FILE_PATH}/libs/consts.sh"
   source "${CURRENT_FILE_PATH}/libs/helpers.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_network.sh"
-  source "${CURRENT_FILE_PATH}/libs/ensure/ensure_devkit.sh"
+  source "${CURRENT_FILE_PATH}/libs/ensure/ensure_workspace.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_k8s.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_webpack.sh"
-#  source "${CURRENT_FILE_PATH}/libs/run_portainer_in_devkit.sh"
-#  source "${CURRENT_FILE_PATH}/libs/run_agent_in_devkit.sh"
   source "${CURRENT_FILE_PATH}/libs/rpc/rpc.sh"
   source "${CURRENT_FILE_PATH}/libs/rpc/rpc_dlv.sh"
   source "${CURRENT_FILE_PATH}/libs/cmd/cmd_run.sh"

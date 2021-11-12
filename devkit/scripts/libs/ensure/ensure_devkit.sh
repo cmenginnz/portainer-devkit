@@ -1,47 +1,47 @@
 #!/usr/bin/env bash
 
-_inspect_devkit() {
-  docker container inspect $DEVKIT_NAME >>$STDOUT 2>&1
+_inspect_workspace() {
+  docker container inspect $WORKSPACE_NAME >>$STDOUT 2>&1
 }
 
-_check_devkitcheck_devkit() {
-  MSG1="⭐️ Checking Devkit..."
-  MSG2="✅ Found Devkit"
-  MSG3="✅ Not Found Devkit"
+_check_workspace() {
+  MSG1="⭐️ Checking Workspace..."
+  MSG2="✅ Found Workspace"
+  MSG3="✅ Not Found Workspace"
 
   echo && echo "$MSG1" &&
-  (_inspect_devkit && echo "$MSG2") ||
+  (_inspect_workspace && echo "$MSG2") ||
   (echo "$MSG3" && false)
 }
 
-_do_create_devkit() {
+_do_create_workspace() {
   docker run -d --rm \
-    --name $DEVKIT_NAME \
+    --name $WORKSPACE_NAME \
     --network $NETWORK_NAME \
     -e DEVKIT_DEBUG=$DEVKIT_DEBUG \
-    --ip $DEVKIT_IP \
+    --ip $WORKSPACE_IP \
     -p 3000:3000 \
     -p "$PORTAINER_HTTP_PORT_IN_DEVKT:$PORTAINER_HTTP_PORT_IN_DEVKT" \
     -p "$PORTAINER_HTTPS_PORT_IN_DEVKT:$PORTAINER_HTTPS_PORT_IN_DEVKT" \
-    -p "$PORTAINER_DLV_PORT_IN_DEVKIT:$PORTAINER_DLV_PORT_IN_DEVKIT" \
+    -p "$PORTAINER_DLV_PORT_IN_WORKSPACE:$PORTAINER_DLV_PORT_IN_WORKSPACE" \
     -v "$WORKSPACE_PATH:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    mcpacino/portainer-devkit:dev \
+    mcpacino/portainer-devkit-workspace:dev \
     >>$STDOUT
 }
 
-_create_devkit() {
-  MSG1="⭐️Creating Devkit '$DEVKIT_NAME'..."
-  MSG2="✅ Created Devkit"
-  MSG3="❌ Failed to Create Devkit"
+_create_workspace() {
+  MSG1="⭐️Creating Workspace..."
+  MSG2="✅ Created Workspace"
+  MSG3="❌ Failed to Create Workspace"
 
   echo "$MSG1" &&
-  (_do_create_devkit && echo "$MSG2") ||
+  (_do_create_workspace && echo "$MSG2") ||
   (echo "$MSG3" && false)
 }
 
 # only be called in HOST
-ensure_devkit() {
-  _check_devkitcheck_devkit || _create_devkit
+ensure_workspace() {
+  _check_workspace || _create_workspace
 }

@@ -6,11 +6,11 @@ cmd_run() {
   if [[ $I_AM_IN == "$I_AM_IN_TARGET" ]]; then
     MSG1="$E_CROSS 'devkit.sh run' is not supported to run in current environment"
     echo "MSG1" && false
-  elif [[ $I_AM_IN == "$I_AM_IN_DEVKIT" ]]; then
+  elif [[ $I_AM_IN == "$I_AM_IN_WORKSPACE" ]]; then
     _do_cmd_run
   else
     # I am in HOST
-    #ensure_network && ensure_devkit && rpc devkit
+    #ensure_network && ensure_workspace && rpc workspace
     echo "I am in HOST"
   fi
 }
@@ -24,7 +24,7 @@ _do_cmd_run() {
     do_run
   elif [[ $PROGRAM == "edge-agent" ]]; then
     # I am in HOST
-    #ensure_network && ensure_devkit && rpc devkit
+    #ensure_network && ensure_workspace && rpc workspace
     echo
   fi
 }
