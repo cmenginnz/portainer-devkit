@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 
 # CLI Usage
-#            COMMAND  SUB_CMD        PROJECT                       TARGET
-# devkit.sh  run                     portainer|agent|edge-agent    docker|swarm|k8s|workspace             [EDGE_KEY]
+# devkit.sh  run     PROJECT      TARGET    [EDGE_KEY]       # PROJECT=portainer|agent|edge   TARGET=docker|swarm|k8s|workspace
+# devkit.sh  dlv     exec|kill    PROJECT   ENV_VAR_LIST     # PROJECT=portainer|agent|edge   ENV_VAR_LIST=DLV_PORT:DATA_PATH:EDGE_KEY:DEVKIT_DEBUG
+# devkit.sh  init                                            #
+# devkit.sh  ensure  TARGET                                  # TARGET=docker|swarm|k8s|workspace|network
+# devkit.sh  clean   targets|all                             #
 
-# devkit.sh  dlv      exec|kill      portainer|agent|edge-agent                                           ENV_VAR_LIST
-# env: DLV_PORT DATA_PATH EDGE_KEY DEVKIT_DEBUG
-
-# devkit.sh  init
-
-# devkit.sh  ensure                                                docker|swarm|k8s|workspace|network
-
-# devkit.sh  clean                                                 targets|all
 
 #echo "🏁️ $COMMAND $PROJECT in $TARGET..." && echo
 
-# init is shared between several files in this project. Sync it all the time.
 _init() {
   CURRENT_FILE_PATH=$(dirname $0)   # /home/workspace/portainer-devkit/devkit/scripts
 

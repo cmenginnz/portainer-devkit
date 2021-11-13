@@ -5,12 +5,8 @@
   "options": {
     "env": {
       // SET YOUR EDGE KEYS HERE:
-      "CE_K8S_EDGE_KEY": "",
-      "CE_SWARM_EDGE_KEY": "",
-      "CE_DOCKER_EDGE_KEY": "",
-      "EE_K8S_EDGE_KEY": "",
-      "EE_SWARM_EDGE_KEY": "",
-      "EE_DOCKER_EDGE_KEY": "",
+      "CE_EDGE_KEY": "",
+      "EE_EDGE_KEY": "",
       "DEVKIT_DEBUG": "true",
     }
   },
@@ -22,47 +18,47 @@
   "tasks": [
     {
       "label": "devkit-portainer-workspace",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run portainer workspace"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   portainer   workspace"
     },
     {
       "label": "devkit-portainer-k8s",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run portainer k8s"
-    },
-    {
-      "label": "agent-k8s",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run agent k8s"
-    },
-    {
-      "label": "agent-swarm",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run agent swarm"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   portainer   k8s"
     },
     {
       "label": "agent-docker",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run agent docker"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   agent       docker"
     },
     {
-      "label": "ce-edge-k8s",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent k8s $CE_K8S_EDGE_KEY"
+      "label": "agent-swarm",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   agent       swarm"
     },
     {
-      "label": "ce-edge-swarm",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent swarm $CE_SWARM_EDGE_KEY"
+      "label": "agent-k8s",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   agent       k8s"
     },
     {
       "label": "ce-edge-docker",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent docker $CE_DOCKER_EDGE_KEY"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        docker          $CE_EDGE_KEY"
     },
     {
-      "label": "ee-edge-k8s",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent k8s $EE_K8S_EDGE_KEY"
+      "label": "ce-edge-swarm",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        swarm           $CE_EDGE_KEY"
     },
     {
-      "label": "ee-edge-swarm",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent swarm $EE_SWARM_EDGE_KEY"
+      "label": "ce-edge-k8s",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        k8s             $CE_EDGE_KEY"
     },
     {
       "label": "ee-edge-docker",
-      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run edge-agent docker $EE_DOCKER_EDGE_KEY"
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        docker          $EE_EDGE_KEY"
+    },
+    {
+      "label": "ee-edge-swarm",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        swarm           $EE_EDGE_KEY"
+    },
+    {
+      "label": "ee-edge-k8s",
+      "command": "${workspaceFolder}/.vscode/devkit/scripts/devkit.sh run   edge        k8s             $EE_EDGE_KEY"
     },
   ]
 }
