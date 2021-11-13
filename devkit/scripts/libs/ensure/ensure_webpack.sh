@@ -11,14 +11,15 @@ _do_start_webpack() {
 ensure_webpack() {
   MSG0="Find Webpack"
   MSG1=$(msg_ing)
-  MSG2=$(msg_warn)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_warn)
 
   MSG0="Start Webpack"
-  MSG3=$(msg_ing)
-  MSG4=$(msg_ok)
-  MSG5=$(msg_fail)
+  MSG4=$(msg_ing)
+  MSG5=$(msg_ok)
+  MSG6=$(msg_fail)
 
   (echo "$MSG1" && _check_webpack && echo "$MSG2") ||
-  (echo "$MSG3" && _do_start_webpack && echo "$MSG4") ||
-  (echo "$MSG5" && false)
+  (echo $MSG3 && echo && echo "$MSG4" && _do_start_webpack && echo "$MSG5") ||
+  (echo "$MSG6" && false)
 }

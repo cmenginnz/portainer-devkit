@@ -21,11 +21,8 @@ _do_cmd_run() {
   if [[ $PROJECT == "portainer" ]]; then
     run_portainer
   elif [[ $PROJECT == "agent" ]]; then
-    echo "run "
-    do_run
-  elif [[ $PROJECT == "edge-agent" ]]; then
-    # I am in HOST
-    #ensure_network && ensure_workspace && rpc workspace
-    echo
+    run_agent
+  elif [[ $PROJECT == "edge" ]]; then
+    run_agent
   fi
 }

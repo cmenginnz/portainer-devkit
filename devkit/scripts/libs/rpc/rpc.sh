@@ -6,7 +6,7 @@ rpc() {
     if [[ $RPC_TARGET == "workspace" ]]; then
       echo docker exec -it \
         -e DEVKIT_DEBUG="$DEVKIT_DEBUG" \
-        "$TARGET_WORKSPACE_NAME" \
+        "$TARGET_NAME_K8S" \
         "$DEVKIT_SH_PATH" \
         "$ARGS"
     else

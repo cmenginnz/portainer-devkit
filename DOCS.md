@@ -27,7 +27,7 @@
 
 ```
 CLI Usage
-          | COMMAND | SUB_CMD   | PROJECT    | TARGET      |                                             ||                               |
+          | COMMAND | SUB_CMD   | PROJECT    | TARGET      |                                             || calculated global vars       |
 ----------|---------|-----------|------------|-------------|---------------------------------------------||-------------------------------|
           |         |           | portainer  | docker      |                                             || TARGET_IP                     |                                                                                                                                      
 devkit.sh | run     |           | agent      | swarm       |  [EDGE_KEY]                                 || TARGET_NAME                   |

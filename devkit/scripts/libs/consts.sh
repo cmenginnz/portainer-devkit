@@ -27,12 +27,12 @@ TARGET_IP_DOCKER="192.168.100.3"
 TARGET_IP_WORKSPACE="192.168.100.10"
 
 
-TARGET_NAME_K8S="portainer-k8s"
-TARGET_NAME_K8S_CONTAINER="portainer-k8s-control-plane"
+TARGET_NAME_K8S="portainer-k8s-control-plane"
 TARGET_NAME_SWARM="portainer-swarm"
 TARGET_NAME_DOCKER="portainer-docker"
 TARGET_NAME_WORKSPACE="portainer-workspace"
 
+TARGET_NAME_K8S_KIND="portainer-k8s"
 
 # dlv ports are hard coded in launch.json and some yaml file
 DLV_PORT_PORTAINER_WORKSPACE=23451
@@ -52,7 +52,7 @@ PORTAINER_PORT_HTTPS_K8S=19443
 
 E_MSG="🔹"
 E_OK="✅"
-E_WARN="⚠️"
+E_WARN="❎"
 E_FAIL="❌"
 E_FLAG="🏁️"
 E_BUG="🐞"

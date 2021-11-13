@@ -12,13 +12,28 @@ _show_portainer_urls_k8s() {
   echo "https://localhost:$PORTAINER_PORT_HTTPS_K8S"
 }
 
-run_portainer() {
+_run_portainer_k8s() {
   ensure_webpack &&
   build_portainer &&
-  ensure_target &&
-  ensure_agent &&
-  wait_for_sshd_up &&
+  ensure_k8s &&
+  ensure_k8s_agent &&
   rsync_portainer &&
   rpc_dlv &&
   _show_portainer_urls_k8s
+}
+
+_run_portainer_workspace() {
+  ensure_webpack &&
+  build_portainer &&
+  rsync_portainer &&
+  rpc_dlv &&
+  _show_portainer_urls_workspace
+}
+
+run_agent() {
+  if [[ $TARGET == "k8s" ]]; then
+    _run_portainer_k8s
+  else
+    _run_portainer_workspace
+  fi
 }

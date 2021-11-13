@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 debug() {
-  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_MSG $E_BUG $(date) $*"
+  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_MSG $E_BUG $(date "+%X") $*"
 }
 
 _do_msg() {
@@ -26,18 +26,22 @@ msg_fail() {
 
 
 _do_ssh() {
-  sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true
+  sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true >>$STDOUT
 }
 
 wait_for_sshd_up() {
   #  until nc -w 1 "$TARGET_IP" 22; do
 
+  MSG0="Check SSH Server"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+
+  echo && echo $MSG1
   until _do_ssh; do
-    MSG0="Wait for SSH Server"
-    MSG1=$(msg_ing)
+    sleep 5;
     echo $MSG1
-    sleep 3;
   done
+  echo $MSG2
 }
 
 scp_agent_to_target() {
@@ -58,21 +62,16 @@ rsync_portainer_to_target() {
   sshpass -p "root" scp /scripts/libs/start-portainer-dlv.sh root@"$TARGET_IP":/app/
 }
 
-ls_docker_sock() {
-  local TARGET_CONTAINER_NAME=$1
-
-  docker exec -e DEVKIT_DEBUG=$DEVKIT_DEBUG "$TARGET_CONTAINER_NAME" ls -l /var/run/docker.sock >>$STDOUT 2>&1
+_ls_docker_sock() {
+  docker exec "$TARGET_NAME" ls -l /var/run/docker.sock >>$STDOUT 2>&1
 }
 
 wait_for_target_up() {
-  local TARGET_NAME=$1
-  local TARGET_CONTAINER_NAME=$2
-
-  MSG0="Wait for Target"
+  MSG0="Wait for ${TARGET^}"
   MSG1=$(msg_ing)
 
-  until ls_docker_sock $TARGET_CONTAINER_NAME; do
-    echo $MSG1
+  until ls_docker_sock; do
+    echo "$MSG1"
     sleep 1;
   done
 }
