@@ -50,13 +50,15 @@ PORTAINER_PORT_HTTP_K8S=19000
 PORTAINER_PORT_HTTPS_K8S=19443
 
 
-E_START="⭐ "
-E_CHECK="✅"
-E_CROSS="❌"
+E_START="⭐"
+E_START="🔹"
+E_OK="✅"
+E_FAIL="❌"
 E_FLAG="🏁️"
 E_BUG="🐞"
 E_ING="⏳"
 
+SSH_PASSWORD="root"
+
 # portainer-agent
 # portainer_edge_agent
-SSH_PASSWORD="root"

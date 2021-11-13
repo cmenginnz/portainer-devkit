@@ -13,9 +13,9 @@ _do_dlv_portainer() {
 }
 
 dlv_portainer() {
-  MSG1="⭐️ Starting Portainer..."
-  MSG2="✅ Started Portainer"
-  MSG3="❌ Failed to Start Portainer"
+  MSG1="$E_START️ Starting Portainer..."
+  MSG2="$E_OK Started Portainer"
+  MSG3="$E_FAIL Failed to Start Portainer"
 
   echo && echo "$MSG1" &&
   (_do_dlv_portainer && echo "$MSG2") ||

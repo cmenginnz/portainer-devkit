@@ -5,9 +5,9 @@ _inspect_workspace() {
 }
 
 _check_workspace() {
-  MSG1="⭐️ Checking Workspace..."
-  MSG2="✅ Found Workspace"
-  MSG3="✅ Not Found Workspace"
+  MSG1="$E_START️ Checking Workspace..."
+  MSG2="$E_OK Found Workspace"
+  MSG3="$E_OK Not Found Workspace"
 
   echo && echo "$MSG1" &&
   (_inspect_workspace && echo "$MSG2") ||
@@ -32,9 +32,9 @@ _do_create_workspace() {
 }
 
 _create_workspace() {
-  MSG1="⭐️Creating Workspace..."
-  MSG2="✅ Created Workspace"
-  MSG3="❌ Failed to Create Workspace"
+  MSG1="$E_START️Creating Workspace..."
+  MSG2="$E_OK Created Workspace"
+  MSG3="$E_FAIL Failed to Create Workspace"
 
   echo "$MSG1" &&
   (_do_create_workspace && echo "$MSG2") ||

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 debug() {
-  [[ $DEVKIT_DEBUG == "true" ]] && echo "🐞" `date` "$*"
+  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_BUG" `date` "$*"
 }
 
 _do_ssh() {
@@ -12,7 +12,7 @@ wait_for_sshd_up() {
   #  until nc -w 1 "$TARGET_IP" 22; do
 
   until _do_ssh; do
-    echo '⭐️ Waiting for SSH Server...'
+    echo '$E_START️ Waiting for SSH Server...'
     sleep 3;
   done
 }
@@ -45,7 +45,7 @@ wait_for_target_up() {
   local TARGET_NAME=$1
   local TARGET_CONTAINER_NAME=$2
 
-  MSG1="⭐️ Waiting for Target $TARGET_NAME..."
+  MSG1="$E_START️ Waiting for Target..."
   until ls_docker_sock $TARGET_CONTAINER_NAME; do
     echo $MSG1
     sleep 1;

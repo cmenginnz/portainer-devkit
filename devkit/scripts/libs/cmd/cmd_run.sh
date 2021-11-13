@@ -4,7 +4,7 @@ cmd_run() {
   debug "[cmd_run.sh] [cmd_run()] I_AM_IN=$I_AM_IN"
 
   if [[ $I_AM_IN == "$I_AM_IN_TARGET" ]]; then
-    MSG1="$E_CROSS 'devkit.sh run' is not supported to run in current environment"
+    MSG1="$E_FAIL 'devkit.sh run' is not supported to run in current environment"
     echo "MSG1" && false
   elif [[ $I_AM_IN == "$I_AM_IN_WORKSPACE" ]]; then
     _do_cmd_run

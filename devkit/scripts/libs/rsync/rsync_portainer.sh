@@ -14,9 +14,9 @@ _do_rsync_portainer() {
 }
 
 rsync_portainer() {
-  MSG1="⭐️ Copying Portainer..."
-  MSG2="✅ Copied Portainer"
-  MSG3="❌ Failed to Copy Portainer"
+  MSG1="$E_START️ Copying Portainer..."
+  MSG2="$E_OK Copied Portainer"
+  MSG3="$E_FAIL Failed to Copy Portainer"
 
   echo && echo "$MSG1" &&
   (_pre_rsync_portainer && _do_rsync_portainer && echo "$MSG2") ||
