@@ -8,6 +8,8 @@ init_args() {
     PROJECT=$2
     TARGET=$3
     EDGE_KEY=$4
+
+    [[ $PROJECT == "edge" && $EDGE_KEY == "" ]] && echo "EDGE_KEY is not set in tasks.json" && exit 1
   fi
 
   if [ $COMMAND == "dlv" ]; then
@@ -28,6 +30,7 @@ init_args() {
   debug "[devkit.sh] [init_args()] COMMAND=$COMMAND"
   debug "[devkit.sh] [init_args()] PROJECT=$PROJECT"
   debug "[devkit.sh] [init_args()] TARGET=$TARGET"
+  debug "[devkit.sh] [init_args()] EDGE_KEY=$EDGE_KEY"
 }
 
 _export_env_var_list() {

@@ -4,13 +4,14 @@
 
 make_vscode() {
   VSCODE_PATH=$1
+  PROJECT=$1
 
   mkdir -p "$VSCODE_PATH"
   #cd "$VSCODE_PATH"
   ln -f -s \
     ../../portainer-devkit/devkit \
     devkit/vscode/tasks.json \
-    devkit/vscode/portainer/launch.json \
+    devkit/vscode/$PROJECT/launch.json \
     "$VSCODE_PATH"
   #cd -
 }
@@ -27,9 +28,9 @@ init_workspace() {
   mkdir data-ce
   mkdir data-ee
 
-  make_vscode "portainer/.vscode"
-  make_vscode "portainer-ee/.vscode"
-  make_vscode "agent/.vscode"
+  make_vscode "portainer/.vscode"  "portainer"
+  make_vscode "portainer-ee/.vscode"  "portainer"
+  make_vscode "agent/.vscode"  "agent"
 
   chown "${USER_UID_GID}" -R portainer agent portainer-devkit data-ce data-ee
 
