@@ -7,9 +7,10 @@ _do_build_portainer() {
 }
 
 build_portainer() {
-  MSG1="$E_START️ Building Portainer..."
-  MSG2="$E_OK Built Portainer"
-  MSG3="$E_FAIL Build Portainer"
+  MSG0="Built Portainer"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_fail)
 
   echo && echo "$MSG1" &&
   (_do_build_portainer && echo "$MSG2") ||

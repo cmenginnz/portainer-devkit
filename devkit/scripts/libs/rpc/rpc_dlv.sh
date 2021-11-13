@@ -20,9 +20,10 @@ _do_rpc_dlv() {
 }
 
 rpc_dlv() {
-  MSG1="$E_START️ RPC DLVing Portainer..."
-  MSG2="$E_OK RPC DLVed Portainer"
-  MSG3="$E_FAIL Failed to RPC DLV Portainer"
+  MSG0="RPC DLV Portainer"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_fail)
 
   echo && echo "$MSG1" &&
   (_do_rpc_dlv && echo "$MSG2") ||

@@ -5,9 +5,10 @@ inspect_network() {
 }
 
 check_network() {
-  MSG1="$E_START️ Checking Network..."
-  MSG2="$E_OK Found Network"
-  MSG3="$E_OK Not Found Network"
+  MSG0="Find Network"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_ok)
 
   echo && echo "$MSG1" &&
   (inspect_network && echo "$MSG2") ||
@@ -19,9 +20,10 @@ do_create_network() {
 }
 
 create_network() {
-  MSG1="$E_START️ Creating Network..."
-  MSG2="$E_OK Created Network"
-  MSG3="$E_FAIL Failed to Create Network"
+  MSG0="Creat Network"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_fail)
 
   echo "$MSG1" &&
   (do_create_network && echo "$MSG2") ||

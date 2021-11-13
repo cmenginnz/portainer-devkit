@@ -1,8 +1,25 @@
 #!/usr/bin/env bash
 
 debug() {
-  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_BUG" `date` "$*"
+  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_MSG $E_BUG $(date) $*"
 }
+
+_do_msg() {
+  echo "$E_MSG️ $MSG0 $1"
+}
+
+msg_ing() {
+  _do_msg "$E_ING"
+}
+
+msg_ok() {
+  _do_msg "$E_OK"
+}
+
+msg_fail() {
+  _do_msg "$E_FAIL"
+}
+
 
 _do_ssh() {
   sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true
@@ -12,7 +29,9 @@ wait_for_sshd_up() {
   #  until nc -w 1 "$TARGET_IP" 22; do
 
   until _do_ssh; do
-    echo '$E_START️ Waiting for SSH Server...'
+    MSG0="Wait for SSH Server"
+    MSG1=$(msg_ing)
+    echo $MSG1
     sleep 3;
   done
 }
@@ -45,7 +64,9 @@ wait_for_target_up() {
   local TARGET_NAME=$1
   local TARGET_CONTAINER_NAME=$2
 
-  MSG1="$E_START️ Waiting for Target..."
+  MSG0="Wait for Target"
+  MSG1=$(msg_ing)
+
   until ls_docker_sock $TARGET_CONTAINER_NAME; do
     echo $MSG1
     sleep 1;

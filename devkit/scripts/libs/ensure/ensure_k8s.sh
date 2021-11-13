@@ -27,12 +27,15 @@ _fix_kubeconfig() {
 }
 
 ensure_k8s() {
-  MSG1="$E_START️ Finding K8s..."
-  MSG2="$E_OK Found K8s"
-  MSG3="$E_OK Not found K8s"
-  MSG4="$E_START️ Starting K8s..."
-  MSG5="$E_OK Created K8s"
-  MSG6="$E_FAIL Failed to start K8s"
+  MSG0"Find K8s"
+  MSG1=$(msg_ing)
+  MSG2=$(msg_ok)
+  MSG3=$(msg_ok)
+
+  MSG0="Start K8s"
+  MSG4=$(msg_ing)
+  MSG5=$(msg_ok)
+  MSG6=$(msg_fail)
 
   (echo && echo "$MSG1" && _k8s_exist && echo "$MSG2") ||
   (echo "$MSG3" && echo "$MSG4" && _do_start_k8s && _fix_kubeconfig && echo "$MSG5") ||

@@ -38,25 +38,6 @@ _init() {
 }
 _init "$@"
 
-
-runXX() {
-  case $PROJECT in
-  portainer)
-    run_portainer $PROJECT_VER "$TARGET"
-    ;;
-  agent)
-    run_agent "$TARGET" "$PROJECT"
-    ;;
-  edge-agent)
-    run_agent "$TARGET" "$PROJECT" "$EDGE_KEY"
-    ;;
-  *)
-    echo "❌ Unknown Project $PROJECT"
-    exit 2
-    ;;
-  esac
-}
-
 _clean() {
   docker stop "$TARGET_NAME_K8S_CONTAINER" >>"$STDOUT" 2>&1  &&  docker rm "$TARGET_NAME_K8S_CONTAINER" >>"$STDOUT" 2>&1
   docker stop "$TARGET_SWARM" >>"$STDOUT" 2>&1
