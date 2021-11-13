@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 _check_webpack() {
-  tmux ls 2>/dev/null | grep "$TMUX_SES_NAME_WEBPACK" >/dev/null
+  tmux ls 2>/dev/null | grep "$TMUX_NAME_WEBPACK" >/dev/null
 }
 
 _do_start_webpack() {
-  cd "$PROJECT_ROOT_PATH" && yarn install && tmux new -s "$TMUX_SES_NAME_WEBPACK" -d yarn start:client
+  cd "$PROJECT_ROOT_PATH" && yarn install && tmux new -s "$TMUX_NAME_WEBPACK" -d yarn start:client
 }
 
 ensure_webpack() {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 _inspect_workspace() {
-  docker container inspect $WORKSPACE_NAME >>$STDOUT 2>&1
+  docker container inspect $TARGET_WORKSPACE_NAME >>$STDOUT 2>&1
 }
 
 _check_workspace() {
@@ -16,14 +16,14 @@ _check_workspace() {
 
 _do_create_workspace() {
   docker run -d --rm \
-    --name $WORKSPACE_NAME \
+    --name $TARGET_WORKSPACE_NAME \
     --network $NETWORK_NAME \
     -e DEVKIT_DEBUG=$DEVKIT_DEBUG \
-    --ip $TARGET_WORKSPACE_IP \
+    --ip $TARGET_IP_WORKSPACE \
     -p 3000:3000 \
-    -p "$PORTAINER_HTTP_PORT_IN_DEVKT:$PORTAINER_HTTP_PORT_IN_DEVKT" \
-    -p "$PORTAINER_HTTPS_PORT_IN_DEVKT:$PORTAINER_HTTPS_PORT_IN_DEVKT" \
-    -p "$PORTAINER_DLV_PORT_IN_WORKSPACE:$PORTAINER_DLV_PORT_IN_WORKSPACE" \
+    -p "$PORTAINER_PORT_HTTP_WORKSPACE:$PORTAINER_PORT_HTTP_WORKSPACE" \
+    -p "$PORTAINER_PORT_HTTPS_WORKSPACE:$PORTAINER_PORT_HTTPS_WORKSPACE" \
+    -p "$PORTAINER_DLV_PORT_WORKSPACE:$PORTAINER_DLV_PORT_WORKSPACE" \
     -v "$WORKSPACE_PATH:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \

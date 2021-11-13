@@ -37,7 +37,7 @@ rpc_dlv() {
 #
 #  # k8s agent
 #  POD=$(kubectl get pod -l app=portainer-agent -n portainer -o jsonpath="{.items[0].metadata.name}")
-#  kubectl exec -it -n portainer "$POD" -- /app/start-agent-dlv.sh "$TARGET_IP" "$AGENT_DLV_PORT_IN_K8S" "$TARGET" "$AGENT_TYPE" "$EDGE_KEY"
+#  kubectl exec -it -n portainer "$POD" -- /app/start-agent-dlv.sh "$TARGET_IP" "$AGENT_DLV_PORT_K8S" "$TARGET" "$AGENT_TYPE" "$EDGE_KEY"
 #
 #  # k8s portainer
 #  kubectl exec -it -n portainer "$POD" -- /app/start-portainer-dlv.sh "$DLV_PORT" "$DATA_PATH"

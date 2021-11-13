@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
 _k8s_exist() {
-  docker container inspect "$TARGET_K8S_CONTAINER_NAME" >/dev/null 2>&1
+  docker container inspect "$TARGET_NAME_K8S_CONTAINER" >/dev/null 2>&1
 }
 
 _do_start_k8s() {
-  cat <<EOF | KIND_EXPERIMENTAL_DOCKER_NETWORK="$NETWORK_NAME" kind create cluster --name "$TARGET_K8S_NAME" --wait 1m --config=-
+  cat <<EOF | KIND_EXPERIMENTAL_DOCKER_NETWORK="$NETWORK_NAME" kind create cluster --name "$TARGET_NAME_K8S" --wait 1m --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
   extraPortMappings:
-  - containerPort: $AGENT_DLV_PORT_IN_K8S
-    hostPort: $AGENT_DLV_PORT_IN_K8S
-  - containerPort: $PORTAINER_DLV_PORT_IN_K8S
-    hostPort: $PORTAINER_DLV_PORT_IN_K8S
+  - containerPort: $AGENT_DLV_PORT_K8S
+    hostPort: $AGENT_DLV_PORT_K8S
+  - containerPort: $PORTAINER_DLV_PORT_K8S
+    hostPort: $PORTAINER_DLV_PORT_K8S
   - containerPort: 9000
-    hostPort: $PORTAINER_HTTP_PORT_IN_K8S
+    hostPort: $PORTAINER_PORT_HTTP_K8S
   - containerPort: 9443
-    hostPort: $PORTAINER_HTTPS_PORT_IN_K8S
+    hostPort: $PORTAINER_PORT_HTTPS_K8S
 EOF
 }
 
