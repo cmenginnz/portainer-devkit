@@ -11,7 +11,7 @@ _do_start_webpack() {
 ensure_webpack() {
   MSG0="Find Webpack"
   MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
+  MSG2=$(msg_warn)
 
   MSG0="Start Webpack"
   MSG3=$(msg_ing)

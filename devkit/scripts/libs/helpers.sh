@@ -16,6 +16,10 @@ msg_ok() {
   _do_msg "$E_OK"
 }
 
+msg_warn() {
+  _do_msg "$E_WARN"
+}
+
 msg_fail() {
   _do_msg "$E_FAIL"
 }

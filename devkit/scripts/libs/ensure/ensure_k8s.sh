@@ -29,7 +29,7 @@ _fix_kubeconfig() {
 ensure_k8s() {
   MSG0"Find K8s"
   MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
+  MSG2=$(msg_warn)
   MSG3=$(msg_ok)
 
   MSG0="Start K8s"

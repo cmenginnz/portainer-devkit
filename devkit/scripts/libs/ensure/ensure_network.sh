@@ -8,7 +8,7 @@ check_network() {
   MSG0="Find Network"
   MSG1=$(msg_ing)
   MSG2=$(msg_ok)
-  MSG3=$(msg_ok)
+  MSG3=$(msg_warn)
 
   echo && echo "$MSG1" &&
   (inspect_network && echo "$MSG2") ||

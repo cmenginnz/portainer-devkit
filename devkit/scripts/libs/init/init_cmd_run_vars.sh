@@ -10,9 +10,6 @@ init_cmd_run_vars() {
   eval DLV_PORT=\$DLV_PORT_${P}_${TARGET^^}
   debug "[devkit.sh] [init_cmd_run_vars()] DLV_PORT=$DLV_PORT"
 
-  WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
-  debug "[devkit.sh] [init_cmd_run_vars()] WORKSPACE_PATH=$WORKSPACE_PATH"
-
   [[ "$PROJECT_ROOT_PATH" == *portainer-ee ]] && PROJECT_VER=ee || PROJECT_VER=ce
   debug "[devkit.sh] [init_cmd_run_vars()] PROJECT_VER=$PROJECT_VER"
 

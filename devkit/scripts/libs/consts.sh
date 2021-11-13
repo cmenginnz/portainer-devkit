@@ -52,6 +52,7 @@ PORTAINER_PORT_HTTPS_K8S=19443
 
 E_MSG="🔹"
 E_OK="✅"
+E_WARN="⚠️"
 E_FAIL="❌"
 E_FLAG="🏁️"
 E_BUG="🐞"

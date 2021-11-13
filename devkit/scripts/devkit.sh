@@ -11,7 +11,8 @@
 #echo "🏁️ $COMMAND $PROJECT in $TARGET..." && echo
 
 _init() {
-  CURRENT_FILE_PATH=$(dirname $0)   # /home/workspace/portainer-devkit/devkit/scripts
+  CURRENT_FILE_PATH=$(dirname $0)
+  [[ $CURRENT_FILE_PATH != /* ]]  && CURRENT_FILE_PATH="$PWD/$CURRENT_FILE_PATH"
 
   source "${CURRENT_FILE_PATH}/libs/consts.sh"
   source "${CURRENT_FILE_PATH}/libs/helpers.sh"

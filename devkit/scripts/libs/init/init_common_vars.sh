@@ -7,4 +7,7 @@ init_common_vars() {
     PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
   fi
   debug "[devkit.sh] [init_common_vars()] PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH"
+
+  WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
+  debug "[devkit.sh] [init_common_vars()] WORKSPACE_PATH=$WORKSPACE_PATH"
 }
