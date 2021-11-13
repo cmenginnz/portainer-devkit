@@ -4,11 +4,14 @@ debug() {
   [[ $DEVKIT_DEBUG == "true" ]] && echo "🐞" `date` "$*"
 }
 
+_do_ssh() {
+  sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true
+}
 
 wait_for_sshd_up() {
-  local TARGET_IP=$1
+  #  until nc -w 1 "$TARGET_IP" 22; do
 
-  until nc -w 1 "$TARGET_IP" 22; do
+  until _do_ssh; do
     echo '⭐️ Waiting for SSH Server...'
     sleep 3;
   done
@@ -47,49 +50,6 @@ wait_for_target_up() {
     echo $MSG1
     sleep 1;
   done
-}
-
-calc_target_ip() {
-  local TARGET=$1   # k8s|swarm|docker|devkit
-
-  local TARGET_IP=""
-
-  case $TARGET in
-    k8s)
-      TARGET_IP="$TARGET_K8S_IP"
-      ;;
-    swarm)
-      TARGET_IP="$TARGET_SWARM_IP"
-      ;;
-    docker)
-      TARGET_IP="$TARGET_DOCKER_IP"
-      ;;
-    devkit)
-      TARGET_IP="$DEVKIT_IP"
-      ;;
-  esac
-
-  echo "$TARGET_IP"
-}
-
-calc_agent_dlv_port() {
-  local TARGET=$1   # k8s|swarm|docker
-
-  local DLV_PORT=""
-
-  case $TARGET in
-    k8s)
-      DLV_PORT="$AGENT_DLV_PORT_IN_K8S"
-      ;;
-    swarm)
-      DLV_PORT="$AGENT_DLV_PORT_IN_SWARM"
-      ;;
-    docker)
-      DLV_PORT="$AGENT_DLV_PORT_IN_DOCKER"
-      ;;
-  esac
-
-  echo "$DLV_PORT"
 }
 
 kill_dlv() {

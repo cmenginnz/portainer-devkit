@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
 _do_dlv_portainer() {
-  debug "[start-portainer.sh] [do_start_portainer_dlv] PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH DATA_PATH=$DATA_PATH PORTAINER_DLV_PORT_IN_WORKSPACE=$PORTAINER_DLV_PORT_IN_WORKSPACE"
+  debug "[dlv_portainer.sh] [_do_dlv_portainer] DLV_PORT=$DLV_PORT"
+  debug "[dlv_portainer.sh] [_do_dlv_portainer] DATA_PATH=$DATA_PATH"
 
-  /app/dlv --listen=0.0.0.0:"$PORTAINER_DLV_PORT_IN_WORKSPACE" --headless=true --api-version=2 --check-go-version=false --only-same-user=false \
+  mkdir -p $DATA_PATH
+
+  /app/dlv --listen=0.0.0.0:"$DLV_PORT" --headless=true --api-version=2 --check-go-version=false --only-same-user=false \
      exec /app/portainer -- --data "$DATA_PATH" --assets /app
 
   ps -ef | grep dlv | grep listen

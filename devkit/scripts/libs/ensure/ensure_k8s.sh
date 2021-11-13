@@ -26,7 +26,7 @@ _fix_kubeconfig() {
   sed -i s/127.0.0.1:.*/"$TARGET_IP":6443/g ~/.kube/config
 }
 
-ensure_kind_k8s() {
+ensure_k8s() {
   MSG1="⭐️ Finding K8s..."
   MSG2="✅ Found K8s"
   MSG3="✅ Not found K8s"

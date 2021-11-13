@@ -11,7 +11,7 @@ cmd_dlv() {
 }
 
 _cmd_dlv_exec() {
-  if [ "$PROGRAM" == "portainer" ]; then
+  if [ "$PROJECT" == "portainer" ]; then
     dlv_portainer
   elif [ "$SUB_CMD" == "agent" ]; then
     dlv_agent

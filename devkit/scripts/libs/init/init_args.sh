@@ -1,32 +1,35 @@
 #!/usr/bin/env bash
 
 init_args() {
-  debug "[init_args.sh] [init_args()] args=$*"
-
   ARGS="$@"
   COMMAND="$1"
 
   if [ $COMMAND == "run" ]; then
-    PROGRAM=$2
+    PROJECT=$2
     TARGET=$3
     EDGE_KEY=$4
   fi
 
   if [ $COMMAND == "dlv" ]; then
     SUB_CMD=$2
-    PROGRAM=$3
+    PROJECT=$3
     ENV_VAR_LIST=$4
-
-    DLV_PORT=23451
 
     _export_env_var_list
   fi
 
   if [ $COMMAND == "ensure" ]; then
-    PROGRAM=$2
+    PROJECT=$2
   fi
+
+  debug "[devkit.sh] [init_args()] args='$ARGS'"
+  debug "[devkit.sh] [init_args()] I_AM_IN=$I_AM_IN"
+  debug "[devkit.sh] [init_args()] CURRENT_FILE_PATH=$CURRENT_FILE_PATH"
+  debug "[devkit.sh] [init_args()] COMMAND=$COMMAND"
+  debug "[devkit.sh] [init_args()] PROJECT=$PROJECT"
+  debug "[devkit.sh] [init_args()] TARGET=$TARGET"
 }
 
 _export_env_var_list() {
-  export "${ENV_VAR_LIST/:/' '}"
+  export ${ENV_VAR_LIST//:/' '}
 }

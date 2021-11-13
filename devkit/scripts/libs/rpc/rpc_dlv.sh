@@ -11,7 +11,7 @@ _do_rpc_dlv() {
   fi
 
   ENV_VAR_LIST="DLV_PORT=$DLV_PORT:DATA_PATH=$DATA_PATH:EDGE_KEY=$EDGE_KEY:DEVKIT_DEBUG=$DEVKIT_DEBUG:"
-  RPC_CMDEE=" /app/scripts/devkit.sh dlv exec $PROGRAM $ENV_VAR_LIST "
+  RPC_CMDEE=" /app/scripts/devkit.sh dlv exec $PROJECT $ENV_VAR_LIST "
   FULL_CMD="tmux new -d -s $TMUX_NAME $RPC_CMDER $RPC_CMDEE"
 
   debug "FULL_CMD=$FULL_CMD"
@@ -45,9 +45,9 @@ rpc_dlv() {
 
 #  # non k8s
 #  ssh -p "$SSH_PASSWORD" ssh "root@$TARGET_IP" \
-#    /app/scripts/devkit.sh dlv exec "$PROGRAM"
+#    /app/scripts/devkit.sh dlv exec "$PROJECT"
 #
 #  # k8s
 #  POD=$(kubectl get pod -l app=portainer-agent -n portainer -o jsonpath="{.items[0].metadata.name}")
 #  kubectl exec -it -n portainer "$POD" -- \
-#    /app/scripts/devkit.sh dlv exec "$PROGRAM"
+#    /app/scripts/devkit.sh dlv exec "$PROJECT"

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-
 # CLI Usage
-#            COMMAND  SUB_CMD        PROGRAM                       TARGET
+#            COMMAND  SUB_CMD        PROJECT                       TARGET
 # devkit.sh  run                     portainer|agent|edge-agent    docker|swarm|k8s|workspace             [EDGE_KEY]
 
 # devkit.sh  dlv      exec|kill      portainer|agent|edge-agent                                           ENV_VAR_LIST
@@ -14,17 +13,7 @@
 
 # devkit.sh  clean                                                 targets|all
 
-
-
-
-#COMMAND=$1
-#PROGRAM=$2
-#TARGET=$3
-#EDGE_KEY=$4
-#
-#ARGS="$@"
-#
-#echo "🏁️ $COMMAND $PROGRAM in $TARGET..." && echo
+#echo "🏁️ $COMMAND $PROJECT in $TARGET..." && echo
 
 # init is shared between several files in this project. Sync it all the time.
 _init() {
@@ -35,9 +24,11 @@ _init() {
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_network.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_workspace.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_k8s.sh"
+  source "${CURRENT_FILE_PATH}/libs/ensure/ensure_k8s_agent.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_webpack.sh"
   source "${CURRENT_FILE_PATH}/libs/rpc/rpc.sh"
   source "${CURRENT_FILE_PATH}/libs/rpc/rpc_dlv.sh"
+  source "${CURRENT_FILE_PATH}/libs/rpc/rpc_kill_dlv.sh"
   source "${CURRENT_FILE_PATH}/libs/cmd/cmd_run.sh"
   source "${CURRENT_FILE_PATH}/libs/cmd/cmd_dlv.sh"
   source "${CURRENT_FILE_PATH}/libs/run/run_portainer.sh"
@@ -45,59 +36,28 @@ _init() {
   source "${CURRENT_FILE_PATH}/libs/rsync/rsync_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/dlv/dlv_portainer.sh"
   source "${CURRENT_FILE_PATH}/libs/init/init_args.sh"
+  source "${CURRENT_FILE_PATH}/libs/init/init_common_vars.sh"
+  source "${CURRENT_FILE_PATH}/libs/init/init_cmd_run_vars.sh"
 
   init_args "$@"
+  init_common_vars
 }
 _init "$@"
 
-_init_global_variables() {
-  debug "[devkit.sh] args='$ARGS'"
-
-  debug "[devkit.sh] [init()] COMMAND=$COMMAND"
-  debug "[devkit.sh] [init()] PROGRAM=$PROGRAM"
-  debug "[devkit.sh] [init()] TARGET=$TARGET"
-
-  debug "[devkit.sh] [init()] I_AM_IN=$I_AM_IN"
-
-  debug "[devkit.sh] [init()] CURRENT_FILE_PATH=$CURRENT_FILE_PATH"
-
-
-  TARGET_IP=$(calc_target_ip "$TARGET")
-  debug "[devkit.sh] [init()] TARGET_IP=$TARGET_IP"
-
-  if [[ $CURRENT_FILE_PATH == *.vscode* ]]; then
-    PROJECT_ROOT_PATH=$(dirname $(dirname $(dirname "$CURRENT_FILE_PATH")))
-  else
-    PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
-  fi
-  debug "[devkit.sh] [init()] PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH"
-
-  WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
-  debug "[devkit.sh] [init()] WORKSPACE_PATH=$WORKSPACE_PATH"
-
-  [[ "$PROJECT_ROOT_PATH" == *portainer-ee ]] && PROJECT_VER=ee || PROJECT_VER=ce
-  debug "[devkit.sh] [init()] PROJECT_VER=$PROJECT_VER"
-
-  #[[ $PROJECT_VER == "ce" ]] && PROJECT_ROOT_PATH="$HOME/portainer" || PROJECT_ROOT_PATH="$HOME/portainer-ee"
-  [[ $PROJECT_VER == "ce" ]] && DATA_PATH="$HOME/data-ce" || DATA_PATH="$HOME/data-ee"
-  debug "[devkit.sh] [init()] DATA_PATH=$DATA_PATH"
-
-}
-_init_global_variables
 
 runXX() {
-  case $PROGRAM in
+  case $PROJECT in
   portainer)
     run_portainer $PROJECT_VER "$TARGET"
     ;;
   agent)
-    run_agent "$TARGET" "$PROGRAM"
+    run_agent "$TARGET" "$PROJECT"
     ;;
   edge-agent)
-    run_agent "$TARGET" "$PROGRAM" "$EDGE_KEY"
+    run_agent "$TARGET" "$PROJECT" "$EDGE_KEY"
     ;;
   *)
-    echo "❌ Unknown Program $PROGRAM"
+    echo "❌ Unknown Project $PROJECT"
     exit 2
     ;;
   esac
@@ -112,17 +72,17 @@ _clean() {
 }
 
 _ensure() {
-  if [[ $PROGRAM == "network" ]]; then
+  if [[ $PROJECT == "network" ]]; then
     ensure_network
-  elif [[ "$PROGRAM" == "devkit" ]]; then
-    ensure_devkit
+  elif [[ "$PROJECT" == "workspace" ]]; then
+    ensure_workspace
   fi
 }
 
 main() {
-  echo $COMMAND
   case $COMMAND in
   run)
+    init_cmd_run_vars
     cmd_run
     ;;
   dlv)

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 _pre_rsync_portainer() {
-  kill_dlv
+  rpc_kill_dlv
 }
 
 _do_rsync_portainer() {
