@@ -2,7 +2,7 @@
 
 _do_create_swarm() {
   docker run --privileged -d --rm \
-    --name "$TARGET_NAME_SWARM" \
+    --name "${TARGET_NAME_SWARM}" \
     --network "${NETWORK_NAME}" \
     --ip "${TARGET_IP_SWARM}" \
     -p ${DLV_PORT_AGENT_SWARM}:${DLV_PORT_AGENT_SWARM} \

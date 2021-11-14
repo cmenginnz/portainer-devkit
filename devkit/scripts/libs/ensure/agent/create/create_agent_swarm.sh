@@ -3,8 +3,7 @@
 _do_create_agent_swarm() {
   docker exec "$TARGET_NAME_SWARM" \
     docker service create \
-      --name "${AGENT_NAME_SWARM}" \
-      --hostname "${AGENT_NAME_SWARM}" \
+      --name portainer_edge_agent \
       --network portainer_agent_network \
       --mode global \
       --mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock \

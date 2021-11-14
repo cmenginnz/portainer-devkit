@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+_rpc_dlv_exec_kill_tmux() {
+  tmux kill-session -t "${TMUX_NAME}" 2>>"${STDOUT}" 1>&2
+}
+
 _rpc_dlv_exec_tmux() {
   TMUX_NAME="tmux-$PROJECT-$TARGET"
   TMUX_CMD="tmux new -d -s $TMUX_NAME"
@@ -38,10 +42,12 @@ _do_rpc_dlv_exec() {
   _rpc_dlv_exec_cmder
   _rpc_dlv_exec_cmdee
 
+  _rpc_dlv_exec_kill_tmux
+
   RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
   debug "RPC_DLV_FULL_CMD=$RPC_DLV_FULL_CMD"
 
-  eval $RPC_DLV_FULL_CMD
+  eval "${RPC_DLV_FULL_CMD}"
 }
 
 rpc_dlv_exec() {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 _check_webpack() {
-  tmux ls 2>/dev/null | grep "$TMUX_NAME_WEBPACK" >/dev/null
+  tmux has-session -t "$TMUX_NAME_WEBPACK" 2>$STDOUT 1>&2
 }
 
 _do_start_webpack() {

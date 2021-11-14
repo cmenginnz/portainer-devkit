@@ -33,7 +33,7 @@ TARGET_NAME_DOCKER="portainer-docker"
 TARGET_NAME_WORKSPACE="portainer-workspace"
 
 AGENT_NAME_K8S="portainer-k8s-agent"
-AGENT_NAME_SWARM="portainer-swarm-agent"
+AGENT_NAME_SWARM="portainer_edge_agent"
 AGENT_NAME_DOCKER="portainer-docker-agent"
 
 TARGET_NAME_K8S_KIND="portainer-k8s"

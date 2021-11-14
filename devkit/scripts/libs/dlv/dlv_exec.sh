@@ -30,12 +30,17 @@ _do_dlv_exec() {
 }
 
 dlv_exec() {
-  MSG0="DLV Exec ${project^}"
+  MSG0="DLV Exec ${PROJECT^}"
   MSG1=$(msg_ing)
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
+  MSG0="Press 'CTRL-C' to Quit Terminal"
+  MSG4=$(msg_ing)
+
   echo && echo "$MSG1" &&
-  (_do_dlv_exec && echo "$MSG2") ||
+  (_do_dlv_exec && echo && echo "$MSG2" && echo "${MSG4}") ||
   (echo "$MSG3" && false)
+
+  sleep infinity
 }
