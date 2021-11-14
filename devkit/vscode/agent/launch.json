@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Agent-Docker",
+            "name": "agent-docker",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -15,7 +15,7 @@
             "host": "192.168.100.3",
         },
         {
-            "name": "Agent-Swarm",
+            "name": "agent-swarm",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -25,7 +25,7 @@
             "host": "192.168.100.2",
         },
         {
-            "name": "Agent-K8s",
+            "name": "agent-k8s",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -35,7 +35,7 @@
             "host": "192.168.100.1",
         },
         {
-            "name": "CE-Edge-Docker",
+            "name": "ce-edge-docker",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -45,7 +45,7 @@
             "host": "192.168.100.3",
         },
         {
-            "name": "CE-Edge-Swarm",
+            "name": "ce-edge-swarm",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -55,7 +55,7 @@
             "host": "192.168.100.2",
         },
         {
-            "name": "CE-Edge-K8s",
+            "name": "ce-edge-k8s",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -65,7 +65,7 @@
             "host": "192.168.100.1",
         },
         {
-            "name": "EE-Edge-Docker",
+            "name": "ee-edge-docker",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -75,7 +75,7 @@
             "host": "192.168.100.3",
         },
         {
-            "name": "EE-Edge-Swarm",
+            "name": "ee-edge-swarm",
             "type": "go",
             "mode": "remote",
             "request": "attach",
@@ -85,7 +85,7 @@
             "host": "192.168.100.2",
         },
         {
-            "name": "EE-Edge-K8s",
+            "name": "ee-edge-k8s",
             "type": "go",
             "mode": "remote",
             "request": "attach",
