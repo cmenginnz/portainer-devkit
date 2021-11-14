@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-set -x
-
-# delete agent pod
-# kubectl delete -f portainer-k8s-agent-builder.yaml
-
-# delete a kube
-minikube delete -p k01
