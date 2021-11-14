@@ -18,7 +18,6 @@ _init() {
   source "${CURRENT_FILE_PATH}/libs/helpers.sh"
 
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_network.sh"
-  source "${CURRENT_FILE_PATH}/libs/ensure/ensure_workspace.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/ensure_webpack.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/target/ensure_target.sh"
   source "${CURRENT_FILE_PATH}/libs/ensure/agent/ensure_agent.sh"

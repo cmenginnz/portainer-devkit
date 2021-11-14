@@ -22,7 +22,7 @@
             "apiVersion": 2,
             "preLaunchTask": "agent-swarm",
             "port": 23462,
-            "host": "127.0.0.1",
+            "host": "192.168.100.2",
         },
         {
             "name": "Agent-K8s",
@@ -32,7 +32,7 @@
             "apiVersion": 2,
             "preLaunchTask": "agent-k8s",
             "port": 23461,
-            "host": "127.0.0.1",
+            "host": "192.168.100.1",
         },
         {
             "name": "CE-Edge-Docker",
@@ -42,7 +42,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ce-edge-docker",
             "port": 23463,
-            "host": "127.0.0.1",
+            "host": "192.168.100.3",
         },
         {
             "name": "CE-Edge-Swarm",
@@ -52,7 +52,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ce-edge-swarm",
             "port": 23462,
-            "host": "127.0.0.1",
+            "host": "192.168.100.2",
         },
         {
             "name": "CE-Edge-K8s",
@@ -62,7 +62,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ce-edge-k8s",
             "port": 23461,
-            "host": "127.0.0.1",
+            "host": "192.168.100.1",
         },
         {
             "name": "EE-Edge-Docker",
@@ -72,7 +72,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ee-edge-docker",
             "port": 23463,
-            "host": "127.0.0.1",
+            "host": "192.168.100.3",
         },
         {
             "name": "EE-Edge-Swarm",
@@ -82,7 +82,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ee-edge-swarm",
             "port": 23462,
-            "host": "127.0.0.1",
+            "host": "192.168.100.2",
         },
         {
             "name": "EE-Edge-K8s",
@@ -92,7 +92,7 @@
             "apiVersion": 2,
             "preLaunchTask": "ee-edge-k8s",
             "port": 23461,
-            "host": "127.0.0.1",
+            "host": "192.168.100.1",
         },
     ]
 }

@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 _do_create_agent_swarm() {
-  docker exec "$TARGET_SWARM_NAME" \
+  docker exec "$TARGET_NAME_SWARM" \
     docker service create \
-      --name portainer_agent \
+      --name "${AGENT_NAME_SWARM}" \
+      --hostname "${AGENT_NAME_SWARM}" \
       --network portainer_agent_network \
       --mode global \
       --mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock \
@@ -13,9 +14,8 @@ _do_create_agent_swarm() {
       --publish mode=host,target=22,published=22 \
       --publish mode=host,target=9001,published=9001 \
       --publish mode=host,target=80,published=80 \
-      --publish mode=host,target="$DLV_PORT",published="$DLV_PORT" \
-      -e SSH_PASSWORD=root \
-      -e DEVKIT_DEBUG="$DEVKIT_DEBUG" \
+      --publish mode=host,target="${DLV_PORT_AGENT_SWARM}",published="${DLV_PORT_AGENT_SWARM}" \
+      -e SSH_PASSWORD="${SSH_PASSWORD}" \
       mcpacino/portainer-devkit-agent:dev  >>"$STDOUT"
 }
 

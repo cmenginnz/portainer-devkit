@@ -11,7 +11,7 @@ _do_create_swarm() {
 }
 
 _init_target_to_swarm() {
-  docker exec "$TARGET_SWARM_NAME" docker swarm init >>"$STDOUT"
+  docker exec "$TARGET_NAME_SWARM" docker swarm init >>"$STDOUT"
 }
 
 _create_swarm_network() {

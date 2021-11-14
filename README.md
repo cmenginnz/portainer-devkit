@@ -131,7 +131,15 @@
   `kubectl -n portainer get all`
 * How to login to containers
 * How to enable debug log for Devkit
-* What do folders `data-ce` and `data-ee` do 
+* How to access portainer.db and other files in data folder  
+  * In Workspace, they are in  
+    `/home/workspace/data-ce`  
+    `/home/workspace/data-ee`
+  * In Host, they are in  
+    `<your-workspace>/data-ce`  
+    `<your-workspace>/data-ee`  
 * How to clean all environments
 * How to access portainer.db
-
+* How to check output of background processes  
+  run `tmux attach` in vscode terminal then press `ctrl+b s` to select output  
+  
