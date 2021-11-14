@@ -102,7 +102,7 @@ spec:
       serviceAccountName: portainer-sa-clusteradmin
       containers:
       - name: portainer-k8s-agent
-        image: mcpacino/portainer-devkit-agent:dev
+        image: mcpacino/portainer-devkit-agent
         imagePullPolicy: Always
         env:
         - name: LOG_LEVEL

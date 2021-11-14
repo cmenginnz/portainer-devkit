@@ -25,12 +25,12 @@ init_args() {
   fi
 
   debug "args='$ARGS'"
-  debug "I_AM_IN=$I_AM_IN"
-  debug "CURRENT_FILE_PATH=$CURRENT_FILE_PATH"
-  debug "COMMAND=$COMMAND"
-  debug "PROJECT=$PROJECT"
-  debug "TARGET=$TARGET"
-  debug "EDGE_KEY=$EDGE_KEY"
+  debug_var "I_AM_IN"
+  debug_var "CURRENT_FILE_PATH"
+  debug_var "COMMAND"
+  debug_var "PROJECT"
+  debug_var "TARGET"
+  debug_var "EDGE_KEY"
 }
 
 _export_env_var_list() {

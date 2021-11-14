@@ -2,44 +2,62 @@
 
 #set -x
 
+ws="/home/workspace"
+
+
 make_vscode() {
   VSCODE_PATH=$1
-  PROJECT=$1
+  PROJECT=$2
 
   mkdir -p "$VSCODE_PATH"
-  #cd "$VSCODE_PATH"
+
   ln -f -s \
     ../../portainer-devkit/devkit \
     devkit/vscode/tasks.json \
-    devkit/vscode/$PROJECT/launch.json \
     "$VSCODE_PATH"
-  #cd -
+
+  ln -f -s \
+    devkit/vscode/launch.${PROJECT}.json \
+    "$VSCODE_PATH/launch.json"
+}
+
+download_ee() {
+  if [[ ! -d portainer-ee ]]; then
+    read -p "Do you want to download portainer-ee? [y/n] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      read -p "Input your github user name: " -r
+      echo
+      git clone https://$REPLY@github.com/portainer/portainer-ee.git
+    fi
+  fi
 }
 
 init_workspace() {
-  echo "[init_workspace()]"
+  cd ${ws}
 
-  cd /home/workspace
+  echo "$ ls -l ${ws}"
+  ls -l
+  echo
 
-  git clone https://github.com/portainer/portainer.git
-  git clone https://github.com/portainer/agent.git
-  git clone https://github.com/mcpacino/portainer-devkit.git
+  [[ -d portainer ]]        || git clone https://github.com/portainer/portainer.git
+  [[ -d agent ]]            || git clone https://github.com/portainer/agent.git
+  [[ -d portainer-devkit ]] || git clone https://github.com/mcpacino/portainer-devkit.git
+  [[ -d portainer-ee ]]     || download_ee
 
-  mkdir data-ce
-  mkdir data-ee
+  [[ -d data-ce ]] || mkdir data-ce
+  [[ -d data-ee ]] || mkdir data-ee
 
   make_vscode "portainer/.vscode"  "portainer"
-  make_vscode "portainer-ee/.vscode"  "portainer"
   make_vscode "agent/.vscode"  "agent"
 
-  chown "${USER_UID_GID}" -R portainer agent portainer-devkit data-ce data-ee
+  [[ -d portainer-ee ]] && make_vscode "portainer-ee/.vscode"  "portainer"
 
-  cd -
+  cd - >/dev/null
 }
 
 
 init_sshd() {
-  echo "[init_sshd()]"
   # $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
 
   mkdir -p /run/sshd
@@ -81,7 +99,9 @@ set_hosts() {
 
 
 if [ "$*" == "init" ]; then
+  echo "init workspace"
   init_workspace
+  echo && echo "finished init workspace"
   exit
 fi
 

@@ -15,8 +15,8 @@ _dlv_exec_cmdee() {
 }
 
 _do_dlv_exec() {
-  debug "DLV_PORT=$DLV_PORT"
-  debug "DATA_PATH=$DATA_PATH"
+  debug_var "DLV_PORT"
+  debug_var "DATA_PATH"
 
   _make_data_dir
   _dlv_exec_cmder
@@ -24,7 +24,7 @@ _do_dlv_exec() {
 
   DLV_EXEC_FULL_CMD="$DLV_EXEC_CMDER $DLV_EXEC_CMDEE"
 
-  debug "DLV_EXEC_FULL_CMD=$DLV_EXEC_FULL_CMD"
+  debug_var "DLV_EXEC_FULL_CMD"
 
   eval $DLV_EXEC_FULL_CMD
 }

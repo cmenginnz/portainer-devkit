@@ -4,6 +4,7 @@ STDOUT="/tmp/portainer-dev-kit.log"
 I_AM_IN_TARGET="PORTAINER_TARGET"
 I_AM_IN_WORKSPACE="PORTAINER_WORKSPACE"
 
+VSCODE_HOME="/home/workspace"
 
 DEVKIT_SH_PATH="/home/workspace/portainer-devkit/devkit/scripts/devkit.sh"
 
@@ -37,6 +38,10 @@ AGENT_NAME_SWARM="portainer_edge_agent"
 AGENT_NAME_DOCKER="portainer-docker-agent"
 
 TARGET_NAME_K8S_KIND="portainer-k8s"
+
+IMAGE_NAME_AGENT="mcpacino/portainer-devkit-agent"
+IMAGE_NAME_WORKSPACE="mcpacino/portainer-devkit-workspace"
+IMAGE_NAME_AGENT_DEFAULT="${IMAGE_NAME_AGENT}"
 
 # dlv ports are hard coded in launch.json and some yaml file
 DLV_PORT_PORTAINER_WORKSPACE=23451

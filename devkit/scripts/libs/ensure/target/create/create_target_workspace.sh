@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 create_target_workspace() {
+  debug "using image: ${IMAGE_NAME_WORKSPACE}"
+
   docker run -d --rm \
     --name $TARGET_NAME_WORKSPACE \
     --network $NETWORK_NAME \
@@ -13,5 +15,5 @@ create_target_workspace() {
     -v "$WORKSPACE_PATH:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    mcpacino/portainer-devkit-workspace:dev  >>$STDOUT
+    "${IMAGE_NAME_WORKSPACE}"  >>$STDOUT
 }

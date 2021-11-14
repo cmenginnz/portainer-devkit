@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 _check_webpack() {
-  tmux has-session -t "$TMUX_NAME_WEBPACK" 2>$STDOUT 1>&2
+  tmux has-session -t "${tmux_name}" 2>$STDOUT 1>&2
 }
 
 _do_start_webpack() {
-  cd "$PROJECT_ROOT_PATH" && yarn install && tmux new -s "$TMUX_NAME_WEBPACK" -d yarn start:client
+  cd "$PROJECT_ROOT_PATH" && yarn install && tmux new -s "${tmux_name}" -d yarn start:client
 }
 
 ensure_webpack() {
@@ -18,6 +18,8 @@ ensure_webpack() {
   MSG4=$(msg_ing)
   MSG5=$(msg_ok)
   MSG6=$(msg_fail)
+
+  tmux_name="${TMUX_NAME_WEBPACK}-${PROJECT_VER}"
 
   (echo "$MSG1" && _check_webpack && echo "$MSG2") ||
   (echo $MSG3 && echo && echo "$MSG4" && _do_start_webpack && echo "$MSG5") ||

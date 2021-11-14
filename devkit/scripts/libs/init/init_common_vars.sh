@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_init_common_var_dev_mod() {
+_init_dev_mod() {
   DEV_MODE=1
   local dev_content="ref: refs/heads/dev"
   local git_head_file="${WORKSPACE_PATH}/portainer-devkit/.git/HEAD"
@@ -9,7 +9,17 @@ _init_common_var_dev_mod() {
     DEV_MODE=0
   fi
 
-  debug "DEV_MODE=${DEV_MODE}"
+  debug_var "DEV_MODE"
+}
+
+_init_image_name() {
+  if [ $DEV_MODE ]; then
+    IMAGE_NAME_AGENT="${IMAGE_NAME_AGENT}:dev"
+    IMAGE_NAME_WORKSPACE="${IMAGE_NAME_WORKSPACE}:dev"
+
+    debug_var "IMAGE_NAME_AGENT"
+    debug_var "IMAGE_NAME_WORKSPACE"
+  fi
 }
 
 init_common_vars() {
@@ -18,10 +28,14 @@ init_common_vars() {
   else
     PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
   fi
-  debug "PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH"
+  debug_var "PROJECT_ROOT_PATH"
 
   WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
-  debug "WORKSPACE_PATH=$WORKSPACE_PATH"
+  debug_var "WORKSPACE_PATH"
 
-  _init_common_var_dev_mod
+  [[ "${DEVKIT_DEBUG}" == "true" ]] && MUTE="/dev/stdout" || MUTE="${STDOUT}"
+  debug_var "MUTE"
+
+  _init_dev_mod
+  _init_image_name
 }

@@ -45,7 +45,7 @@ _do_rpc_dlv_exec() {
   _rpc_dlv_exec_kill_tmux
 
   RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
-  debug "RPC_DLV_FULL_CMD=$RPC_DLV_FULL_CMD"
+  debug_var "RPC_DLV_FULL_CMD"
 
   eval "${RPC_DLV_FULL_CMD}"
 }

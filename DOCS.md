@@ -35,6 +35,7 @@ COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars  |
         |         | agent     | swarm     |                    || TARGET_NAME  |
         |         | edge      | k8s       |                    || DLV_PORT     |                                                                                                                                      
         |         |           | workspace |                    || DATA_PATH    |                                                                                                                                      
+        |         |           |           |                    || PROJECT_VER  |                                                                                                                                      
         |         |           |           |                    ||              |                                                                                                                                      
 --------|---------|-----------|-----------|--------------------||--------------|
  dlv    | exec    | portainer |           | ENV_VAR_LIST:      ||              |                                                                                                                                      

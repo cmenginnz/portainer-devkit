@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 _do_create_agent_swarm() {
+  debug "using image: ${IMAGE_NAME_AGENT}"
   docker exec "$TARGET_NAME_SWARM" \
     docker service create \
       --name portainer_edge_agent \
@@ -15,7 +16,7 @@ _do_create_agent_swarm() {
       --publish mode=host,target=80,published=80 \
       --publish mode=host,target="${DLV_PORT_AGENT_SWARM}",published="${DLV_PORT_AGENT_SWARM}" \
       -e SSH_PASSWORD="${SSH_PASSWORD}" \
-      mcpacino/portainer-devkit-agent:dev  >>"$STDOUT"
+      "${IMAGE_NAME_AGENT}"  >>"$STDOUT"
 }
 
 create_agent_swarm() {

@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 create_agent_docker() {
-  docker exec "${TARGET_NAME_DOCKER}" \
+  debug "using image: ${IMAGE_NAME_AGENT}"
+
+  docker exec "${TARGET_NAME_DOCKER}" >>${MUTE} 2>&1 \
     docker run -d --pull always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
@@ -14,5 +16,5 @@ create_agent_docker() {
     --publish mode=host,target=80,published=80 \
     --publish mode=host,target=9001,published=9001 \
     --publish mode=host,target="${DLV_PORT_AGENT_DOCKER}",published="${DLV_PORT_AGENT_DOCKER}" \
-    mcpacino/portainer-devkit-agent:dev  >>"${STDOUT}"
+    "${IMAGE_NAME_AGENT}"  >>"${STDOUT}"
 }
