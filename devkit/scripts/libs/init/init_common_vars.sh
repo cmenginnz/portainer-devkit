@@ -9,7 +9,7 @@ _init_common_var_dev_mod() {
     DEV_MODE=0
   fi
 
-  debug "[devkit.sh/_init_dev_mod] DEV_MODE=${DEV_MODE}"
+  debug "DEV_MODE=${DEV_MODE}"
 }
 
 init_common_vars() {
@@ -18,10 +18,10 @@ init_common_vars() {
   else
     PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
   fi
-  debug "[devkit.sh] [init_common_vars()] PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH"
+  debug "PROJECT_ROOT_PATH=$PROJECT_ROOT_PATH"
 
   WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
-  debug "[devkit.sh] [init_common_vars()] WORKSPACE_PATH=$WORKSPACE_PATH"
+  debug "WORKSPACE_PATH=$WORKSPACE_PATH"
 
   _init_common_var_dev_mod
 }

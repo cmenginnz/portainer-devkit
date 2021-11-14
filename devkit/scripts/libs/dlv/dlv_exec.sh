@@ -15,8 +15,8 @@ _dlv_exec_cmdee() {
 }
 
 _do_dlv_exec() {
-  debug "[dlv_exec.sh] [_do_dlv_exec] DLV_PORT=$DLV_PORT"
-  debug "[dlv_exec.sh] [_do_dlv_exec] DATA_PATH=$DATA_PATH"
+  debug "DLV_PORT=$DLV_PORT"
+  debug "DATA_PATH=$DATA_PATH"
 
   _make_data_dir
   _dlv_exec_cmder

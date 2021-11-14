@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cmd_run() {
-  debug "[cmd_run.sh] [cmd_run()] I_AM_IN=$I_AM_IN"
+  debug "I_AM_IN=$I_AM_IN"
 
   if [[ $I_AM_IN == "$I_AM_IN_TARGET" ]]; then
     MSG0="'devkit.sh run' is not supported to run in current environment"

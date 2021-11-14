@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 debug() {
-  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_MSG $E_BUG $(date "+%X") $*"
+  #local file="$(basename ${BASH_SOURCE[1]})"
+  local func="${FUNCNAME[1]}"
+  [[ $DEVKIT_DEBUG == "true" ]] && echo "$E_MSG $E_BUG $(date "+%X") [${func}] $*"
 }
 
 _do_msg() {
