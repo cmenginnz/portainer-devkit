@@ -14,11 +14,11 @@ _show_portainer_urls_k8s() {
 
 run_portainer() {
   ensure_webpack &&
-  build_portainer &&
+  build_project &&
   ensure_target &&
   ensure_agent &&
-  wait_for_sshd_up &&
-  rsync_portainer &&
-  rpc_dlv &&
+  wait_sshd &&
+  rsync_project &&
+  rpc_dlv_exec &&
   _show_portainer_urls_k8s
 }

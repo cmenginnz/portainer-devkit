@@ -7,8 +7,7 @@ _do_create_swarm() {
     --ip "${TARGET_IP_SWARM}" \
     -p ${DLV_PORT_AGENT_SWARM}:${DLV_PORT_AGENT_SWARM} \
     -e DEVKIT_DEBUG=${DEVKIT_DEBUG} \
-    docker:dind \
-    >>"$STDOUT"
+    docker:dind  >>"$STDOUT"
 }
 
 _init_target_to_swarm() {

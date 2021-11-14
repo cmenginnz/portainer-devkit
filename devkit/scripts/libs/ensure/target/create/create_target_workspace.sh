@@ -13,6 +13,5 @@ create_target_workspace() {
     -v "$WORKSPACE_PATH:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    mcpacino/portainer-devkit-workspace:dev \
-    >>$STDOUT
+    mcpacino/portainer-devkit-workspace:dev  >>$STDOUT
 }

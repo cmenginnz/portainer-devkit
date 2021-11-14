@@ -16,8 +16,7 @@ _do_create_agent_swarm() {
       --publish mode=host,target="$DLV_PORT",published="$DLV_PORT" \
       -e SSH_PASSWORD=root \
       -e DEVKIT_DEBUG="$DEVKIT_DEBUG" \
-      mcpacino/portainer-devkit-agent:dev
-    >>"$STDOUT"
+      mcpacino/portainer-devkit-agent:dev  >>"$STDOUT"
 }
 
 create_agent_swarm() {

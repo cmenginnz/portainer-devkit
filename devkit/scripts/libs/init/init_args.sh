@@ -35,4 +35,7 @@ init_args() {
 
 _export_env_var_list() {
   export ${ENV_VAR_LIST//:/' '}
+
+  [[ $PROJECT == "portainer" && $DATA_PATH == "" ]] && echo "DATA_PATH is not set" && exit 1
+  [[ $PROJECT == "edge" && $EDGE_KEY == "" ]] && echo "EDGE_KEY is not set" && exit 1
 }

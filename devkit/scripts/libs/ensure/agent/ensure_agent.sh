@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/create/create_agent_docker.sh"
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/create/create_agent_swarm.sh"
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/create/create_agent_k8s.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/create/create_agent_docker.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/create/create_agent_swarm.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/create/create_agent_k8s.sh"
 
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/exist/exist_agent_docker.sh"
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/exist/exist_agent_swarm.sh"
-source "${CURRENT_FILE_PATH}/libs/ensure/ensure_agent/exist/exist_agent_k8s.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/exist/exist_agent_docker.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/exist/exist_agent_swarm.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/agent/exist/exist_agent_k8s.sh"
 
 
 _exist_agent() {

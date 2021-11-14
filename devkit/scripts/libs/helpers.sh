@@ -26,10 +26,10 @@ msg_fail() {
 
 
 _do_ssh() {
-  sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true >>$STDOUT
+  sshpass -p "$SSH_PASSWORD" ssh root@"$TARGET_IP" true >>$STDOUT 2>&1
 }
 
-wait_for_sshd_up() {
+wait_sshd() {
   #  until nc -w 1 "$TARGET_IP" 22; do
 
   MSG0="Check SSH Server"
@@ -68,12 +68,14 @@ _ls_docker_sock() {
 
 wait_for_target_up() {
   MSG0="Wait for ${TARGET^}"
-  MSG1=$(msg_ing)
+  local MSG1=$(msg_ing)
+  local MSG2=$(msg_ok)
 
-  until ls_docker_sock; do
-    echo "$MSG1"
-    sleep 1;
+  until _ls_docker_sock; do
+    echo "${MSG1}"
+    sleep 3;
   done
+  echo "${MSG2}"
 }
 
 kill_dlv() {

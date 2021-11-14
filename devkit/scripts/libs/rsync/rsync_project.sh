@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-_pre_rsync_portainer() {
-  rpc_kill_dlv
+_pre_rsync_project() {
+  rpc_dlv_kill
 }
 
-_do_rsync_portainer() {
+_do_rsync_project() {
   sshpass -p "$SSH_PASSWORD" \
     rsync -r \
       "$PROJECT_ROOT_PATH/dist/" \
@@ -13,13 +13,13 @@ _do_rsync_portainer() {
       "root@$TARGET_IP:/app"
 }
 
-rsync_portainer() {
-  MSG0="Copy Portainer"
+rsync_project() {
+  MSG0="Copy ${PROJECT^}"
   MSG1=$(msg_ing)
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
   echo && echo "$MSG1" &&
-  (_pre_rsync_portainer && _do_rsync_portainer && echo "$MSG2") ||
+  (_pre_rsync_project && _do_rsync_project && echo "$MSG2") ||
   (echo "$MSG3" && false)
 }
