@@ -42,5 +42,5 @@ dlv_exec() {
   (_do_dlv_exec && echo && echo "$MSG2" && echo "${MSG4}") ||
   (echo "$MSG3" && false)
 
-  sleep infinity
+#  sleep 60
 }

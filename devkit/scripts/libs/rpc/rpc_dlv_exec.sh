@@ -42,7 +42,7 @@ _make_env_var_list() {
 
 _rpc_dlv_exec_cmdee() {
   _make_env_var_list
-  RPC_DLV_CMDEE="/app/scripts/devkit.sh dlv exec $PROJECT $ENV_VAR_LIST"
+  RPC_DLV_CMDEE="${DLV_WORK_DIR}/scripts/devkit.sh dlv exec $PROJECT $ENV_VAR_LIST"
 }
 
 _do_rpc_dlv_exec() {
@@ -56,6 +56,9 @@ _do_rpc_dlv_exec() {
   debug_var "RPC_DLV_FULL_CMD"
 
   eval "${RPC_DLV_FULL_CMD}"
+
+  sleep 1
+  tmux set-option -w remain-on-exit
 }
 
 rpc_dlv_exec() {
