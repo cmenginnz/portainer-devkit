@@ -8,7 +8,6 @@ _rsync_shared_files() {
   sshpass -p "$SSH_PASSWORD" \
     rsync -r \
       "/app/" \
-      "$PROJECT_ROOT_PATH/dist/" \
       "${WORKSPACE_PATH}/go/bin/dlv" \
       "${WORKSPACE_PATH}/portainer-devkit/devkit/scripts" \
       "root@${TARGET_IP}:${DLV_WORK_DIR}"

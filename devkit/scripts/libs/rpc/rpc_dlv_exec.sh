@@ -18,18 +18,26 @@ _rpc_dlv_exec_cmder() {
   fi
 }
 
-_var_adder() {
-  ENV_VAR_LIST="$ENV_VAR_LIST:$1"
+_list_append() {
+  [[ -z "${ENV_VAR_LIST}" ]] && ENV_VAR_LIST="$1" || ENV_VAR_LIST="$ENV_VAR_LIST:$1"
+}
+
+_list_add_var() {
+  local var_name=$1
+  eval local var_value=\$${var_name}
+  _list_append "${var_name}=${var_value}"
 }
 
 _make_env_var_list() {
-  ENV_VAR_LIST="DLV_PORT=$DLV_PORT:DEVKIT_DEBUG=$DEVKIT_DEBUG"
+  _list_add_var "DLV_PORT"
+  _list_add_var "DEVKIT_DEBUG"
+  _list_add_var "DLV_WORK_DIR"
 
-  [[ $TARGET == "k8s" ]] && _var_adder "AGENT_CLUSTER_ADDR=portainer-agent-headless"
-  [[ $TARGET == "swarm" ]] && _var_adder "AGENT_CLUSTER_ADDR=tasks.portainer_edge_agent"
+  [[ $TARGET == "k8s" ]] && _list_append "AGENT_CLUSTER_ADDR=portainer-agent-headless"
+  [[ $TARGET == "swarm" ]] && _list_append "AGENT_CLUSTER_ADDR=tasks.portainer_edge_agent"
 
-  [[ $PROJECT == "portainer" ]] && _var_adder "DATA_PATH=$DATA_PATH"
-  [[ $PROJECT == "edge" ]] && _var_adder "EDGE=1:EDGE_INSECURE_POLL=1:EDGE_ID=devkit-edge-id:EDGE_KEY=$EDGE_KEY"
+  [[ $PROJECT == "portainer" ]] && _list_add_var "DATA_PATH"
+  [[ $PROJECT == "edge" ]] && _list_append "EDGE=1:EDGE_INSECURE_POLL=1:EDGE_ID=devkit-edge-id:EDGE_KEY=$EDGE_KEY"
 }
 
 _rpc_dlv_exec_cmdee() {

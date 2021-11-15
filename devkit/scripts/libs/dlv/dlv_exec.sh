@@ -5,13 +5,13 @@ _make_data_dir() {
 }
 
 _dlv_exec_cmder() {
-  DLV_EXEC_CMDER="/app/dlv --listen=0.0.0.0:"$DLV_PORT" --headless=true --api-version=2 --check-go-version=false --only-same-user=false exec"
+  DLV_EXEC_CMDER="${DLV_WORK_DIR}/dlv --listen=0.0.0.0:"$DLV_PORT" --headless=true --api-version=2 --check-go-version=false --only-same-user=false exec"
 }
 
 _dlv_exec_cmdee() {
   [[ $PROJECT == "portainer" ]] &&
-  DLV_EXEC_CMDEE="/app/portainer -- --data "$DATA_PATH" --assets /app" ||
-  DLV_EXEC_CMDEE="/app/agent"
+  DLV_EXEC_CMDEE="${DLV_WORK_DIR}/portainer -- --data "$DATA_PATH" --assets ${DLV_WORK_DIR}" ||
+  DLV_EXEC_CMDEE="${DLV_WORK_DIR}/agent"
 }
 
 _do_dlv_exec() {
