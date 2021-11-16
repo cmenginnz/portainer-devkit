@@ -9,7 +9,15 @@ download_devkit() {
   [[ "${DEV_MODE}" == "true" ]] && local dev_arg="-b dev"
 
   cd "${ws}"
-  [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+
+  if [[ -d portainer-devkit ]]; then
+    [[ "${DEV_MODE}" == "true" ]] &&
+    cd portainer-devkit
+    git fetch
+    git checkout -B dev origin/dev
+  else
+    git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+  fi
 }
 
 if [ "$*" == "start_portainer_workspace" ]; then

@@ -32,9 +32,10 @@ init_workspace_path() {
 init_workspace() {
   [[ "${DEV_MODE}" == "true" ]] && local tag=":dev"
 
+#    --user=`id -u`:`id -g` \
+
   docker run --rm -it \
     --name portainer-workspace-init \
-    --user=`id -u`:`id -g` \
     -e "DEV_MODE=${DEV_MODE}" \
     -e "PORTAINER_WORKSPACE=${PORTAINER_WORKSPACE}" \
     -v "${PORTAINER_WORKSPACE}:/home/workspace" \
