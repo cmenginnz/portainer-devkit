@@ -9,12 +9,15 @@ download_devkit() {
   [[ "${DEV_MODE}" == "true" ]] && local dev_arg="-b dev"
 
   cd "${ws}"
-  [[ -d portainer-devkit ]] || git -b dev clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+  [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
 }
 
 if [ "$*" == "start_portainer_workspace" ]; then
+  [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path PORTAINER_WORKSPACE is not specified" && exit 1
+
   echo "Start workspace..."
-  ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace
+  download_devkit
+  ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace "${PORTAINER_WORKSPACE}"
   exit $?
 fi
 
@@ -88,7 +91,7 @@ clone_repos() {
 
   [[ -d portainer ]]        || git clone https://github.com/portainer/portainer.git
   [[ -d agent ]]            || git clone https://github.com/portainer/agent.git
-  [[ -d portainer-devkit ]] || git -b dev clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+  [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
   [[ -d portainer-ee ]]     || download_ee
 
   [[ -d data-ce ]] || mkdir data-ce

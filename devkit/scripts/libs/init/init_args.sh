@@ -25,7 +25,7 @@ init_args() {
 
     if [[ "${TARGET}" == "workspace" ]]; then
       PORTAINER_WORKSPACE="$3"
-      [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path is not specified" && exit 1
+      [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path PORTAINER_WORKSPACE is not specified" && exit 1
     fi
   fi
 

@@ -19,7 +19,7 @@ init_workspace_path() {
 
   if [[ "${PORTAINER_WORKSPACE}" == "" ]]; then
     if confirm; then
-      PORTAINER_WORKSPACE=$(PWD)
+      PORTAINER_WORKSPACE=$(pwd)
     else
       exit 1
     fi
@@ -35,8 +35,9 @@ init_workspace() {
   docker run --rm -it \
     --name portainer-workspace-init \
     --user=`id -u`:`id -g` \
-    -e DEV_MODE="${DEV_MODE}" \
-    -e PORTAINER_WORKSPACE="${PORTAINER_WORKSPACE}" \
+    -e "DEV_MODE=${DEV_MODE}" \
+    -e "PORTAINER_WORKSPACE=${PORTAINER_WORKSPACE}" \
+    -v "${PORTAINER_WORKSPACE}:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \

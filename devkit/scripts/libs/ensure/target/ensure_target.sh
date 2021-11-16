@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_workspace.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_docker.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_swarm.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_k8s.sh"
