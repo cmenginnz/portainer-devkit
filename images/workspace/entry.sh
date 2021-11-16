@@ -4,6 +4,7 @@
 
 ws="/home/workspace"
 
+id
 
 download_devkit() {
   [[ "${DEV_MODE}" == "true" ]] && local dev_arg="-b dev"
@@ -29,8 +30,6 @@ if [ "$*" == "start_portainer_workspace" ]; then
   ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace "${PORTAINER_WORKSPACE}"
   exit $?
 fi
-
-
 
 make_vscode() {
   VSCODE_PATH=$1
