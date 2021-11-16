@@ -5,6 +5,7 @@
 # Env Vars:
 # PORTAINER_WORKSPACE
 # DEV_MODE
+# DEVKIT_DEBUG
 
 confirm() {
   echo "The workspace path is not specified by env variable PORTAINER_WORKSPACE."
@@ -37,6 +38,7 @@ init_workspace() {
   docker run --rm -it \
     --name portainer-workspace-init \
     -e "DEV_MODE=${DEV_MODE}" \
+    -e "DEVKIT_DEBUG=${DEVKIT_DEBUG}" \
     -e "PORTAINER_WORKSPACE=${PORTAINER_WORKSPACE}" \
     -v "${PORTAINER_WORKSPACE}:/home/workspace" \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -47,3 +49,4 @@ init_workspace() {
 
 init_workspace_path
 init_workspace
+sleep infinity

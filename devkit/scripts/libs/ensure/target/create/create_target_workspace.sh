@@ -4,7 +4,7 @@
 create_target_workspace() {
   debug "using image: ${IMAGE_NAME_WORKSPACE}"
 
-  docker run -it -d --rm \
+  docker run -it --rm \
     --name $TARGET_NAME_WORKSPACE \
     --hostname portainer-workspace \
     --network $NETWORK_NAME \
@@ -18,5 +18,5 @@ create_target_workspace() {
     -v "${PORTAINER_WORKSPACE}:${VSCODE_HOME}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    "${IMAGE_NAME_WORKSPACE}"  >>$STDOUT
+    "${IMAGE_NAME_WORKSPACE}"  # >>$STDOUT
 }
