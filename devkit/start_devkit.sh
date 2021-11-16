@@ -36,7 +36,6 @@ init_workspace() {
 
   docker run --rm -it \
     --name portainer-workspace-init \
-    --user=`id -u`:`id -g` \
     -e "DEV_MODE=${DEV_MODE}" \
     -e "PORTAINER_WORKSPACE=${PORTAINER_WORKSPACE}" \
     -v "${PORTAINER_WORKSPACE}:/home/workspace" \
