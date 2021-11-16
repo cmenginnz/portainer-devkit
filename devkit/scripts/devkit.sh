@@ -47,10 +47,10 @@ _init() {
 _init "$@"
 
 _clean() {
-  docker stop "$TARGET_NAME_K8S" >>"$STDOUT" 2>&1  &&  docker rm "$TARGET_NAME_K8S" >>"$STDOUT" 2>&1
-  docker stop "$TARGET_SWARM" >>"$STDOUT" 2>&1
-  docker stop "$TARGET_NAME_DOCKER" >>"$STDOUT" 2>&1
-  docker stop "$DEVKIT_NAME" >>"$STDOUT" 2>&1
+  docker stop "${TARGET_NAME_K8S}" >>"$STDOUT" 2>&1  &&  docker rm "$TARGET_NAME_K8S" >>"$STDOUT" 2>&1
+  docker stop "${TARGET_NAME_SWARM}" >>"$STDOUT" 2>&1
+  docker stop "${TARGET_NAME_DOCKER}" >>"$STDOUT" 2>&1
+  docker stop "${TARGET_NAME_WORKSPACE}" >>"$STDOUT" 2>&1
   echo "Removed all targets"
 }
 
