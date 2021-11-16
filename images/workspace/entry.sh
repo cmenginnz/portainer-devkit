@@ -10,14 +10,15 @@ download_devkit() {
 
   cd "${ws}"
 
-  if [[ -d portainer-devkit ]]; then
-    [[ "${DEV_MODE}" == "true" ]] &&
-    cd portainer-devkit
-    git fetch
-    git checkout -B dev origin/dev
-  else
-    git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
-  fi
+  [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+
+#  if [[ "${DEV_MODE}" == "true" ]]; then
+#    cd portainer-devkit
+#    git fetch
+#    git checkout -B dev origin/dev
+#  else
+#    git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
+#  fi
 }
 
 if [ "$*" == "start_portainer_workspace" ]; then
@@ -167,12 +168,7 @@ set_hosts() {
 
 
 
-if [ "$*" == "init" ]; then
-  echo "init workspace"
-  init_workspace
-  echo && echo "finished init workspace"
-  exit
-fi
+init_workspace
 
 export I_AM_IN=PORTAINER_WORKSPACE
 init_sshd

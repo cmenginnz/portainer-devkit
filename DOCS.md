@@ -31,8 +31,8 @@ devkit.sh CLI Usage
         |         |           |           |                    || calculated       |                                                                                                                                      
 COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars      |
 --------|---------|-----------|-----------|--------------------||------------------|
- run    |         | portainer | docker    | [EDGE_KEY]         || TARGET_IP        |                                                                                                                                      
-        |         | agent     | swarm     |                    || TARGET_NAME      |
+ run    |         | portainer | docker    | [EDGE_KEY]         ||                  |                                                                                                                                      
+        |         | agent     | swarm     |                    ||                  |
         |         | edge      | k8s       |                    || DLV_PORT         |                                                                                                                                      
         |         |           | workspace |                    || DATA_PATH        |                                                                                                                                      
         |         |           |           |                    || PROJECT_VER      |                                                                                                                                      
@@ -73,6 +73,8 @@ MUTE=/dev/stdout
 DEV_MODE=false
 IMAGE_NAME_AGENT=mcpacino/portainer-devkit-agent:dev
 IMAGE_NAME_WORKSPACE=mcpacino/portainer-devkit-workspace:dev
+TARGET_IP
+TARGET_NAME
 
 Caculated Vars for run command:
 TARGET_IP=192.168.100.10
@@ -83,3 +85,19 @@ DATA_PATH=/home/workspace/data-ee
 DLV_WORK_DIR=/app-portainer-ee
 
 ```
+
+##devkit.sh is called in:
+* vscode  (in workspace)
+.vscode/devkit/scripts/devkit.sh run  (in workspace)  
+
+
+* rpc_dlv_exec()   (in workspace)
+DLV_WORK_DIR/scripts/devkit.sh dlv    (in agent) 
+agent
+
+* entry.sh          (in workspace)
+/home/workspace/portainer-devkit/devkit/scripts/devkit.sh ensure workspace PORTAINER_WORKSPACE  (in workspace)  
+
+
+* users          (in workspace)
+/home/workspace/portainer-devkit/devkit/scripts/devkit.sh (in workspace)  

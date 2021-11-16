@@ -24,20 +24,53 @@ _init_image_name() {
   fi
 }
 
-init_common_vars() {
+_init_var_project_root_path() {
   if [[ $CURRENT_FILE_PATH == *.vscode* ]]; then
+    # /home/workspace/portainer/.vscode/devkit/scripts/devkit.sh
     PROJECT_ROOT_PATH=$(dirname $(dirname $(dirname "$CURRENT_FILE_PATH")))
   else
+    # /home/workspace/portainer-devkit/devkit/scripts/devkit.sh
     PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
   fi
   debug_var "PROJECT_ROOT_PATH"
+}
 
+_init_var_workspace_path() {
   WORKSPACE_PATH=$(dirname "$PROJECT_ROOT_PATH")
   debug_var "WORKSPACE_PATH"
+}
 
+_init_var_mute() {
   [[ "${DEVKIT_DEBUG}" == "true" ]] && MUTE="/dev/stdout" || MUTE="${STDOUT}"
   debug_var "MUTE"
+}
 
+_init_var_targets() {
+  eval TARGET_IP=\$TARGET_IP_${TARGET^^}
+  debug_var "TARGET_IP"
+
+  eval TARGET_NAME=\$TARGET_NAME_${TARGET^^}
+  debug_var "TARGET_NAME"
+}
+
+init_common_vars() {
+  # PROJECT_ROOT_PATH
+  _init_var_project_root_path
+
+  # WORKSPACE_PATH
+  _init_var_workspace_path
+
+  # MUTE
+  _init_var_mute
+
+  # DEV_MODE
   _init_dev_mod
+
+  # IMAGE_NAME_AGENT
+  # IMAGE_NAME_WORKSPACE
   _init_image_name
+
+  # TARGET_IP
+  # TARGET_NAME
+  _init_var_targets
 }

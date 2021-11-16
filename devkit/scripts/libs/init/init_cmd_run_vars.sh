@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
 init_cmd_run_vars() {
-  eval TARGET_IP=\$TARGET_IP_${TARGET^^}
-  debug_var "TARGET_IP"
-
-  eval TARGET_NAME=\$TARGET_NAME_${TARGET^^}
-  debug_var "TARGET_NAME"
 
   [[ $PROJECT == "portainer" ]] && P="PORTAINER" || P="AGENT"
   eval DLV_PORT=\$DLV_PORT_${P}_${TARGET^^}

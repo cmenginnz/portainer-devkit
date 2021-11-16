@@ -6,7 +6,6 @@ I_AM_IN_WORKSPACE="PORTAINER_WORKSPACE"
 
 VSCODE_HOME="/home/workspace"
 
-DEVKIT_SH_PATH="${VSCODE_HOME}/portainer-devkit/devkit/scripts/devkit.sh"
 
 
 TMUX_NAME_WEBPACK="tmux-webpack"
