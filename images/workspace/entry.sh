@@ -6,20 +6,17 @@ ws="/home/workspace"
 
 id
 
+
+######
+# start_portainer_workspace
+######
+
 download_devkit() {
   [[ "${DEV_MODE}" == "true" ]] && local dev_arg="-b dev"
 
   cd "${ws}"
 
   [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
-
-#  if [[ "${DEV_MODE}" == "true" ]]; then
-#    cd portainer-devkit
-#    git fetch
-#    git checkout -B dev origin/dev
-#  else
-#    git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
-#  fi
 }
 
 if [ "$*" == "start_portainer_workspace" ]; then
@@ -30,6 +27,14 @@ if [ "$*" == "start_portainer_workspace" ]; then
   ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace "${PORTAINER_WORKSPACE}"
   exit $?
 fi
+
+
+
+
+
+######
+# init_portainer_workspace
+######
 
 make_vscode() {
   VSCODE_PATH=$1
@@ -125,6 +130,17 @@ init_workspace() {
   cd - >/dev/null
 }
 
+if [ "$*" == "init_portainer_workspace" ]; then
+  echo "Init workspace..."
+  init_workspace
+  exit
+fi
+
+
+
+######
+# normal boot
+######
 
 init_sshd() {
   # $(ls /etc/ssh/ssh_host_* >/dev/null 2>&1) && return
@@ -164,10 +180,6 @@ set_agent_env() {
 set_hosts() {
   echo "192.168.50.1 h00" >> /etc/hosts
 }
-
-
-
-init_workspace
 
 export I_AM_IN=PORTAINER_WORKSPACE
 init_sshd

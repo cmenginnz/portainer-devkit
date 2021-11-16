@@ -30,7 +30,7 @@ init_workspace_path() {
   echo "DEV_MODE=${DEV_MODE}"
 }
 
-init_workspace() {
+start_workspace() {
   [[ "${DEV_MODE}" == "true" ]] && local tag=":dev"
 
 #    --user=`id -u`:`id -g` \
@@ -47,6 +47,10 @@ init_workspace() {
     start_portainer_workspace
 }
 
+init_workspace() {
+  docker exec -it portainer-workspace /entry.sh init_portainer_workspace
+}
+
 init_workspace_path
-init_workspace
-sleep infinity
+start_workspace
+init_worksapce
