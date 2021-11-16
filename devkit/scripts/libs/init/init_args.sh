@@ -21,7 +21,12 @@ init_args() {
   fi
 
   if [ $COMMAND == "ensure" ]; then
-    PROJECT=$2
+    TARGET=$2
+
+    if [[ "${TARGET}" == "workspace" ]]; then
+      PORTAINER_WORKSPACE="$3"
+      [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path is not specified" && exit 1
+    fi
   fi
 
   debug "args='$ARGS'"

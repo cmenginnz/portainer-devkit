@@ -57,7 +57,7 @@ COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars   
  ensure |         |           | docker    |                    ||                  |
         |         |           | swarm     |                    ||                  |                                                                                                                                      
         |         |           | k8s       |                    ||                  |                                                                                                                                      
-        |         |           | workspace |                    ||                  |                                                                                                                                      
+        |         |           | workspace | PORTAINER_WORKSPACE||                  |                                                                                                                                      
         |         |           | network   |                    ||                  |                                                                                                                                      
 --------|---------|-----------|-----------|--------------------||------------------|
  clean  |         |           | targets   |                    ||                  |
@@ -70,7 +70,7 @@ CURRENT_FILE_PATH=/home/workspace/agent/.vscode/devkit/scripts
 PROJECT_ROOT_PATH=/home/workspace/agent
 WORKSPACE_PATH=/home/workspace
 MUTE=/dev/stdout
-DEV_MODE=0
+DEV_MODE=false
 IMAGE_NAME_AGENT=mcpacino/portainer-devkit-agent:dev
 IMAGE_NAME_WORKSPACE=mcpacino/portainer-devkit-workspace:dev
 

@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 
 _init_dev_mod() {
-  DEV_MODE=1
-  local dev_content="ref: refs/heads/dev"
-  local git_head_file="${WORKSPACE_PATH}/portainer-devkit/.git/HEAD"
+  if [ -z "${DEV_MODE}" ]; then
+    DEV_MODE="false"
+    local dev_content="ref: refs/heads/dev"
+    local git_head_file="${WORKSPACE_PATH}/portainer-devkit/.git/HEAD"
 
-  if [ -f "${git_head_file}" ] && [ "$(cat ${git_head_file})" == "${dev_content}" ]; then
-    DEV_MODE=0
+    if [ -f "${git_head_file}" ] && [ "$(cat ${git_head_file})" == "${dev_content}" ]; then
+      DEV_MODE="true"
+    fi
   fi
 
   debug_var "DEV_MODE"
 }
 
 _init_image_name() {
-  if [ $DEV_MODE ]; then
+  if [ "${DEV_MODE}" == "true" ]; then
     IMAGE_NAME_AGENT="${IMAGE_NAME_AGENT}:dev"
     IMAGE_NAME_WORKSPACE="${IMAGE_NAME_WORKSPACE}:dev"
 

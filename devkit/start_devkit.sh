@@ -2,8 +2,12 @@
 
 # this script should run only in Host
 
+# Env Vars:
+# PORTAINER_WORKSPACE
+# DEV_MODE
+
 confirm() {
-  echo "The workspace is not specifyed by Environment variable PORTAINER_WORKSPACE."
+  echo "The workspace path is not specified by env variable PORTAINER_WORKSPACE."
   read -p "Continue within '`pwd`'?  [y/n] " -n 1 -r
   echo
   [[ $REPLY =~ ^[Yy]$ ]]
@@ -21,25 +25,23 @@ init_workspace_path() {
     fi
   fi
 
-  echo "PORTAINER_WORKSPACE=$PORTAINER_WORKSPACE in Host"
+  echo "Workspace path: $PORTAINER_WORKSPACE in Host"
+  echo "DEV_MODE=${DEV_MODE}"
 }
 
 init_workspace() {
+  [[ "${DEV_MODE}" == "true" ]] && local tag=":dev"
+
   docker run --rm -it \
     --name portainer-workspace-init \
     --user=`id -u`:`id -g` \
-    -v "${PORTAINER_WORKSPACE}":/home/workspace \
+    -e DEV_MODE="${DEV_MODE}" \
+    -e PORTAINER_WORKSPACE="${PORTAINER_WORKSPACE}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    mcpacino/portainer-devkit-workspace:dev \
-    init
-}
-
-ensure_workspace() {
-  ${PORTAINER_WORKSPACE}/portainer-devkit/devkit/scripts/devkit.sh ensure network &&
-  ${PORTAINER_WORKSPACE}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace
+    "mcpacino/portainer-devkit-workspace${tag}" \
+    start_portainer_workspace
 }
 
 init_workspace_path
 init_workspace
-ensure_workspace

@@ -55,10 +55,10 @@ _clean() {
 }
 
 _ensure() {
-  if [[ $PROJECT == "network" ]]; then
+  if [[ "${TARGET}" == "network" ]]; then
     ensure_network
-  elif [[ "$PROJECT" == "workspace" ]]; then
-    ensure_workspace
+  else
+    ensure_target
   fi
 }
 
