@@ -11,7 +11,7 @@ confirm() {
 
 init_workspace_path() {
   # for mcdebug only
-  [ -d "/home/simon/workspace" ] && [[ "${PORTAINER_WORKSPACE}" == ""  &&  "`hostname`" == "mcdt" ]] && PORTAINER_WORKSPACE="/home/simon/workspace"
+  # [ -d "/home/simon/workspace" ] && [[ "${PORTAINER_WORKSPACE}" == ""  &&  "`hostname`" == "mcdt" ]] && PORTAINER_WORKSPACE="/home/simon/workspace"
 
   if [[ "${PORTAINER_WORKSPACE}" == "" ]]; then
     if confirm; then

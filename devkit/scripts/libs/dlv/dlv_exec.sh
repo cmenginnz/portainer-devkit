@@ -35,12 +35,10 @@ dlv_exec() {
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
-  MSG0="Press 'CTRL-C' to Quit Terminal"
+  MSG0="Press 'ctrl+b x' to Quit Terminal"
   MSG4=$(msg_ing)
 
   echo && echo "$MSG1" &&
   (_do_dlv_exec && echo && echo "$MSG2" && echo "${MSG4}") ||
   (echo "$MSG3" && false)
-
-#  sleep 60
 }
