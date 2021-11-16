@@ -53,4 +53,4 @@ init_workspace() {
 
 init_workspace_path
 start_workspace
-init_worksapce
+init_workspace

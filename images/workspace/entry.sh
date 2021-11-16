@@ -80,7 +80,7 @@ download_ee() {
   fi
 }
 
-init_git_user() {
+_init_git_user() {
   read -p "Input your github user name: " -r
   echo
   git config --global user.name "$REPLY"
