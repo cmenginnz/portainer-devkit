@@ -24,6 +24,10 @@
 * Install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) if you are using Windows
     
 ## Get Started
+
+`curl https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/start_devkit.sh | bash -c`
+
+
 * Open a shell terminal (WLS terminal in Windows)
 
 * Make a new directory as your Portainer workspace  
@@ -142,4 +146,5 @@
 * How to access portainer.db
 * How to check output of background processes  
   run `tmux attach` in vscode terminal then press `ctrl+b s` to select output  
-  
+* how to run `yarn install`  
+Using `tmux` to stop `yarn` results in running `yarn install` next time 
