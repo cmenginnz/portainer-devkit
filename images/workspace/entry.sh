@@ -62,7 +62,7 @@ yesno() {
 
 _do_download_ee() {
   read -p "Input your github user name: " -r
-  echo
+  echo git clone https://$REPLY@github.com/portainer/portainer-ee.git
   git clone https://$REPLY@github.com/portainer/portainer-ee.git
 }
 
@@ -70,31 +70,22 @@ download_ee() {
   if [[ ! -d portainer-ee ]]; then
     local msg="Do you want to download portainer-ee?"
     yesno  "${msg}" && _do_download_ee
-#    read -p "Do you want to download portainer-ee? [y/n] " -n 1 -r
-#    echo
-#    if [[ $REPLY =~ ^[Yy]$ ]]; then
-#      read -p "Input your github user name: " -r
-#      echo
-#      git clone https://$REPLY@github.com/portainer/portainer-ee.git
-#    fi
   fi
 }
 
 _init_git_user() {
   read -p "Input your github user name: " -r
-  echo
   git config --global user.name "$REPLY"
 
   read -p "Input your github user email: " -r
-  echo
-  git config --global user.name "$REPLY"
+  git config --global user.email "$REPLY"
 }
 
 init_git() {
   git config --global credential.helper store
 
   if [[ -z "$(git config --global user.name)" ]] || [[ -z "$(git config --global user.email)" ]]; then
-    local msg="Do you want to set user name and email for your git?"
+    local msg="Do you want to set user.name and user.email in gitconfig?"
     yesno "$msg" && _init_git_user
   fi
 }
