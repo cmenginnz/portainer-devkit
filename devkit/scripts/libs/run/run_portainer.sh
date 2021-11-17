@@ -2,14 +2,12 @@
 
 _show_portainer_urls() {
   echo
-  echo "http://localhost:"\${"PORTAINER_PORT_HTTP_${TARGET^^}}"
-  echo "https://localhost:$PORTAINER_PORT_HTTPS_WORKSPACE"
-}
 
-_show_portainer_urls_k8s() {
-  echo
-  echo "http://localhost:$PORTAINER_PORT_HTTP_K8S"
-  echo "https://localhost:$PORTAINER_PORT_HTTPS_K8S"
+  eval local port=\$PORTAINER_PORT_HTTP_${TARGET^^}
+  echo http://localhost:${port}
+
+  eval local port=\$PORTAINER_PORT_HTTPS_${TARGET^^}
+  echo "https://localhost:${port}"
 }
 
 run_portainer() {
