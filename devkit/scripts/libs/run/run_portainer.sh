@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-_show_portainer_urls_workspace() {
+_show_portainer_urls() {
   echo
-  echo "http://localhost:$PORTAINER_PORT_HTTP_WORKSPACE"
+  echo "http://localhost:"\${"PORTAINER_PORT_HTTP_${TARGET^^}}"
   echo "https://localhost:$PORTAINER_PORT_HTTPS_WORKSPACE"
 }
 
@@ -20,5 +20,5 @@ run_portainer() {
   wait_sshd &&
   rsync_project &&
   rpc_dlv_exec &&
-  _show_portainer_urls_k8s
+  _show_portainer_urls
 }
