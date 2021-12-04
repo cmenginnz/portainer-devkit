@@ -176,8 +176,8 @@ export I_AM_IN=PORTAINER_WORKSPACE
 init_sshd
 set_agent_env
 
-cp /fancy_bash/bashrc ~/.bashrc
-cp /fancy_bash/dir_colors ~/.dir_colors
+cp /fancy_bashrc/bashrc /home/workspace/.bashrc
+cp /fancy_bashrc/dir_colors /home/workspace/.dir_colors
 
 /usr/sbin/sshd -e -f /etc/ssh/sshd_config
 $OPENVSCODE_SERVER_ROOT/server.sh --port 3000
