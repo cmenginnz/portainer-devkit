@@ -8,8 +8,7 @@
 # DEVKIT_DEBUG
 
 confirm() {
-  echo "The workspace path is not specified by env variable PORTAINER_WORKSPACE."
-  read -p "Continue within '`pwd`'?  [y/n] " -n 1 -r
+  read -p "Continue with pwd '`pwd`' as workspace?  [y/n] "
   echo
   [[ $REPLY =~ ^[Yy]$ ]]
 }
@@ -19,7 +18,7 @@ init_workspace_path() {
   # [ -d "/home/simon/workspace" ] && [[ "${PORTAINER_WORKSPACE}" == ""  &&  "`hostname`" == "mcdt" ]] && PORTAINER_WORKSPACE="/home/simon/workspace"
 
   if [[ "${PORTAINER_WORKSPACE}" == "" ]]; then
-    if confirm; then
+    if  [[ -d "portainer-devkit" ]] || confirm; then
       PORTAINER_WORKSPACE=$(pwd)
     else
       exit 1
@@ -35,6 +34,7 @@ start_workspace() {
 
   #    --user=`id -u`:`id -g` \
 
+  # start the init container to start portainer-workspace container
   docker run --rm -it \
     --name portainer-workspace-init \
     -e "DEV_MODE=${DEV_MODE}" \
@@ -44,11 +44,12 @@ start_workspace() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \
-    start_portainer_workspace
+    /start_portainer_workspace.sh
 }
 
 init_workspace() {
-  docker exec -it portainer-workspace /entry.sh init_portainer_workspace
+  # init the workspace (clone repos, init git, etc.)
+  docker exec -it portainer-workspace /init_portainer_workspace.sh
 }
 
 init_workspace_path

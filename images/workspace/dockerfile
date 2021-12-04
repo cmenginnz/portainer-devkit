@@ -43,5 +43,7 @@ RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
 # COPY scripts /scripts
 
 COPY entry.sh /entry.sh
+COPY init_portainer_workspace.sh /init_portainer_workspace.sh
+COPY start_portainer_workspace.sh /start_portainer_workspace.sh
 ENTRYPOINT ["/entry.sh"]
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+#CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
