@@ -61,7 +61,7 @@ yesno() {
 }
 
 _do_download_ee() {
-  read -p "Input your github user name: " -r
+  read -p "Input your github user name to clone portainer-ee: " -r
   echo git clone https://$REPLY@github.com/portainer/portainer-ee.git
   git clone https://$REPLY@github.com/portainer/portainer-ee.git
 }
@@ -74,10 +74,10 @@ download_ee() {
 }
 
 _init_git_user() {
-  read -p "Input your github user name: " -r
+  read -p "Input gitconfig.user.name: " -r
   git config --global user.name "$REPLY"
 
-  read -p "Input your github user email: " -r
+  read -p "Input gitconfig.user.email: " -r
   git config --global user.email "$REPLY"
 }
 
