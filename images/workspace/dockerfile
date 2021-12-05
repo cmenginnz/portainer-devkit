@@ -38,5 +38,5 @@ RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
     rm kind
 
 COPY devkit /
-
+WORKDIR /devkit
 ENTRYPOINT ["/devkit/entry.sh"]
