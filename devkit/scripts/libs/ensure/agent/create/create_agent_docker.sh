@@ -11,6 +11,7 @@ create_agent_docker() {
     --restart always \
     --hostname "${AGENT_NAME_DOCKER}" \
     --name "${AGENT_NAME_DOCKER}" \
+    -e SSH_USER="${SSH_USER}" \
     -e SSH_PASSWORD="${SSH_PASSWORD}" \
     --publish mode=host,target=22,published=22 \
     --publish mode=host,target=80,published=80 \

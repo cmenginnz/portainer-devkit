@@ -66,7 +66,8 @@ E_FLAG="🏁️"
 E_BUG="🐞"
 E_ING="⏳"
 
-SSH_PASSWORD="root"
+SSH_USER="devkit"
+SSH_PASSWORD="portainer"
 
 # portainer-agent
 # portainer_edge_agent

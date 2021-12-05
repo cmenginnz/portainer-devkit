@@ -37,12 +37,6 @@ _rsync_dist_files() {
 
 _do_rsync_project() {
   _rsync_shared_files && _rsync_dist_files
-#  sshpass -p "$SSH_PASSWORD" \
-#    rsync -r \
-#      "$PROJECT_ROOT_PATH/dist/" \
-#      "${WORKSPACE_PATH}/portainer-devkit/devkit/scripts" \
-#      "${WORKSPACE_PATH}/go/bin/dlv" \
-#      "root@$TARGET_IP:/app"
 }
 
 rsync_project() {
