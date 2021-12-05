@@ -2,8 +2,18 @@
 
 #set -x
 
+
+groupadd docker -g 998
+usermod openvscode-server -l devkit -d /home/workspace -G docker
+groupmod openvscode-server -n devkit
+echo "devkit:portainer" | chpasswd
+echo devkit ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/devkit
+
 # run cmd then exit
-[[ ! -z "$@" ]] && exec "$@"
+if [[ ! -z "$@" ]]; then
+  sudo -u devkit $@
+  exit $?
+fi
 
 
 ws="/home/workspace"
@@ -52,12 +62,15 @@ set_hosts() {
 init_sshd
 set_agent_env
 
-cp /fancy_bashrc/bashrc /home/workspace/.bashrc
-cp /fancy_bashrc/dir_colors /home/workspace/.dir_colors
-
 /usr/sbin/sshd -e -f /etc/ssh/sshd_config
 
-$OPENVSCODE_SERVER_ROOT/server.sh --port 3000
+
+
+
+sudo -u devkit cp /fancy_bashrc/bashrc /home/workspace/.bashrc
+sudo -u devkit cp /fancy_bashrc/dir_colors /home/workspace/.dir_colors
+
+sudo -u devkit $OPENVSCODE_SERVER_ROOT/server.sh --port 3000
 
 
 
