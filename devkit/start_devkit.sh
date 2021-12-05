@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # this script should run only in Host
 
