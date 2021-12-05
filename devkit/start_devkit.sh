@@ -45,13 +45,13 @@ start_workspace() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \
-    /start_portainer_workspace.sh
+    start_portainer_workspace.sh
 }
 
 init_workspace() {
   # init the workspace (clone repos, init git, etc.)
   # as entry.sh has no tty attached, init workspace here indested of in entry.sh 
-  docker exec -it portainer-workspace /init_portainer_workspace.sh
+  docker exec -it portainer-workspace init_portainer_workspace.sh
 }
 
 init_workspace_path

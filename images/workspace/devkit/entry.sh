@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
-#set -x
+set -x
 
+echo "running entry.sh..."
 
 groupadd docker -g 998
-usermod openvscode-server -l devkit -d /home/workspace -G docker
+usermod openvscode-server -l devkit -d /home/workspace -G docker -s /usr/bin/bash
 groupmod openvscode-server -n devkit
 echo "devkit:portainer" | chpasswd
 echo devkit ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/devkit
 
 # run cmd then exit
-if [[ ! -z "$@" ]]; then
-  sudo -u devkit $@
+if [[ ! -z "$*" ]]; then
+  sudo -u devkit \
+    DEV_MODE="$DEV_MODE" \
+    DEVKIT_DEBUG="$DEVKIT_DEBUG" \
+    PORTAINER_WORKSPACE="$PORTAINER_WORKSPACE" \
+    $*
   exit $?
 fi
 

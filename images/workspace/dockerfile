@@ -29,9 +29,6 @@ COPY --from=original_agent /app /app
 COPY --from=original_agent /app/kubectl /usr/bin/
 RUN rm /app/agent
 
-# copy fancy bashrc 
-COPY /bashrc /fancy_bashrc
-
 # install dlv
 RUN /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
 
@@ -40,10 +37,6 @@ RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
     install kind /usr/local/bin/ && \
     rm kind
 
-# COPY scripts /scripts
+COPY devkit /
 
-COPY entry.sh /entry.sh
-COPY init_portainer_workspace.sh /init_portainer_workspace.sh
-COPY start_portainer_workspace.sh /start_portainer_workspace.sh
-ENTRYPOINT ["/entry.sh"]
-#CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+ENTRYPOINT ["/devkit/entry.sh"]
