@@ -12,6 +12,7 @@ download_devkit() {
 }
 
 
+
 [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path PORTAINER_WORKSPACE is not specified" && exit 1
 
 echo "Start workspace..."
