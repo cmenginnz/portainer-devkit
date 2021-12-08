@@ -51,7 +51,7 @@ start_workspace() {
 init_workspace() {
   # init the workspace (clone repos, init git, etc.)
   # as entry.sh has no tty attached, init workspace here indested of in entry.sh 
-  docker exec -it portainer-workspace /devkit/init_portainer_workspace.sh
+  docker exec -it -u devkit:devkit portainer-workspace /devkit/init_portainer_workspace.sh
 }
 
 init_workspace_path
