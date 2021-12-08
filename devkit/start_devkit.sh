@@ -33,8 +33,6 @@ init_workspace_path() {
 start_workspace() {
   [[ "${DEV_MODE}" == "true" ]] && local tag=":dev"
 
-  #    --user=`id -u`:`id -g` \
-
   # start the init container to start portainer-workspace container
   docker run --rm -it \
     --name portainer-workspace-init \
