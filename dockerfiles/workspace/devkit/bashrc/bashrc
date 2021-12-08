@@ -125,7 +125,7 @@ complete -cf sudo
 PS1='[\u@\h \W]\$ '
 
 # adding local user's bin directory to the path
-PATH=~/bin:$PATH:/go/bin
+PATH=~/bin:$PATH:/go/bin:/usr/local/go/bin
 
 # I like nano, comment these for system defaults
 export EDITOR="nano -w"
