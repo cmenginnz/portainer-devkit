@@ -17,6 +17,6 @@ init_cmd_run_vars() {
   [[ $PROJECT_VER == "ce" ]] && DATA_PATH="${VSCODE_HOME}/data-ce" || DATA_PATH="${VSCODE_HOME}/data-ee"
   debug_var "DATA_PATH"
 
-  DLV_WORK_DIR="/app-${PROJECT}${project_ver_dash}${PROJECT_VER}"
+  DLV_WORK_DIR="/home/workspace/app-${PROJECT}${project_ver_dash}${PROJECT_VER}"
   debug_var "DLV_WORK_DIR"
 }
