@@ -61,24 +61,6 @@ wait_sshd() {
   echo $MSG2
 }
 
-#scp_agent_to_target() {
-#  local TARGET_IP=$1
-#
-#  sshpass -p "root" scp /go/bin/dlv root@"$TARGET_IP":/usr/bin/ >>"$STDOUT" 2>&1
-#  sshpass -p "root" scp /agent/dist/agent root@"$TARGET_IP":/app/
-#  sshpass -p "root" scp /scripts/libs/start-agent-dlv.sh root@"$TARGET_IP":/app/
-#}
-
-#rsync_portainer_to_target() {
-#  local TARGET_IP=$1
-#  local PROJECT_ROOT_PATH=$2
-#
-#  sshpass -p "root" rsync /app/public/* root@192.168.100.1:/app/public/
-#  sshpass -p "root" scp /go/bin/dlv root@"$TARGET_IP":/usr/bin/ >>"$STDOUT" 2>&1
-#  sshpass -p "root" scp "${PROJECT_ROOT_PATH}/dist/portainer" root@"$TARGET_IP":/app/
-#  sshpass -p "root" scp /scripts/libs/start-portainer-dlv.sh root@"$TARGET_IP":/app/
-#}
-
 _ls_docker_sock() {
   docker exec "$TARGET_NAME" ls -l /var/run/docker.sock >>$STDOUT 2>&1
 }

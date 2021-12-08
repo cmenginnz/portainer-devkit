@@ -6,4 +6,9 @@ init_username() {
   groupmod openvscode-server -n devkit
   echo "devkit:portainer" | chpasswd
   echo devkit ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/devkit
+
+  chown -R devkit:devkit /app
+
+  # disable secure path of sudo so that user devkit has the full PATH list
+  sed -i 's/Defaults/#Defaults/g' /etc/sudoers
 }

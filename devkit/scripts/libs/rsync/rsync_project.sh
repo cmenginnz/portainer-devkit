@@ -10,7 +10,7 @@ _rsync_shared_files() {
       "/app/" \
       "/go/bin/dlv" \
       "${WORKSPACE_PATH}/portainer-devkit/devkit/scripts" \
-      "root@${TARGET_IP}:${DLV_WORK_DIR}"
+      "$SSH_USER@${TARGET_IP}:${DLV_WORK_DIR}"
 }
 
 _rsync_dist_files_local() {
@@ -24,7 +24,7 @@ _rsync_dist_files_remote() {
   sshpass -p "$SSH_PASSWORD" \
     rsync -r \
       "$PROJECT_ROOT_PATH/dist/" \
-      "root@${TARGET_IP}:${DLV_WORK_DIR}"
+      "$SSH_USER@${TARGET_IP}:${DLV_WORK_DIR}"
 }
 
 _rsync_dist_files() {
