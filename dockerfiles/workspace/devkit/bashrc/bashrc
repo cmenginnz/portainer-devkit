@@ -280,7 +280,7 @@ loadcolors
 PROMPT_HOSTNAME_COLOR=${txtwht}
 
 # be sure to have some good defaults, just in case
-PROMPT_HOSTNAME="${HOSTNAME%%.*}"
+PROMPT_HOSTNAME="${USER}@${HOSTNAME%%.*}"
 PROMPT_CWD="\w"
 PROMT_HOSTNAME_BOX="\[${txtwht}\][\[${txtrst}\]${PROMPT_HOSTNAME_COLOR}\[${txtwht}\]] "
 
