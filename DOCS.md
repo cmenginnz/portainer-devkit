@@ -82,7 +82,7 @@ TARGET_NAME=portainer-workspace
 DLV_PORT=23451
 PROJECT_VER=ee
 DATA_PATH=/home/workspace/devkit/data-ee
-DLV_WORK_DIR=/app-portainer-ee
+DLV_WORK_DIR=~/app-portainer-ee
 
 ```
 

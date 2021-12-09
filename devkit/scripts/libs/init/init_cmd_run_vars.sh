@@ -13,10 +13,10 @@ init_cmd_run_vars() {
   debug_var "PROJECT_VER"
 
 
-  [[ $PROJECT_VER == "ce" ]] && DATA_PATH="${VSCODE_HOME}/data-ce" || DATA_PATH="${VSCODE_HOME}/data-ee"
+  [[ $PROJECT_VER == "ce" ]] && DATA_PATH="${MOUNT_POINT}/data-ce" || DATA_PATH="${MOUNT_POINT}/data-ee"
   debug_var "DATA_PATH"
 
-  DLV_WORK_DIR="/home/workspace/devkit/app-${PROJECT}${project_ver_dash}${PROJECT_VER}"
+  DLV_WORK_DIR="/$USER_HOME/app-${PROJECT}${project_ver_dash}${PROJECT_VER}"
   debug_var "DLV_WORK_DIR"
 
   [[ $TARGET = "workspace" ]] && SSH_USER_REAL="$SSH_USER" || SSH_USER_REAL="root"

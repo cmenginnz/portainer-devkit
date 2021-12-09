@@ -39,7 +39,7 @@ start_workspace() {
     -e "DEV_MODE=${DEV_MODE}" \
     -e "DEVKIT_DEBUG=${DEVKIT_DEBUG}" \
     -e "PORTAINER_WORKSPACE=${PORTAINER_WORKSPACE}" \
-    -v "${PORTAINER_WORKSPACE}:/home/workspace/devkit" \
+    -v "${PORTAINER_WORKSPACE}:${MOUNT_POINT}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \

@@ -23,24 +23,31 @@ RUN apt update && apt install -y --no-install-recommends \
     apt autoremove -y && \
     apt clean
 
-
-# copy some binary files such as `docker` from original agent image
-COPY --from=original_agent /app/kubectl /usr/bin/
-
-
-
-# install dlv
-ENV GOPATH=/go
-RUN /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
-
-COPY --from=original_agent /app /app
-RUN rm /app/agent
-
 # install kind
 RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
     install kind /usr/local/bin/ && \
     rm kind
 
+# install kubectl
+COPY --from=original_agent /app/kubectl /usr/bin/
+
+
+#
+# use openvscode-server user from this point
+USER openvscode-server
+
+# install dlv
+ENV GOPATH=/home/workspace/go
+RUN /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
+
+# copy some binary files such as `docker` from original agent image
+COPY --from=original_agent --chown=openvscode-server:openvscode-server /app /home/workspace/app
+RUN rm /home/workspace/app/agent
+
+
+#
+# copy entry.sh and it's libs
+USER root
 COPY devkit /devkit
 WORKDIR /devkit
 ENTRYPOINT ["/devkit/entry.sh"]

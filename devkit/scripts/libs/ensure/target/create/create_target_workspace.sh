@@ -15,7 +15,7 @@ create_target_workspace() {
     -p "$PORTAINER_PORT_HTTP_WORKSPACE:$PORTAINER_PORT_HTTP_WORKSPACE" \
     -p "$PORTAINER_PORT_HTTPS_WORKSPACE:$PORTAINER_PORT_HTTPS_WORKSPACE" \
     -p "$DLV_PORT_PORTAINER_WORKSPACE:$DLV_PORT_PORTAINER_WORKSPACE" \
-    -v "${PORTAINER_WORKSPACE}:${VSCODE_HOME}" \
+    -v "${PORTAINER_WORKSPACE}:${MOUNT_POINT}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "${IMAGE_NAME_WORKSPACE}"  # >>$STDOUT
