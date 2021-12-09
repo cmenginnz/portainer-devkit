@@ -9,6 +9,7 @@ set -x
 # DEVKIT_DEBUG
 
 MOUNT_POINT="/home/workspace/devkit"
+echo "hello"
 
 confirm() {
   read -p "Continue with pwd '`pwd`' as workspace?  [y/n] "
