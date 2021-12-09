@@ -2,7 +2,7 @@
 
 #set -x
 
-ws="/home/workspace"
+ws="/home/workspace/devkit"
 
 make_vscode() {
   VSCODE_PATH=$1

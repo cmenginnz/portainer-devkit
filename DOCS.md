@@ -66,9 +66,9 @@ COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars   
 
 
 Common Caculated Global Vars: 
-CURRENT_FILE_PATH=/home/workspace/agent/.vscode/devkit/scripts
-PROJECT_ROOT_PATH=/home/workspace/agent
-WORKSPACE_PATH=/home/workspace
+CURRENT_FILE_PATH=/home/workspace/devkit/agent/.vscode/devkit/scripts
+PROJECT_ROOT_PATH=/home/workspace/devkit/agent
+WORKSPACE_PATH=/home/workspace/devkit
 MUTE=/dev/stdout
 DEV_MODE=false
 IMAGE_NAME_AGENT=mcpacino/portainer-devkit-agent:dev
@@ -81,7 +81,7 @@ TARGET_IP=192.168.100.10
 TARGET_NAME=portainer-workspace
 DLV_PORT=23451
 PROJECT_VER=ee
-DATA_PATH=/home/workspace/data-ee
+DATA_PATH=/home/workspace/devkit/data-ee
 DLV_WORK_DIR=/app-portainer-ee
 
 ```
@@ -96,8 +96,8 @@ DLV_WORK_DIR/scripts/devkit.sh dlv    (in agent)
 agent
 
 * entry.sh          (in workspace)
-/home/workspace/portainer-devkit/devkit/scripts/devkit.sh ensure workspace PORTAINER_WORKSPACE  (in workspace)  
+/home/workspace/devkit/portainer-devkit/devkit/scripts/devkit.sh ensure workspace PORTAINER_WORKSPACE  (in workspace)  
 
 
 * users          (in workspace)
-/home/workspace/portainer-devkit/devkit/scripts/devkit.sh (in workspace)  
+/home/workspace/devkit/portainer-devkit/devkit/scripts/devkit.sh (in workspace)  

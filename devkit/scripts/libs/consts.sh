@@ -4,7 +4,7 @@ STDOUT="/tmp/portainer-dev-kit.log"
 I_AM_IN_TARGET="PORTAINER_TARGET"
 I_AM_IN_WORKSPACE="PORTAINER_WORKSPACE"
 
-VSCODE_HOME="/home/workspace"
+VSCODE_HOME="/home/workspace/devkit"
 
 
 

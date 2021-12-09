@@ -43,7 +43,7 @@
     --name portainer-workspace-init \
     -e USER_UID_GID=`id -u`:`id -g` \
     -p 3000:3000 \
-    -v ${PORTAINER_WORKSAPCE:-$PWD}:/home/workspace \
+    -v ${PORTAINER_WORKSAPCE:-$PWD}:/home/workspace/devkit \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     mcpacino/portainer-devkit-workspace:dev
@@ -137,8 +137,8 @@
 * How to enable debug log for Devkit
 * How to access portainer.db and other files in data folder  
   * In Workspace, they are in  
-    `/home/workspace/data-ce`  
-    `/home/workspace/data-ee`
+    `/home/workspace/devkit/data-ce`  
+    `/home/workspace/devkit/data-ee`
   * In Host, they are in  
     `<your-workspace>/data-ce`  
     `<your-workspace>/data-ee`  

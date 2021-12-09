@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ws="/home/workspace"
+ws="/home/workspace/devkit"
 
 
 download_devkit() {

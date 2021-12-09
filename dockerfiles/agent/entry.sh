@@ -11,7 +11,7 @@ init_sshd() {
   echo 'set /files/etc/ssh/sshd_config/PermitRootLogin yes' | augtool -s
   echo 'set /files/etc/ssh/sshd_config/PermitUserEnvironment yes' | augtool -s
 
-  echo "root:root" | chpasswd
+  echo "root:$SSH_PASSWORD" | chpasswd
 
   ls /etc/ssh/ssh_host_* >/dev/null 2>&1 || ssh-keygen -A
 

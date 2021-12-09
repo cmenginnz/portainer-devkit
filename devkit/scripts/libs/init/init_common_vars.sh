@@ -26,10 +26,10 @@ _init_image_name() {
 
 _init_var_project_root_path() {
   if [[ $CURRENT_FILE_PATH == *.vscode* ]]; then
-    # /home/workspace/portainer/.vscode/devkit/scripts/devkit.sh
+    # /home/workspace/devkit/portainer/.vscode/devkit/scripts/devkit.sh
     PROJECT_ROOT_PATH=$(dirname $(dirname $(dirname "$CURRENT_FILE_PATH")))
   else
-    # /home/workspace/portainer-devkit/devkit/scripts/devkit.sh
+    # /home/workspace/devkit/portainer-devkit/devkit/scripts/devkit.sh
     PROJECT_ROOT_PATH=$(dirname $(dirname "$CURRENT_FILE_PATH"))
   fi
   debug_var "PROJECT_ROOT_PATH"
