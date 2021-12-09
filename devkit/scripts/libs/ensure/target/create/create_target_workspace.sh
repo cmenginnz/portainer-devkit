@@ -4,7 +4,8 @@
 create_target_workspace() {
   debug "using image: ${IMAGE_NAME_WORKSPACE}"
 
-  docker run -d --rm \
+  #docker run -d --rm \
+  docker run -d  \
     --name $TARGET_NAME_WORKSPACE \
     --hostname portainer-workspace \
     --network $NETWORK_NAME \

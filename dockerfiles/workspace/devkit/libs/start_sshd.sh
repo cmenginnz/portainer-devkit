@@ -9,7 +9,8 @@ start_sshd() {
 
   ls /etc/ssh/ssh_host_* >/dev/null 2>&1 || ssh-keygen -A
 
-  echo StrictHostKeyChecking accept-new >> ~/.ssh/config
+  mkdir ~/.ssh
+  echo "StrictHostKeyChecking accept-new" >> ~/.ssh/config
 
   /usr/sbin/sshd -e -f /etc/ssh/sshd_config
 }

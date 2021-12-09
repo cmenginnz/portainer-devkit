@@ -2,7 +2,7 @@
 
 init_username() {
   groupadd docker -g 998
-  usermod openvscode-server -l devkit -d /home/workspace/devkit -G docker -s /usr/bin/bash
+  usermod openvscode-server -l devkit -d /home/workspace -G docker -s /usr/bin/bash
   groupmod openvscode-server -n devkit
   echo "devkit:portainer" | chpasswd
 
@@ -12,8 +12,9 @@ init_username() {
   # allow user devkit inherit environment variables(i.e. GOPATH) from user root
   echo "Defaults        !env_reset" > /etc/sudoers.d/root
 
-  chown -R devkit:devkit /app
-
   # disable secure path of sudo so that user devkit has the full PATH list
   sed -i 's/Defaults/#Defaults/g' /etc/sudoers
+
+  cd /home/workspace
+  chown -R devkit:devkit .bash-config .bash_history .openvscode-server
 }

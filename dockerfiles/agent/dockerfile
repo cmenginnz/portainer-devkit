@@ -18,7 +18,8 @@ RUN apt install -y --no-install-recommends \
     apt clean
 
 # copy some binary files such as `docker` from original agent image
-COPY --from=original_agent /app /app
+mkdir /home/workspace
+COPY --from=original_agent /app /home/workspace/app
 
 EXPOSE 22
 
