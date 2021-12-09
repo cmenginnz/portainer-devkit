@@ -14,7 +14,7 @@ _rpc_dlv_exec_cmder() {
     POD=$(kubectl get pod -l app=portainer-agent -n portainer -o jsonpath="{.items[0].metadata.name}")
     RPC_DLV_CMDER="kubectl exec -it -n portainer $POD --"
   else
-    RPC_DLV_CMDER="sshpass -p $SSH_PASSWORD ssh $SSH_USER@$TARGET_IP"
+    RPC_DLV_CMDER="sshpass -p $SSH_PASSWORD ssh $SSH_USER_REAL@$TARGET_IP"
   fi
 }
 

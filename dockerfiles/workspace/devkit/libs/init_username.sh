@@ -5,7 +5,12 @@ init_username() {
   usermod openvscode-server -l devkit -d /home/workspace -G docker -s /usr/bin/bash
   groupmod openvscode-server -n devkit
   echo "devkit:portainer" | chpasswd
-  echo devkit ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/devkit
+
+  # allow user devkit to run ALL(3) commands without password from ALL(1) host as ALL(2) users
+  echo "devkit ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/devkit
+
+  # allow user devkit inherit environment variables(i.e. GOPATH) from user root
+  echo "Defaults        !env_reset" > /etc/sudoers.d/root
 
   chown -R devkit:devkit /app
 

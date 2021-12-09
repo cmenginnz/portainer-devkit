@@ -43,7 +43,7 @@ msg_fail() {
 
 
 _do_ssh() {
-  sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER"@"$TARGET_IP" true >>$STDOUT 2>&1
+  sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER_REAL"@"$TARGET_IP" true >>$STDOUT 2>&1
 }
 
 wait_sshd() {
