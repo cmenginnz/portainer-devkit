@@ -23,7 +23,7 @@ _rsync_dist_files_local() {
 _rsync_dist_files_remote() {
 
   sshpass -p "$SSH_PASSWORD" \
-    ssh "$SSH_USER_REAL@${TARGET_IP} mkdir -p ${DLV_WORK_DIR}
+    ssh "$SSH_USER_REAL@${TARGET_IP}" mkdir -p "${DLV_WORK_DIR}"
 
   sshpass -p "$SSH_PASSWORD" \
     rsync -r \
