@@ -27,7 +27,7 @@ init_workspace_path() {
     fi
   fi
 
-  echo "Workspace path: $PORTAINER_WORKSPACE in Host"
+  echo "Workspace Path in Host: $PORTAINER_WORKSPACE"
   echo "DEV_MODE=${DEV_MODE}"
 }
 
@@ -44,14 +44,14 @@ start_workspace() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \
-    /devkit/start_portainer_workspace.sh
+    start_portainer_workspace
 }
 
-init_workspace() {
-  # init the workspace (clone repos, init git, etc.)
-  # as entry.sh has no tty attached, init workspace here instead of in entry.sh
-  docker exec -it -u devkit:devkit portainer-workspace /devkit/init_portainer_workspace.sh
-}
+#init_workspace() {
+#  # init the workspace (clone repos, init git, etc.)
+#  # as entry.sh has no tty attached, init workspace here instead of in entry.sh
+#  docker exec -it -u devkit:devkit portainer-workspace /devkit/init_portainer_workspace.sh
+#}
 
 start() {
   init_workspace_path

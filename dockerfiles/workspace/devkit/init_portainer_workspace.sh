@@ -2,7 +2,7 @@
 
 #set -x
 
-ws="/home/workspace/src"
+MOUNT_POINT="/home/workspace/src"
 
 make_vscode() {
   VSCODE_PATH=$1
@@ -76,7 +76,7 @@ clone_repos() {
 }
 
 init_workspace() {
-  cd ${ws}
+  cd ${MOUNT_POINT}
 
   echo "$ ls -l ${ws}"
   ls -l
@@ -90,4 +90,4 @@ init_workspace() {
 }
 
 echo "Init workspace..."
-init_workspace
+#init_workspace

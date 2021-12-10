@@ -10,12 +10,17 @@ source libs/run_command.sh
 source libs/start_openvscode.sh
 source libs/start_sshd.sh
 
-# this function is run as root
 init_username
 
-# below functions are run as devkit
+if [[ $1 == "start_portainer_workspace" ]]; then
+  sudo -u devkit /devkit/libs/start_portainer_workspace.sh
+  exit
+fi
 
-run_command $*
+
+#sudo -u devkit /devkit/libs/ init_as_devkit
+
+init_ssh
 
 start_sshd
 
