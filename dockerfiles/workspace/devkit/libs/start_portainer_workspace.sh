@@ -15,7 +15,7 @@ download_devkit() {
 
 download_devkit
 
-source /devkit/libs/start_sshd.sh
+source /devkit/libs/init_portainer_workspace.sh
 init_workspace
 
 #echo "Start workspace..."
