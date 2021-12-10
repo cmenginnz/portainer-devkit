@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 # this script should run only in Host
 
@@ -8,8 +7,10 @@ set -x
 # DEV_MODE
 # DEVKIT_DEBUG
 
+DEV_MODE="true"
+DEVKIT_DEBUG="true"
+
 MOUNT_POINT="/home/workspace/devkit"
-echo "hello"
 
 confirm() {
   read -p "Continue with pwd '`pwd`' as workspace?  [y/n] "
@@ -18,9 +19,6 @@ confirm() {
 }
 
 init_workspace_path() {
-  # for mcdebug only
-  # [ -d "/home/simon/workspace" ] && [[ "${PORTAINER_WORKSPACE}" == ""  &&  "`hostname`" == "mcdt" ]] && PORTAINER_WORKSPACE="/home/simon/workspace"
-
   if [[ "${PORTAINER_WORKSPACE}" == "" ]]; then
     if  [[ -d "portainer-devkit" ]] || confirm; then
       PORTAINER_WORKSPACE=$(pwd)
@@ -51,10 +49,24 @@ start_workspace() {
 
 init_workspace() {
   # init the workspace (clone repos, init git, etc.)
-  # as entry.sh has no tty attached, init workspace here indested of in entry.sh 
+  # as entry.sh has no tty attached, init workspace here instead of in entry.sh
   docker exec -it -u devkit:devkit portainer-workspace /devkit/init_portainer_workspace.sh
 }
 
-init_workspace_path
-start_workspace
-init_workspace
+start() {
+  init_workspace_path
+  start_workspace
+  init_workspace
+
+	exit $?
+}
+
+
+stop() {
+	docker stop portainer-workspace
+  exit $?
+}
+
+
+[[ "$1" == "stop" ]] && stop
+start

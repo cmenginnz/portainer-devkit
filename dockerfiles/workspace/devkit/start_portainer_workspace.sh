@@ -16,6 +16,9 @@ download_devkit() {
 [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path PORTAINER_WORKSPACE is not specified" && exit 1
 
 echo "Start workspace..."
+
+read -p "TEST:  [y/n] " -n 1 -r
+
 download_devkit
 ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace "${PORTAINER_WORKSPACE}"
 exit $?
