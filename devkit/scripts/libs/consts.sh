@@ -1,7 +1,7 @@
 STDOUT="/tmp/portainer-dev-kit.log"
 
 USER_HOME="/home/workspace"
-MOUNT_POINT="$USER_HOME/devkit"
+MOUNT_POINT="$USER_HOME/src"
 
 TMUX_NAME_WEBPACK="tmux-webpack"
 TMUX_NAME_PORTAINER_WORKSPACE="tmux-portainer-workspace"

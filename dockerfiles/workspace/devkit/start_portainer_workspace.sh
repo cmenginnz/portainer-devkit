@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ws="/home/workspace/devkit"
+ws="/home/workspace/src"
 
 
 download_devkit() {
@@ -20,5 +20,9 @@ echo "Start workspace..."
 read -p "TEST:  [y/n] " -n 1 -r
 
 download_devkit
+/devkit/init_portainer_workspace.sh
+
 ${ws}/portainer-devkit/devkit/scripts/devkit.sh ensure workspace "${PORTAINER_WORKSPACE}"
+
+
 exit $?

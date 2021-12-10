@@ -10,7 +10,7 @@
 DEV_MODE="true"
 DEVKIT_DEBUG="true"
 
-MOUNT_POINT="/home/workspace/devkit"
+MOUNT_POINT="/home/workspace/src"
 
 confirm() {
   read -p "Continue with pwd '`pwd`' as workspace?  [y/n] "
@@ -56,7 +56,7 @@ init_workspace() {
 start() {
   init_workspace_path
   start_workspace
-  init_workspace
+#  init_workspace
 
 	exit $?
 }
