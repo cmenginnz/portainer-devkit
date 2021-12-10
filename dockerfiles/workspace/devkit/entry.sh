@@ -20,11 +20,7 @@ fi
 
 #sudo -u devkit /devkit/libs/ init_as_devkit
 
-init_ssh
-
 start_sshd
-
-init_bashrc
 
 start_openvscode
 

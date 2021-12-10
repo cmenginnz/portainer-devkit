@@ -14,7 +14,4 @@ init_username() {
 
   # disable secure path of sudo so that user devkit has the full PATH list
   sed -i 's/Defaults/#Defaults/g' /etc/sudoers
-
-  cd /home/workspace
-  chown -R devkit:devkit .bash-config .bash_history .openvscode-server
 }

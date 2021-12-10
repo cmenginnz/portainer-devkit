@@ -31,10 +31,19 @@ RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
 # install kubectl
 COPY --from=original_agent /app/kubectl /usr/bin/
 
+# the owner of .openvscode-server is root
+RUN chown -R openvscode-server:openvscode-server /home/workspace/.openvscode-server
 
 #
 # use openvscode-server user from this point
 USER openvscode-server
+
+# init ssh
+RUN mkdir /home/workspace/.ssh && echo "StrictHostKeyChecking accept-new" >> /home/workspace/.ssh/config
+
+# init bashrc
+COPY devkit/bashrc/bashrc /home/workspace/.bashrc
+COPY devkit/bashrc/dir_colors /home/workspace/.dir_colors
 
 # install dlv
 ENV GOPATH=/home/workspace/go
