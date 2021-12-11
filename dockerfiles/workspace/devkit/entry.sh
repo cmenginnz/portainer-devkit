@@ -2,9 +2,9 @@
 
 [[ "${DEVKIT_DEBUG}" == "true" ]] &&  set -x
 
-source libs/init_bashrc.sh
+#source libs/init_bashrc.sh
 source libs/init_username.sh
-source libs/run_command.sh
+#source libs/run_command.sh
 source libs/start_sshd.sh
 
 init_username
@@ -18,6 +18,6 @@ fi
 
 start_sshd
 
-sudo -u devkit /devkit/libs/init_as_devkit
+sudo -u devkit /devkit/libs/init_as_devkit.sh
 
 sleep infinity

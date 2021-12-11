@@ -38,7 +38,10 @@ dlv_exec() {
   MSG0="Press 'ctrl+b x' to Quit Terminal"
   MSG4=$(msg_ing)
 
-  echo && echo "$MSG1" &&
+  MSG0=$DLV_EXEC_FULL_CMD
+  MSG5=$(msg_ing)
+
+  echo && echo "$MSG1" && echo "$MSG5"
   (_do_dlv_exec && echo && echo "$MSG2" && echo "${MSG4}") ||
   (echo "$MSG3" && false)
 }

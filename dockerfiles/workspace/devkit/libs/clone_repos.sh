@@ -24,7 +24,7 @@ clone_repos() {
   [[ "${DEV_MODE}" == "true" ]] && local dev_arg="-b dev"
 
   [[ -d portainer-devkit ]] || git clone ${dev_arg} https://github.com/mcpacino/portainer-devkit.git
-  [[ -d portainer-ee ]]     || git clone https://$REPLY@github.com/portainer/portainer-ee.git
+  [[ -d portainer-ee ]]     || git clone https://github.com/portainer/portainer-ee.git
   [[ -d portainer ]]        || git clone https://github.com/portainer/portainer.git
   [[ -d agent ]]            || git clone https://github.com/portainer/agent.git
 
