@@ -2,9 +2,7 @@
 
 [[ "${DEVKIT_DEBUG}" == "true" ]] &&  set -x
 
-#source libs/init_bashrc.sh
 source libs/init_username.sh
-#source libs/run_command.sh
 source libs/start_sshd.sh
 
 init_username
