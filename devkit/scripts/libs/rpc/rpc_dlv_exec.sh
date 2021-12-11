@@ -67,7 +67,10 @@ rpc_dlv_exec() {
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
-  echo && echo "$MSG1" &&
+  MSG0=$DLV_EXEC_FULL_CMD
+  MSG4=$(msg_ing)
+
+  echo && echo "$MSG1" && echo "$MSG4" &&
   (_do_rpc_dlv_exec && echo "$MSG2") ||
   (echo "$MSG3" && false)
 }
