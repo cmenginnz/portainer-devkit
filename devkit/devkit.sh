@@ -44,7 +44,7 @@ start_workspace() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     "mcpacino/portainer-devkit-workspace${tag}" \
-    start_portainer_workspace
+    init_portainer_workspace
 }
 
 #init_workspace() {

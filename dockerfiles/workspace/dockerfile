@@ -42,8 +42,8 @@ USER openvscode-server
 RUN mkdir /home/workspace/.ssh && echo "StrictHostKeyChecking accept-new" >> /home/workspace/.ssh/config
 
 # init bashrc
-COPY devkit/bashrc/bashrc /home/workspace/.bashrc
-COPY devkit/bashrc/dir_colors /home/workspace/.dir_colors
+COPY --chown=openvscode-server:openvscode-server devkit/bashrc/bashrc /home/workspace/.bashrc
+COPY --chown=openvscode-server:openvscode-server devkit/bashrc/dir_colors /home/workspace/.dir_colors
 
 # install dlv
 ENV GOPATH=/home/workspace/go
