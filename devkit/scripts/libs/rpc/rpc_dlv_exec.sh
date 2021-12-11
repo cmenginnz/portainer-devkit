@@ -53,7 +53,10 @@ _do_rpc_dlv_exec() {
   _rpc_dlv_exec_kill_tmux
 
   RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
-  debug_var "RPC_DLV_FULL_CMD"
+
+  MSG0="$RPC_DLV_FULL_CMD"
+  MSG1=$(msg_ing)
+  echo "$MSG1"
 
   eval "${RPC_DLV_FULL_CMD}"
 
@@ -67,10 +70,8 @@ rpc_dlv_exec() {
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
-  MSG0=$DLV_EXEC_FULL_CMD
-  MSG4=$(msg_ing)
 
-  echo && echo "$MSG1" && echo "$MSG4" &&
+  echo && echo "$MSG1" &&
   (_do_rpc_dlv_exec && echo "$MSG2") ||
   (echo "$MSG3" && false)
 }
