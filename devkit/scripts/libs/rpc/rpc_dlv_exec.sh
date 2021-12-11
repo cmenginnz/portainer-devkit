@@ -54,9 +54,7 @@ _do_rpc_dlv_exec() {
 
   RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
 
-  MSG0="$RPC_DLV_FULL_CMD"
-  MSG1=$(msg_ing)
-  echo "$MSG1"
+  debug_var "RPC_DLV_FULL_CMD"
 
   eval "${RPC_DLV_FULL_CMD}"
 

@@ -24,7 +24,9 @@ _do_dlv_exec() {
 
   DLV_EXEC_FULL_CMD="$DLV_EXEC_CMDER $DLV_EXEC_CMDEE"
 
-  debug_var "DLV_EXEC_FULL_CMD"
+  MSG0="$DLV_EXEC_FULL_CMD"
+  MSG1=$(msg_ing)
+  echo "$MSG1"
 
   eval $DLV_EXEC_FULL_CMD
 }
