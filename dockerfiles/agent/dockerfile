@@ -18,12 +18,12 @@ RUN apt install -y --no-install-recommends \
     apt clean
 
 # copy some binary files such as `docker` from original agent image
-mkdir /home/workspace
+RUN mkdir -p /home/workspace
 COPY --from=original_agent /app /home/workspace/app
 
 EXPOSE 22
 
-COPY entry.sh /entry.sh
-ENTRYPOINT ["/entry.sh"]
-
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+COPY agent/entry /entry
+COPY workspace/devkit/libs/init_hosts.sh /entry/libs
+COPY workspace/devkit/libs/start_sshd.sh /entry/libs
+ENTRYPOINT ["/entry/entry.sh"]

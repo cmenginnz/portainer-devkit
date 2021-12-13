@@ -4,7 +4,7 @@ init_username() {
   groupadd docker -g 998
   usermod openvscode-server -l devkit -d /home/workspace -G docker -s /usr/bin/bash
   groupmod openvscode-server -n devkit
-  echo "devkit:portainer" | chpasswd
+  echo "devkit:${SSH_PASSWORD:-portainer}" | chpasswd
 
   # allow user devkit to run ALL(3) commands without password from ALL(1) host as ALL(2) users
   echo "devkit ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/devkit

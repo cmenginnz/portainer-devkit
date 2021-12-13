@@ -2,10 +2,12 @@
 
 [[ "${DEVKIT_DEBUG}" == "true" ]] &&  set -x
 
-source libs/init_username.sh
-source libs/start_sshd.sh
+source /devkit/libs/init_username.sh
+source /devkit/libs/start_sshd.sh
+source /devkit/libs/init_hosts.sh
 
 init_username
+init_hosts
 
 # only for container portainer-workspace-init
 if [[ $1 == "init_portainer_workspace" ]]; then
