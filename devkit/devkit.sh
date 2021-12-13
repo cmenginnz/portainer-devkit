@@ -47,16 +47,10 @@ start_workspace() {
     init_portainer_workspace
 }
 
-#init_workspace() {
-#  # init the workspace (clone repos, init git, etc.)
-#  # as entry.sh has no tty attached, init workspace here instead of in entry.sh
-#  docker exec -it -u devkit:devkit portainer-workspace /devkit/init_portainer_workspace.sh
-#}
-
 start() {
   init_workspace_path
   start_workspace
-#  init_workspace
+  echo "vscode is at http://localhost:3000"
 
 	exit $?
 }
