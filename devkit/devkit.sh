@@ -7,9 +7,6 @@
 # DEV_MODE
 # DEVKIT_DEBUG
 
-DEV_MODE="true"
-DEVKIT_DEBUG="true"
-
 MOUNT_POINT="/home/workspace/src"
 
 confirm() {
