@@ -45,16 +45,23 @@ RUN mkdir /home/workspace/.ssh && echo "StrictHostKeyChecking accept-new" >> /ho
 COPY --chown=openvscode-server:openvscode-server devkit/bashrc/bashrc /home/workspace/.bashrc
 COPY --chown=openvscode-server:openvscode-server devkit/bashrc/dir_colors /home/workspace/.dir_colors
 
-# install dlv
+# install go tools
 ENV GOPATH=/home/workspace/go
-RUN /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
+RUN go install github.com/uudashr/gopkgs/v2/cmd/gopkgs@latest
+RUN go install github.com/ramya-rao-a/go-outline@latest
+RUN go install github.com/cweill/gotests/gotests@latest
+RUN go install github.com/fatih/gomodifytags@latest
+RUN go install github.com/josharian/impl@latest
+RUN go install github.com/haya14busa/goplay/cmd/goplay@latest
+RUN go install github.com/go-delve/delve/cmd/dlv@master
+RUN go install honnef.co/go/tools/cmd/staticcheck@latest
+RUN go install golang.org/x/tools/gopls@latest
+RUN go install github.com/br0xen/boltbrowser@latest
 
 # copy some binary files such as `docker` from original agent image
 COPY --from=original_agent --chown=openvscode-server:openvscode-server /app /home/workspace/app
 RUN rm /home/workspace/app/agent
 
-
-#
 # copy entry.sh and it's libs
 USER root
 COPY devkit /devkit
