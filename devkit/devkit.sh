@@ -24,8 +24,8 @@ init_workspace_path() {
     fi
   fi
 
-  echo "Workspace Path in Host: $PORTAINER_WORKSPACE"
-  echo "DEV_MODE=${DEV_MODE}"
+  echo "🔹️ Workspace is at $PORTAINER_WORKSPACE"
+  [[ ! -z ${DEV_MODE} ]] && echo "🔹️ DEV_MODE=${DEV_MODE}"
 }
 
 start_workspace() {
@@ -47,7 +47,7 @@ start_workspace() {
 start() {
   init_workspace_path
   start_workspace
-  echo "vscode is at http://localhost:3000"
+  echo && echo "🔹️ vscode is at http://localhost:3000"
 
 	exit $?
 }
