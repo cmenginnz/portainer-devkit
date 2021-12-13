@@ -37,6 +37,8 @@ _init() {
 
   source "${CURRENT_FILE_PATH}/libs/dlv/dlv_exec.sh"
 
+  source "${CURRENT_FILE_PATH}/libs/tmux/tmux.sh"
+
   source "${CURRENT_FILE_PATH}/libs/init/init_args.sh"
   source "${CURRENT_FILE_PATH}/libs/init/init_common_vars.sh"
   source "${CURRENT_FILE_PATH}/libs/init/init_cmd_run_vars.sh"
@@ -68,6 +70,7 @@ main() {
   case $COMMAND in
   run)
     init_cmd_run_vars
+    [[ "$DEBKIT_DEBUG"=="true" ]] && echo
     cmd_run
     ;;
   dlv)

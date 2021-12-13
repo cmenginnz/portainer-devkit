@@ -3,12 +3,7 @@ STDOUT="/tmp/portainer-dev-kit.log"
 USER_HOME="/home/workspace"
 MOUNT_POINT="$USER_HOME/src"
 
-TMUX_NAME_WEBPACK="tmux-webpack"
-TMUX_NAME_PORTAINER_WORKSPACE="tmux-portainer-workspace"
-TMUX_NAME_PORTAINER_K8S="tmux-portainer-k8s"
-TMUX_NAME_AGENT_K8S="tmux-agent-k8s"
-TMUX_NAME_AGENT_SWARM="tmux-agent-docker"
-TMUX_NAME_AGENT_DOCKER="tmux-agent-docker"
+TMUX_NAME_WEBPACK="webpack"
 
 
 NETWORK_NAME="portainer-devkit"
@@ -60,6 +55,7 @@ E_FAIL="❌"
 E_FLAG="🏁️"
 E_BUG="🐞"
 E_ING="⏳"
+E_INFO="ℹ️"
 
 SSH_USER="devkit"
 SSH_PASSWORD="portainer"

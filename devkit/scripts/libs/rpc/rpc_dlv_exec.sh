@@ -5,8 +5,11 @@ _rpc_dlv_exec_kill_tmux() {
 }
 
 _rpc_dlv_exec_tmux() {
-  TMUX_NAME="tmux-$PROJECT-$TARGET"
+  TMUX_NAME="$PROJECT-$TARGET"
   TMUX_CMD="tmux new -d -s $TMUX_NAME"
+
+  MSG0="Check logs: tmux attach -t $TMUX_NAME"
+  MSG4=$(msg_info)
 }
 
 _rpc_dlv_exec_cmder() {
@@ -54,7 +57,9 @@ _do_rpc_dlv_exec() {
 
   RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
 
-  debug_var "RPC_DLV_FULL_CMD"
+  MSG0="$RPC_DLV_CMDER $RPC_DLV_CMDEE"
+  MSG1=$(msg_ing)
+  echo "$MSG1"
 
   eval "${RPC_DLV_FULL_CMD}"
 
@@ -68,8 +73,7 @@ rpc_dlv_exec() {
   MSG2=$(msg_ok)
   MSG3=$(msg_fail)
 
-
   echo && echo "$MSG1" &&
-  (_do_rpc_dlv_exec && echo "$MSG2") ||
+  (_do_rpc_dlv_exec && echo "$MSG2" && echo "$MSG4") ||
   (echo "$MSG3" && false)
 }

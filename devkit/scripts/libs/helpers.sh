@@ -41,6 +41,10 @@ msg_fail() {
   _do_msg "$E_FAIL"
 }
 
+msg_info() {
+  _do_msg "$E_INFO"
+}
+
 
 _do_ssh() {
   sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER_REAL"@"$TARGET_IP" true >>$STDOUT 2>&1

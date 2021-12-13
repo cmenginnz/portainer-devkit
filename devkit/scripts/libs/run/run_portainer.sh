@@ -4,10 +4,14 @@ _show_portainer_urls() {
   echo
 
   eval local port=\$PORTAINER_PORT_HTTP_${TARGET^^}
-  echo http://localhost:${port}
+  MSG0="http://localhost:${port} "
+  MSG1=$(msg_info)
+  echo "$MSG1"
 
   eval local port=\$PORTAINER_PORT_HTTPS_${TARGET^^}
-  echo "https://localhost:${port}"
+  MSG0="https://localhost:${port}"
+  MSG1=$(msg_info)
+  echo "$MSG1"
 }
 
 run_portainer() {
