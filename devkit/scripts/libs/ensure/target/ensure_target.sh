@@ -4,6 +4,7 @@ source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_workspace.s
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_docker.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_swarm.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_k8s.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/target/create/wait_for_target_up.sh"
 
 _target_exist() {
   docker container inspect "$TARGET_NAME" >/dev/null 2>&1

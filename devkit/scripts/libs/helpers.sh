@@ -1,49 +1,8 @@
 #!/usr/bin/env bash
 
-_do_debug() {
-  [[ "${DEVKIT_DEBUG}" == "true" ]] && echo "$E_MSG $E_BUG $(date "+%X") $*"
-}
 
-debug() {
-  #local file="$(basename ${BASH_SOURCE[1]})"
-  local func="${FUNCNAME[1]}"
-  local msg="[${func}] $*"
-  _do_debug $msg
-}
 
-debug_var() {
-  local func="${FUNCNAME[1]}"
 
-  local var_name=$1
-  eval local var_value=\$${var_name}
-
-  local msg="[${func}] ${var_name}=${var_value}"
-  _do_debug "${msg}"
-}
-
-_do_msg() {
-  echo "$E_MSG️ $MSG0 $1"
-}
-
-msg_ing() {
-  _do_msg "$E_ING"
-}
-
-msg_ok() {
-  _do_msg "$E_OK"
-}
-
-msg_warn() {
-  _do_msg "$E_WARN"
-}
-
-msg_fail() {
-  _do_msg "$E_FAIL"
-}
-
-msg_info() {
-  _do_msg "$E_INFO"
-}
 
 
 _do_ssh() {
@@ -51,8 +10,6 @@ _do_ssh() {
 }
 
 wait_sshd() {
-  #  until nc -w 1 "$TARGET_IP" 22; do
-
   MSG0="Check SSH Server"
   MSG1=$(msg_ing)
   MSG2=$(msg_ok)
@@ -65,21 +22,6 @@ wait_sshd() {
   echo $MSG2
 }
 
-_ls_docker_sock() {
-  docker exec "$TARGET_NAME" ls -l /var/run/docker.sock >>$STDOUT 2>&1
-}
-
-wait_for_target_up() {
-  MSG0="Wait for ${TARGET^}"
-  local MSG1=$(msg_ing)
-  local MSG2=$(msg_ok)
-
-  until _ls_docker_sock; do
-    echo "${MSG1}"
-    sleep 3;
-  done
-  echo "${MSG2}"
-}
 
 kill_dlv() {
   (killall dlv >/dev/null 2>&1 && sleep 1) || true

@@ -37,6 +37,9 @@ _init() {
 
   source "${CURRENT_FILE_PATH}/libs/dlv/dlv_exec.sh"
 
+  source "${CURRENT_FILE_PATH}/libs/logs/debug.sh"
+  source "${CURRENT_FILE_PATH}/libs/logs/msg.sh"
+
   source "${CURRENT_FILE_PATH}/libs/tmux/tmux_has_window.sh"
   source "${CURRENT_FILE_PATH}/libs/tmux/tmux_kill_dead_window.sh"
   source "${CURRENT_FILE_PATH}/libs/tmux/tmux_kill_window.sh"
