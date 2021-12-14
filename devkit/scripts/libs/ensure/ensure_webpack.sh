@@ -15,7 +15,7 @@ _do_start_webpack() {
   # tmux list-windows -f "#{window_name}==w2" -F "#{window_name} #{pane_dead}"
   # tmux list-window -t s1 -F "#{window_name}" -f "#{pane_dead}"
   # tmux switch-client -t s1
-  cd "$PROJECT_ROOT_PATH" && tmux_new_window ee webpack "yarn && yarn start:client"
+  cd "$PROJECT_ROOT_PATH" && tmux_new_window $TMUX_SESSION_NAME webpack "yarn && yarn start:client"
   #cd "$PROJECT_ROOT_PATH" && tmux new -s "${tmux_name}" -d "(yarnx && yarn start:client) || sleep 3"
   #sleep 1
   #tmux set-option -w remain-on-exit

@@ -30,7 +30,6 @@ init_args() {
   fi
 
   debug "args='$ARGS'"
-  debug_var "I_AM_IN"
   debug_var "CURRENT_FILE_PATH"
   debug_var "COMMAND"
   debug_var "PROJECT"

@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
 
-_rpc_dlv_exec_kill_tmux() {
-  tmux kill-session -t "${TMUX_NAME}" 2>>"${STDOUT}" 1>&2
-}
-
-_rpc_dlv_exec_tmux() {
-  TMUX_NAME="$PROJECT-$TARGET"
-  TMUX_CMD="tmux new -d -s $TMUX_NAME"
-
-  MSG0="Check logs: tmux attach -t $TMUX_NAME"
-  MSG4=$(msg_info)
-}
-
 _rpc_dlv_exec_cmder() {
   if [ "$TARGET" == "k8s" ]; then
     POD=$(kubectl get pod -l app=portainer-agent -n portainer -o jsonpath="{.items[0].metadata.name}")
@@ -49,22 +37,17 @@ _rpc_dlv_exec_cmdee() {
 }
 
 _do_rpc_dlv_exec() {
-  _rpc_dlv_exec_tmux
   _rpc_dlv_exec_cmder
   _rpc_dlv_exec_cmdee
 
-  _rpc_dlv_exec_kill_tmux
+  RPC_DLV_FULL_CMD="$RPC_DLV_CMDER $RPC_DLV_CMDEE"
 
-  RPC_DLV_FULL_CMD="$TMUX_CMD $RPC_DLV_CMDER $RPC_DLV_CMDEE"
-
-  MSG0="$RPC_DLV_CMDER $RPC_DLV_CMDEE"
+  MSG0="$RPC_DLV_FULL_CMD"
   MSG1=$(msg_ing)
   echo "$MSG1"
 
-  eval "${RPC_DLV_FULL_CMD}"
-
-  sleep 1
-  tmux set-option -w remain-on-exit
+  tmux_kill_window "$TMUX_SESSION_NAME" "$TMUX_WINDOW_NAME"
+  tmux_new_window "$TMUX_SESSION_NAME" "$TMUX_WINDOW_NAME" "$RPC_DLV_FULL_CMD"
 }
 
 rpc_dlv_exec() {

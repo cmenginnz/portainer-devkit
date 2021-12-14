@@ -1,0 +1,22 @@
+FROM cr.portainer.io/portainer/dev-toolkit:2021.11
+
+RUN \
+    apt-get update && \
+    apt-get -y install wget tar libevent-dev libncurses-dev && \
+    apt-get autoremove -y && \
+    apt-get clean
+
+RUN \
+    VERSION=3.2 && \
+    cd / && \
+    wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz && \
+    tar xf tmux-${VERSION}.tar.gz && \
+    rm -f tmux-${VERSION}.tar.gz && \
+    cd tmux-${VERSION} && \
+    ./configure && \
+    make && \
+    cp tmux / && \
+    cd / && \
+    rm -rf tmux-${VERSION}
+
+
