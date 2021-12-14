@@ -56,6 +56,7 @@ E_FLAG="🏁️"
 E_BUG="🐞"
 E_ING="⏳"
 E_INFO="ℹ️"
+E_INFO="📢"
 
 SSH_USER="devkit"
 SSH_PASSWORD="portainer"

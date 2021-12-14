@@ -34,10 +34,7 @@ ensure_webpack() {
 
   tmux_name="${TMUX_NAME_WEBPACK}-${PROJECT_VER}"
 
-  MSG0="Check logs: tmux attach -t $tmux_name"
-  MSG7=$(msg_info)
-
-  (echo "$MSG1" && _check_webpack && echo "$MSG2" && echo "$MSG7") ||
-  (echo $MSG3 && echo && echo "$MSG4" && _do_start_webpack && echo "$MSG5" && echo "$MSG7") ||
+  (echo "$MSG1" && _check_webpack && echo "$MSG2") ||
+  (echo $MSG3 && echo && echo "$MSG4" && _do_start_webpack && echo "$MSG5") ||
   (echo "$MSG6" && false)
 }
