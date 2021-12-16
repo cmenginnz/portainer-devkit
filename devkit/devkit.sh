@@ -48,7 +48,6 @@ start() {
   init_workspace_path
   start_workspace
   echo && echo "🔹️ vscode is at http://localhost:3000"
-
 	exit $?
 }
 

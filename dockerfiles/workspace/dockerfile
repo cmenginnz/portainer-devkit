@@ -54,7 +54,6 @@ RUN chown -R openvscode-server:openvscode-server /home/workspace/.openvscode-ser
 
 
 
-
 #
 # use openvscode-server user from this point
 #
