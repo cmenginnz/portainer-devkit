@@ -25,8 +25,18 @@
     
 ## Get Started
 
-`curl https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/start_devkit.sh | bash -c`
+```
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`"
+```
 
+```
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" -- stop
+```
+
+```
+PORTAINER_WORKSPACE="/home/simon/Work/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
+```
 
 * Open a shell terminal (WLS terminal in Windows)
 
