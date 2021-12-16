@@ -1,4 +1,4 @@
-STDOUT="/tmp/portainer-dev-kit.log"
+STDOUT="/tmp/portainer-devkit.log"
 
 USER_HOME="/home/workspace"
 MOUNT_POINT="$USER_HOME/src"

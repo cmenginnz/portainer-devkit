@@ -37,6 +37,8 @@ COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars   
         |         |           | workspace |                    || DATA_PATH        |                                                                                                                                      
         |         |           |           |                    || PROJECT_VER      |                                                                                                                                      
         |         |           |           |                    || DLV_WORK_DIR     |                                                                                                                                      
+        |         |           |           |                    || TMUX_SESSION_NAME|                                                                                                                                     
+        |         |           |           |                    || TMUX_WINDOW_NAME |                                                                                                                                      
         |         |           |           |                    ||                  |                                                                                                                                      
 --------|---------|-----------|-----------|--------------------||------------------|
  dlv    | exec    | portainer |           | ENV_VAR_LIST:      ||                  |                                                                                                                                      
