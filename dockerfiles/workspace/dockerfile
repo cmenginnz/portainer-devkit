@@ -17,7 +17,7 @@ RUN apt update && apt install -y --no-install-recommends \
 
 RUN apt update && apt install -y --no-install-recommends \
     vim \
-    openssh-server && \
+    openssh-server \
     libevent-dev
 
 RUN apt autoremove -y && \
