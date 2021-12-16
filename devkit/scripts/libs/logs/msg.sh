@@ -1,5 +1,6 @@
 _do_msg() {
-  echo "$E_MSG️ $MSG0 $1"
+  #echo "$E_MSG️ $MSG0 $1"
+  echo "$1 $MSG0"
 }
 
 msg_ing() {

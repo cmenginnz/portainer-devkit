@@ -1,5 +1,5 @@
 _do_debug() {
-  [[ "${DEVKIT_DEBUG}" == "true" ]] && echo "$E_MSG $E_BUG $(date "+%X") $*"
+  [[ "${DEVKIT_DEBUG}" == "true" ]] && echo "$E_BUG $(date "+%X") $*"
 }
 
 debug() {
