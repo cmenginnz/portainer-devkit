@@ -1,5 +1,6 @@
 _do_debug() {
-  [[ "${DEVKIT_DEBUG}" == "true" ]] && echo "$E_BUG $(date "+%X") $*"
+#  [[ "${DEVKIT_DEBUG}" == "true" ]] && echo "$E_BUG $(date "+%X") $*"
+  echo "$E_BUG $(date "+%X") $*" >> "${STDOUT}"
 }
 
 debug() {

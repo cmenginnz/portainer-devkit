@@ -76,7 +76,7 @@ main() {
   case $COMMAND in
   run)
     init_cmd_run_vars
-    [[ "$DEBKIT_DEBUG"=="true" ]] && echo
+    [[ "$DEBKIT_DEBUG" == "true" ]] && echo
     cmd_run
     ;;
   dlv)
