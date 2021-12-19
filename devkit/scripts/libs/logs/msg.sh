@@ -1,24 +1,24 @@
-_do_msg() {
+msg() {
   #echo "$E_MSG️ $MSG0 $1"
-  echo "$1 $MSG0"
+  echo "$1" | tee -a "${STDOUT}"
 }
 
 msg_ing() {
-  _do_msg "$E_ING"
+  msg "$E_ING $1"
 }
 
 msg_ok() {
-  _do_msg "$E_OK"
+  msg "$E_OK $1"
 }
-
+ 
 msg_warn() {
-  _do_msg "$E_WARN"
+  msg "$E_WARN $1"
 }
 
 msg_fail() {
-  _do_msg "$E_FAIL"
+  msg "$E_FAIL $1"
 }
 
 msg_info() {
-  _do_msg "$E_INFO"
+  msg "$E_INFO $1"
 }

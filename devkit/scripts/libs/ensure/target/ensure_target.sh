@@ -23,17 +23,10 @@ _create_target() {
 }
 
 ensure_target() {
-  MSG0="Find ${TARGET^}"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_warn)
+  local MSG0="Find ${TARGET^}"
+  local MSG1="Start ${TARGET^}"
 
-  MSG0="Start ${TARGET^}"
-  MSG4=$(msg_ing)
-  MSG5=$(msg_ok)
-  MSG6=$(msg_fail)
-
-  (echo && echo "$MSG1" && _target_exist && echo "$MSG2") ||
-  (echo "$MSG3" && echo && echo "$MSG4" && _create_target && echo "$MSG5") ||
-  (echo "$MSG6" && false)
+  (msg && msg_ing "${MSG0}" && _target_exist && msg_ok "${MSG0}") ||
+  (msg_warn "${MSG0}" && msg && msg_ing "${MSG1}" && _create_target && msg_ok "${MSG1}") ||
+  (msg_fail "${MSG1}" && false)
 }

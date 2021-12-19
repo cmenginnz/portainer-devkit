@@ -24,23 +24,16 @@ _do_dlv_exec() {
 
   DLV_EXEC_FULL_CMD="$DLV_EXEC_CMDER $DLV_EXEC_CMDEE"
 
-  MSG0="$DLV_EXEC_FULL_CMD"
-  MSG1=$(msg_ing)
-  echo "$MSG1"
-
+  msg_ing "${DLV_EXEC_FULL_CMD}"
+  
   eval $DLV_EXEC_FULL_CMD
 }
 
 dlv_exec() {
-  MSG0="DLV Exec ${PROJECT^}"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_fail)
+  local MSG0="DLV Exec ${PROJECT^}"
+  local MSG1="Press 'ctrl+b x' to Quit Terminal"
 
-  MSG0="Press 'ctrl+b x' to Quit Terminal"
-  MSG4=$(msg_ing)
-
-  echo && echo "$MSG1" &&
-  (_do_dlv_exec && echo && echo "$MSG2" && echo "${MSG4}") ||
-  (echo "$MSG3" && false)
+  msg && msg_ing "$MSG0" &&
+  (_do_dlv_exec && msg && msg_ok "$MSG0" && msg_ing "$MSG1") ||
+  (msg_fail "$MSG0" && false)
 }

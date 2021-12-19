@@ -42,21 +42,16 @@ _do_rpc_dlv_exec() {
 
   RPC_DLV_FULL_CMD="$RPC_DLV_CMDER $RPC_DLV_CMDEE"
 
-  MSG0="$RPC_DLV_FULL_CMD"
-  MSG1=$(msg_ing)
-  echo "$MSG1"
+  msg_ing "${RPC_DLV_FULL_CMD}"
 
   tmux_kill_window "$TMUX_SESSION_NAME" "$TMUX_WINDOW_NAME"
   tmux_new_window "$TMUX_SESSION_NAME" "$TMUX_WINDOW_NAME" "$RPC_DLV_FULL_CMD"
 }
 
 rpc_dlv_exec() {
-  MSG0="RPC DLV Portainer"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_fail)
+  local MSG0="RPC DLV Portainer"
 
-  echo && echo "$MSG1" &&
-  (_do_rpc_dlv_exec && echo "$MSG2" && echo "$MSG4") ||
-  (echo "$MSG3" && false)
+  msg && msg_ing "${MSG0}" &&
+  (_do_rpc_dlv_exec && msg_ok "${MSG0}") ||
+  (msg_fail "${MSG0}" && false)
 }

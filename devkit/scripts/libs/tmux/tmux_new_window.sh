@@ -8,7 +8,7 @@
 
 _tmux_has_session() {
   local session_name="$1"
-  tmux has-session -t "${session_name}" 2>$STDOUT 1>&2
+  tmux has-session -t "${session_name}" 2>>"${STDOUT}" 1>&2
 }
 
 _tmux_switch_client() {
@@ -35,9 +35,8 @@ tmux_new_window() {
     tmux new-session -d -s "$session_name" -n "$window_name" "$cmd"
   fi
 
-  _tmux_switch_client "$session_name" "$window_name"
+  #_tmux_switch_client "$session_name" "$window_name"
 
-  MSG0="Check logs: tmux attach -t $session_name:$window_name"
-  MSG1=$(msg_info)
-  echo "$MSG1"
+  local MSG0="Check logs: tmux attach -t $session_name:$window_name"
+  msg_info "${MSG0}"
 }

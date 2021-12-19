@@ -17,5 +17,5 @@ create_target_workspace() {
     -v "${PORTAINER_WORKSPACE}:${MOUNT_POINT}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
-    "${IMAGE_NAME_WORKSPACE}"  # >>$STDOUT
+    "${IMAGE_NAME_WORKSPACE}"  # >>"${STDOUT}"
 }

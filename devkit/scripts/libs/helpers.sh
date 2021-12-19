@@ -6,20 +6,18 @@
 
 
 _do_ssh() {
-  sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER_REAL"@"$TARGET_IP" true >>$STDOUT 2>&1
+  sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER_REAL"@"$TARGET_IP" true >>"${STDOUT}" 2>&1
 }
 
 wait_sshd() {
-  MSG0="Check SSH Server"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
+  local MSG0="Check SSH Server"
 
-  echo && echo $MSG1
+  msg && msg_ing "${MSG0}"
   until _do_ssh; do
     sleep 5;
-    echo $MSG1
+    msg_ing "${MSG0}"
   done
-  echo $MSG2
+  msg_ok "${MSG0}"
 }
 
 

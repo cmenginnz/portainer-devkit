@@ -10,19 +10,12 @@ _do_start_webpack() {
 }
 
 ensure_webpack() {
-  MSG0="Find Webpack"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_warn)
-
-  MSG0="Start Webpack"
-  MSG4=$(msg_ing)
-  MSG5=$(msg_ok)
-  MSG6=$(msg_fail)
+  local MSG0="Find Webpack"
+  local MSG1="Start Webpack"
 
   tmux_name="${TMUX_NAME_WEBPACK}-${PROJECT_VER}"
 
-  (echo "$MSG1" && _check_webpack && echo "$MSG2") ||
-  (echo "$MSG3" && echo && echo "$MSG4" && _do_start_webpack && echo "$MSG5") ||
-  (echo "$MSG6" && false)
+  (msg_ing "${MSG0}" && _check_webpack && msg_ok "${MSG0}") ||
+  (msg_warn "${MSG0}" && msg && msg_ing "${MSG1}" && _do_start_webpack && msg_ok "${MSG1}") ||
+  (msg_fail "${MSG1}" && false)
 }

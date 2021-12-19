@@ -33,17 +33,10 @@ _create_agent() {
 ensure_agent() {
   [[ ${TARGET} == "workspace" ]] && return 0
 
-  MSG0="Find ${TARGET^} Agent"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_warn)
+  local MSG0="Find ${TARGET^} Agent"
+  local MSG1="Start ${TARGET^} Agent"
 
-  MSG0="Start ${TARGET^} Agent"
-  MSG4=$(msg_ing)
-  MSG5=$(msg_ok)
-  MSG6=$(msg_fail)
-
-  (echo && echo "$MSG1" && _exist_agent && echo "$MSG2") ||
-  (echo "$MSG3" && echo && echo "$MSG4" && _create_agent && echo "$MSG5") ||
-  (echo "$MSG6" && false)
+  (msg && msg_ing "${MSG0}" && _exist_agent && msg_ok "${MSG0}") ||
+  (msg_warn "${MSG0}" && msg && msg_ing "${MSG1}" && _create_agent && msg_ok "${MSG1}") ||
+  (msg_fail "${MSG1}" && false)
 }

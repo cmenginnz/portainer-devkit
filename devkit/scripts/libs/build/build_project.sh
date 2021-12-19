@@ -7,10 +7,10 @@ _do_build_portainer() {
   mkdir -p "$DIST" &&
   cd "$PROJECT_ROOT_PATH/api/" &&
   go get -t -d -v ./... &&
-  cd - >>"$STDOUT" &&
+  cd - >>"${STDOUT}" &&
   cd "$PROJECT_ROOT_PATH/api//cmd/portainer" &&
   go build --installsuffix cgo --ldflags="" -gcflags="all=-N -l" -o "$BINARY_NAME"  &&
-  cd - >>"$STDOUT"
+  cd - >>"${STDOUT}"
 }
 
 _do_build_agent() {
@@ -21,7 +21,7 @@ _do_build_agent() {
   mkdir -p "$DIST" &&
   cd "$BUILD_DIR" &&
   go build --installsuffix cgo --ldflags="" -gcflags="all=-N -l" -o "$BINARY_NAME"  &&
-  cd - >>"$STDOUT"
+  cd - >>"${STDOUT}"
 }
 
 _do_build_project() {
@@ -33,12 +33,9 @@ _do_build_project() {
 }
 
 build_project() {
-  MSG0="Build ${PROJECT^}"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_fail)
+  local MSG0="Build ${PROJECT^}"
 
-  echo && echo "$MSG1" &&
-  (_do_build_project && echo "$MSG2") ||
-  (echo "$MSG3" && false)
+  msg && msg_ing "${MSG0}" &&
+  (_do_build_project && msg_ok "${MSG0}") ||
+  (msg_fail "${MSG0}" && false)
 }

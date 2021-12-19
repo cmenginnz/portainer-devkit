@@ -16,7 +16,7 @@ _do_create_agent_swarm() {
       --publish mode=host,target=80,published=80 \
       --publish mode=host,target="${DLV_PORT_AGENT_SWARM}",published="${DLV_PORT_AGENT_SWARM}" \
       -e SSH_PASSWORD="${SSH_PASSWORD}" \
-      "${IMAGE_NAME_AGENT}"  >>"$STDOUT"
+      "${IMAGE_NAME_AGENT}"  >>"${STDOUT}"
 }
 
 create_agent_swarm() {

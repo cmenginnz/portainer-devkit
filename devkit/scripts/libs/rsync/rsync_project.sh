@@ -43,12 +43,9 @@ _do_rsync_project() {
 }
 
 rsync_project() {
-  MSG0="Copy ${PROJECT^}"
-  MSG1=$(msg_ing)
-  MSG2=$(msg_ok)
-  MSG3=$(msg_fail)
+  local MSG0="Copy ${PROJECT^}"
 
-  echo && echo "$MSG1" &&
-  (_pre_rsync_project && _do_rsync_project && echo "$MSG2") ||
-  (echo "$MSG3" && false)
+  msg && msg_ing "${MSG0}" &&
+  (_pre_rsync_project && _do_rsync_project && msg_ok "${MSG0}") ||
+  (msg_fail "${MSG0}" && false)
 }

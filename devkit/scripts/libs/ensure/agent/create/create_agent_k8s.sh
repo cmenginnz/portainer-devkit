@@ -7,7 +7,7 @@ _do_create_agent_k8s() {
 
   cat "${yaml_file}" | sed "s#${IMAGE_NAME_AGENT_DEFAULT}#${IMAGE_NAME_AGENT}#g" | grep "image:" >>${MUTE}
 
-  cat "${yaml_file}" | sed "s#${IMAGE_NAME_AGENT_DEFAULT}#${IMAGE_NAME_AGENT}#g" | kubectl apply -f - >>${STDOUT}
+  cat "${yaml_file}" | sed "s#${IMAGE_NAME_AGENT_DEFAULT}#${IMAGE_NAME_AGENT}#g" | kubectl apply -f - >>"${STDOUT}"
 }
 
 create_agent_k8s() {
