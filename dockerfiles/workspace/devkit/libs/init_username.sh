@@ -2,7 +2,7 @@
 
 init_username() {
   groupadd docker -g 998
-  usermod openvscode-server -l devkit -d /home/workspace -G docker -s /usr/bin/bash
+  usermod openvscode-server -l devkit -d /home/workspace -aG root,docker -s /usr/bin/bash
   groupmod openvscode-server -n devkit
   echo "devkit:${SSH_PASSWORD:-portainer}" | chpasswd
 
