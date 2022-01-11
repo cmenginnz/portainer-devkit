@@ -22,7 +22,7 @@
 * Install [Go](https://marketplace.visualstudio.com/items?itemName=golang.go) extension for VS Code
 * Install [Remote WSL](https://marketplace.visualstudio.com/items?itemName=golang.go) extension for VS Code if you are using Windows  
 * Install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) if you are using Windows
-    
+
 ## Get Started
 
 ```
@@ -35,6 +35,12 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 
 ```
 PORTAINER_WORKSPACE="/home/simon/Work/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
+```
+
+```
+mkdir /tmp/devkit/home/workspace/new-wallace-frontend/src/styledComponents/styledSlimRow.ts
+PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
 bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
 ```
 
