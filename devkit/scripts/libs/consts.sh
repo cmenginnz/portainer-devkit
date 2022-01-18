@@ -14,12 +14,14 @@ GATEWAY="192.168.100.100"
 TARGET_IP_K8S="192.168.100.1"  # hard code in yaml file
 TARGET_IP_SWARM="192.168.100.2"
 TARGET_IP_DOCKER="192.168.100.3"
+TARGET_IP_NOMAD="192.168.100.4"
 TARGET_IP_WORKSPACE="192.168.100.10"
 
 
 TARGET_NAME_K8S="portainer-k8s-control-plane"
 TARGET_NAME_SWARM="portainer-swarm"
 TARGET_NAME_DOCKER="portainer-docker"
+TARGET_NAME_NOMAD="portainer-nomad"
 TARGET_NAME_WORKSPACE="portainer-workspace"
 
 AGENT_NAME_K8S="portainer-k8s-agent"

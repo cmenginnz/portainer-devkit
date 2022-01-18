@@ -4,6 +4,7 @@ source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_workspace.s
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_docker.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_swarm.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_k8s.sh"
+source "${CURRENT_FILE_PATH}/libs/ensure/target/create/create_target_nomad.sh"
 source "${CURRENT_FILE_PATH}/libs/ensure/target/create/wait_for_target_up.sh"
 
 _target_exist() {
@@ -19,6 +20,8 @@ _create_target() {
      create_target_swarm
   elif [[ $TARGET == "k8s" ]]; then
      create_target_k8s
+  elif [[ $TARGET == "nomad" ]]; then
+     create_target_nomad
   fi
 }
 
