@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+docker image push mcpacino/nomad:latest

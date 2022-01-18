@@ -1,0 +1,12 @@
+FROM docker:20.10.12-dind-alpine3.15
+
+RUN \
+    apk update && \
+    apk add nomad
+
+
+# nomad agent -dev -bind 0.0.0.0 -log-level INFO
+
+# wget https://releases.hashicorp.com/nomad/1.2.3/nomad_1.2.3_linux_amd64.zip
+# unzip nomad_1.2.3_linux_amd64.zip
+# rm nomad_1.2.3_linux_amd64.zip
