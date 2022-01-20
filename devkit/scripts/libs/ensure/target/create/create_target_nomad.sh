@@ -6,6 +6,7 @@ _do_create_target_nomad() {
     --network "${NETWORK_NAME}" \
     --ip "${TARGET_IP_NOMAD}" \
     -e DEVKIT_DEBUG="${DEVKIT_DEBUG}" \
+    -p 4646:4646 \
     mcpacino/nomad:latest \
     >>"${STDOUT}"
 }

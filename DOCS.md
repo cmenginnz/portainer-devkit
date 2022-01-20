@@ -28,43 +28,44 @@
 ```
 devkit.sh CLI Usage
 
-        |         |           |           |                    || calculated       |                                                                                                                                      
-COMMAND | SUB_CMD | PROJECT   | TARGET    |                    || global vars      |
---------|---------|-----------|-----------|--------------------||------------------|
- run    |         | portainer | docker    | [EDGE_KEY]         ||                  |                                                                                                                                      
-        |         | agent     | swarm     |                    ||                  |
-        |         | edge      | k8s       |                    || DLV_PORT         |                                                                                                                                      
-        |         |           | workspace |                    || DATA_PATH        |                                                                                                                                      
-        |         |           |           |                    || PROJECT_VER      |                                                                                                                                      
-        |         |           |           |                    || DLV_WORK_DIR     |                                                                                                                                      
-        |         |           |           |                    || TMUX_SESSION_NAME|                                                                                                                                     
-        |         |           |           |                    || TMUX_WINDOW_NAME |                                                                                                                                      
-        |         |           |           |                    ||                  |                                                                                                                                      
---------|---------|-----------|-----------|--------------------||------------------|
- dlv    | exec    | portainer |           | ENV_VAR_LIST:      ||                  |                                                                                                                                      
-        | kill    | agent     |           | DLV_PORT           ||                  |
-        |         | edge      |           | DATA_PATH          ||                  |                                                                                                                                      
-        |         |           |           | EDGE_KEY           ||                  |                                                                                                                                      
-        |         |           |           | DEVKIT_DEBUG       ||                  |                                                                                                                                      
-        |         |           |           | AGENT_CLUSTER_ADDR ||                  |                                                                                                                                      
-        |         |           |           | EDGE               ||                  |                                                                                                                                      
-        |         |           |           | EDGE_INSECURE_POLL ||                  |                                                                                                                                      
-        |         |           |           | EDGE_ID            ||                  |                                                                                                                                      
-        |         |           |           | DLV_WORK_DIR       ||                  |                                                                                                                                      
-        |         |           |           |                    ||                  |                                                                                                                                      
---------|---------|-----------|-----------|--------------------||------------------|
- init   |         |           |           |                    ||                  |
-        |         |           |           |                    ||                  |                                                                                                                                      
---------|---------|-----------|-----------|--------------------||------------------|
- ensure |         |           | docker    |                    ||                  |
-        |         |           | swarm     |                    ||                  |                                                                                                                                      
-        |         |           | k8s       |                    ||                  |                                                                                                                                      
-        |         |           | workspace | PORTAINER_WORKSPACE||                  |                                                                                                                                      
-        |         |           | network   |                    ||                  |                                                                                                                                      
---------|---------|-----------|-----------|--------------------||------------------|
- clean  |         |           | targets   |                    ||                  |
-        |         |           | all       |                    ||                  |                                                                                                                                      
-        |         |           |           |                    ||                  |                                                                                                                                      
+        |         |           |           |                |                    || calculated       |                                                                                                                                      
+COMMAND | SUB_CMD | PROJECT   | TARGET    | SUB_TARGET     |                    || global vars      |
+--------|---------|-----------|-----------|----------------|--------------------||------------------|
+ run    |         | portainer | docker    |                | [EDGE_KEY]         ||                  |                                                                                                                                      
+        |         | agent     | swarm     |                |                    ||                  |
+        |         | edge      | k8s       |                |                    || DLV_PORT         |                                                                                                                                      
+        |         |           | workspace |                |                    || DATA_PATH        |                                                                                                                                      
+        |         |           |           |                |                    || PROJECT_VER      |                                                                                                                                      
+        |         |           |           |                |                    || DLV_WORK_DIR     |                                                                                                                                      
+        |         |           |           |                |                    || TMUX_SESSION_NAME|                                                                                                                                     
+        |         |           |           |                |                    || TMUX_WINDOW_NAME |                                                                                                                                      
+        |         |           |           |                |                    ||                  |                                                                                                                                      
+--------|---------|-----------|-----------|----------------|--------------------||------------------|
+ dlv    | exec    | portainer |           |                | ENV_VAR_LIST:      ||                  |                                                                                                                                      
+        | kill    | agent     |           |                | DLV_PORT           ||                  |
+        |         | edge      |           |                | DATA_PATH          ||                  |                                                                                                                                      
+        |         |           |           |                | EDGE_KEY           ||                  |                                                                                                                                      
+        |         |           |           |                | DEVKIT_DEBUG       ||                  |                                                                                                                                      
+        |         |           |           |                | AGENT_CLUSTER_ADDR ||                  |                                                                                                                                      
+        |         |           |           |                | EDGE               ||                  |                                                                                                                                      
+        |         |           |           |                | EDGE_INSECURE_POLL ||                  |                                                                                                                                      
+        |         |           |           |                | EDGE_ID            ||                  |                                                                                                                                      
+        |         |           |           |                | DLV_WORK_DIR       ||                  |                                                                                                                                      
+        |         |           |           |                |                    ||                  |                                                                                                                                      
+--------|---------|-----------|-----------|----------------|--------------------||------------------|
+ init   |         |           |           |                |                    ||                  |
+        |         |           |           |                |                    ||                  |                                                                                                                                      
+--------|---------|-----------|-----------|----------------|--------------------||------------------|
+ ensure |         |           | docker    | [agent]        |                    ||                  |
+        |         |           | swarm     | [agent]        |                    ||                  |                                                                                                                                      
+        |         |           | k8s       | [agent]        |                    ||                  |                                                                                                                                      
+        |         |           | nomad     | [agent]        |                    ||                  |                                                                                                                                      
+        |         |           | workspace |                | PORTAINER_WORKSPACE||                  |                                                                                                                                      
+        |         |           | network   |                |                    ||                  |                                                                                                                                      
+--------|---------|-----------|-----------|----------------|--------------------||------------------|
+ clean  |         |           | targets   |                |                    ||                  |
+        |         |           | all       |                |                    ||                  |                                                                                                                                      
+        |         |           |           |                |                    ||                  |                                                                                                                                      
 
 
 Common Caculated Global Vars: 

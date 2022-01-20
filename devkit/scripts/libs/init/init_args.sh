@@ -27,6 +27,10 @@ init_args() {
       PORTAINER_WORKSPACE="$3"
       [[ -z "${PORTAINER_WORKSPACE}" ]] && echo "workspace path PORTAINER_WORKSPACE is not specified" && exit 1
     fi
+
+    if [[ "$3" == "agent" ]]; then
+      SUB_TARGET="agent"
+    fi
   fi
 
   debug "args='$ARGS'"

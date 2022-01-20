@@ -68,7 +68,11 @@ _ensure() {
   if [[ "${TARGET}" == "network" ]]; then
     ensure_network
   else
-    ensure_target
+    if [[ "${SUB_TARGET}" == "agent" ]]; then
+      ensure_agent
+    else
+      ensure_target
+    fi
   fi
 }
 
