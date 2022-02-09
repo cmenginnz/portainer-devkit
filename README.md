@@ -39,7 +39,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 ```
 
 ```
-mkdir /tmp/devkit/home/workspace/new-wallace-frontend/src/styledComponents/styledSlimRow.ts
+mkdir /tmp/devkit
 PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
 bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
 ```
