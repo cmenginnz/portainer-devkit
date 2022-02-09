@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-
-
-
-
-
 _do_ssh() {
   sshpass -p "$SSH_PASSWORD" ssh "$SSH_USER_REAL"@"$TARGET_IP" true >>"${STDOUT}" 2>&1
 }

@@ -1,10 +1,12 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-#!/usr/bin/env sh
+set -x
 
 if [[ "$1" == "latest" ]]; then
-  docker image tag mcpacino/portainer-devkit-agent:dev mcpacino/portainer-devkit-agent:latest
+  echo "push latest"
+  docker image tag mcpacino/portainer-devkit-agent:dev mcpacino/portainer-devkit-agent
   docker image push mcpacino/portainer-devkit-agent
 else
+  echo "push dev"
   docker image push mcpacino/portainer-devkit-agent:dev
 fi

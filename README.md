@@ -10,7 +10,7 @@
 ```
 mkdir /tmp/devkit
 PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
-bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/devkit/devkit`" 
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`" 
 ```
 ##### dev version(for maintainer only)
 ```

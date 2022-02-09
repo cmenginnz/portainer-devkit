@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [[ "$1" == "latest" ]]; then
   docker image tag mcpacino/portainer-devkit-workspace:dev mcpacino/portainer-devkit-workspace:latest
