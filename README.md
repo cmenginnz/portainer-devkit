@@ -12,7 +12,7 @@ mkdir /tmp/devkit
 PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
 bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`" 
 ```
-##### dev version(for maintainer only)
+##### Dev Mode (For Maintainer Only)
 ```
 mkdir /tmp/devkit
 PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
