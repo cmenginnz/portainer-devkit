@@ -5,6 +5,24 @@
 2. One-click to run and debug Portainer in Docker and K8s
 3. One-click to run and debug Agent and Edge-Agent in Docker, Swarm and K8s
 
+## Get Started
+
+```
+mkdir /tmp/devkit
+PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/devkit/devkit`" 
+```
+##### dev version(for maintainer only)
+```
+mkdir /tmp/devkit
+PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
+```
+
+
+
+# Below is Deprecated
+
 ##### Debug Portainer in Docker and K8s 
 ![debug-edge-agent-in-k8s](/data/debug-portainer-in-k8s.png)
 
