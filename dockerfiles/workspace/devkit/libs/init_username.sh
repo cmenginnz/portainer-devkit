@@ -14,4 +14,7 @@ init_username() {
 
   # disable secure path of sudo so that user devkit has the full PATH list
   sed -i 's/Defaults/#Defaults/g' /etc/sudoers
+
+  # allow user devkit to write docker sock
+  chmod g+w /var/run/docker.sock
 }
