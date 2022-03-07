@@ -58,21 +58,21 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 ![B05.environment-up](/images/B05.environment-up.png)
 
 
+## Debug Edge Agent in K8s for Portainer EE
+### 1. Create an Edge Agent Environment
+![C01.create-edge-environment](/images/C01.create-edge-environment.png)
 
-B01.open-agent
-B02.run-agent-in-k8s
-B03.building-agent-and-start-k8s
-B04.add-k8s-environment
-B05.environment-up
+### 2. Copy the Edge Token
+![C02.copy-edge-token](/images/C02.copy-edge-token.png)
 
-C01.create-edge-environment
-C02.copy-edge-token
-C03.past-edge-token-to-tasks-json
-C04.run-edge-agent-in-k8s
-C05.edge-associated
+### 3. Paste the Edge Token to tasks.json file (Note: use the EDGE_KEY_EE_K8S key)
+![C03.past-edge-token-to-tasks-json](/images/C03.past-edge-token-to-tasks-json.png)
 
+### 4. Run Edge Agent in K8s for EE
+![C04.run-edge-agent-in-k8s](/images/C04.run-edge-agent-in-k8s.png)
 
-
+### 5. Check the K8s Edge Agent Environment is Associated
+![C05.edge-associated](/images/C05.edge-associated.png)
 
 
 # Below is Deprecated
