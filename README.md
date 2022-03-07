@@ -28,16 +28,10 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 ### 1. Open Folder of Portainer EE
 ![open-portainer-ee](/images/A01.open-portainer-ee.png)
 
-### 2. Add a Breakpoint
-![add-breakpoint](/images/A02.add-breakpoint.png)
-
-### 3. Run Portainer EE in Workspace
+### 2. Run Portainer EE in Workspace
 ![run-portainer](/images/A03.run-portainer.png)
 
-### 4. Debug Portainer EE
-![debug-portainer](/images/A04.debug-portainer.png)
-
-### 5. Visit Portainer EE http://localhost:9000
+### 3. Visit Portainer EE http://localhost:9000
 
 <br/>
 
