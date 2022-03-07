@@ -1,6 +1,9 @@
 FROM portainer/agent:alpine as original_agent
 FROM mcpacino/tmux:latest as tmux
-FROM cr.portainer.io/portainer/dev-toolkit:2021.11
+
+# https://github.com/portainer/dev-toolkit
+# https://github.com/gitpod-io/openvscode-releases
+FROM portainer/dev-toolkit:2022.03
 
 # Install system requirements
 RUN apt update && apt install -y --no-install-recommends \

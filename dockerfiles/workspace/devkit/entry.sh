@@ -12,7 +12,7 @@ init_hosts
 # only for container portainer-workspace-init
 if [[ $1 == "init_portainer_workspace" ]]; then
   sudo -u devkit /devkit/libs/init_portainer_workspace.sh
-  sleep infinity
+  #sleep infinity
   exit
 fi
 
