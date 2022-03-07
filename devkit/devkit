@@ -9,6 +9,10 @@
 
 MOUNT_POINT="/home/workspace/src"
 
+pull_images() {
+  docker pull mcpacino/portainer-devkit-workspace
+}
+
 confirm() {
   read -p "Continue with pwd '`pwd`' as workspace?  [y/n] "
   echo
@@ -45,6 +49,7 @@ start_workspace() {
 }
 
 start() {
+  pull_images
   init_workspace_path
   start_workspace
   echo && echo "🔹️ vscode is at http://localhost:3000"
