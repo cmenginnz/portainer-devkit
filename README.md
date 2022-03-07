@@ -5,26 +5,36 @@
 2. One-click to run and debug Portainer in Docker and K8s
 3. One-click to run and debug Agent and Edge-Agent in Docker, Swarm and K8s
 
-## Get Started
+## Prerequisites
+* Install [Docker](https://docs.docker.com/get-docker/)
+* Install curl
 
+## Get Started
+### 1. start portainer workspace
 ```
-mkdir /tmp/devkit
-PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
-bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`" 
+      mkdir /tmp/devkit
+      PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
+      bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`"
 ```
-##### Dev Mode (For Maintainer Only)
+    
+### 2. open vscode http://localhost:3000
+
+
+### Dev Mode (For Maintainer Only)
 ```
 mkdir /tmp/devkit
 PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
 bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
 ```
 
+## Debug Portainer EE in Workspace
+### 1. Open Portainer EE
+![open-portainer-ee](/images/A01.open-portainer-ee.png)
 
+### 2. Open Portainer EE
+![add-breakpoint](/images/A02.add-breakpoint.png)
 
 # Below is Deprecated
-
-##### Debug Portainer in Docker and K8s 
-![debug-edge-agent-in-k8s](/data/debug-portainer-in-k8s.png)
 
 ##### Debug Agent and Edge-Agent in Docker, Swarm and K8s  
 ![debug-edge-agent-in-k8s](/data/debug-edge-agent-in-k8s.png)
@@ -34,12 +44,6 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 * MacOS
 * Windows + WSL
 
-## Prerequisites
-* Install [Docker](https://docs.docker.com/get-docker/)
-* Install [VS Code](https://code.visualstudio.com/download) 
-* Install [Go](https://marketplace.visualstudio.com/items?itemName=golang.go) extension for VS Code
-* Install [Remote WSL](https://marketplace.visualstudio.com/items?itemName=golang.go) extension for VS Code if you are using Windows  
-* Install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) if you are using Windows
 
 ## Get Started
 
