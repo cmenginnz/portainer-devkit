@@ -19,13 +19,6 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 ### 2. open vscode http://localhost:3000
 
 
-### Dev Mode (For Maintainer Only)
-```
-mkdir /tmp/devkit
-PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
-bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
-```
-
 ## D. Debug Portainer EE in Workspace
 ### 1. Open Folder of Portainer EE
 ![open-portainer-ee](/images/A01.open-portainer-ee.png)
@@ -88,7 +81,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
   |  Expose:        3000 (vscode)                             |
   |                 9000,9443 (portainer in workspace)        |
   +===========================================================+
-  |  Running Processes:   vscode, portainer                   |
+  |  Running Apps:   vscode, portainer                        |
   +===========================================================+
   
   
@@ -100,7 +93,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
   |  Expose:        30778 (agent)                             |
   |                 19000,19443 (portainer in k8s)            |
   +===========================================================+
-  |  Running Processes:   k8s, agent                          |
+  |  Running Apps:   k8s, agent                               |
   +===========================================================+
   
   
@@ -111,7 +104,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
   |  IP Addr:       192.168.100.2                             |
   |  Expose:        9001 (agent)                              |
   +===========================================================+
-  |  Running Processes:   swarm, agent                        |
+  |  Running Apps:   swarm, agent                             |
   +===========================================================+
   
   
@@ -122,12 +115,19 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
   |  IP Addr:       192.168.100.3                             |
   |  Expose:        9001 (agent)                              |
   +===========================================================+
-  |  Running Processes:   docker, agent                       |
+  |  Running Apps:   docker, agent                            |
   +===========================================================+
 ~~~~
 
 
 # Below is Deprecated
+
+### Dev Mode (For Maintainer Only)
+```
+mkdir /tmp/devkit
+PORTAINER_WORKSPACE="/tmp/devkit" DEV_MODE="true" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/dev/devkit/devkit.sh`" 
+```
 
 ## Supported Operating Systems
 * Linux (Only tested on Ubuntu 18.04)
