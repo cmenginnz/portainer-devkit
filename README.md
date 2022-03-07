@@ -76,10 +76,10 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
   +===========================================================+
   |  Container Name: portainer-workspace                      |
   +===========================================================+
-  |  Host Name:     w01                                       |
-  |  IP Addr:       192.168.100.10                            |
-  |  Expose:        3000 (vscode)                             |
-  |                 9000,9443 (portainer in workspace)        |
+  |  Host Name:      w01                                      |
+  |  IP Addr:        192.168.100.10                           |
+  |  Expose:         3000 (vscode)                            |
+  |                  9000,9443 (portainer in workspace)       |
   +===========================================================+
   |  Running Apps:   vscode, portainer                        |
   +===========================================================+
@@ -92,12 +92,12 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
   +===========================================================+
   |  Container Name: portainer-k8s-control-plane              |
   +===========================================================+
-  |  Host Name:     k01                                       |
-  |  IP Addr:       192.168.100.1                             |
-  |  Expose:        30778 (agent)                             |
-  |                 9000,9443 (portainer in k8s)              |
+  |  Host Name:      k01                                      |
+  |  IP Addr:        192.168.100.1                            |
+  |  Expose:         30778 (agent)                            |
+  |                  9000,9443 (portainer in k8s)             |
   +===========================================================+
-  |  Running Apps:   k8s, agent                               |
+  |  Running Apps:   k8s, agent, portainer                    |
   +===========================================================+
   |  Port Mapping:   19000:9000                               |
   |                  19443:9443                               |
@@ -107,9 +107,9 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
   +===========================================================+
   |  Container Name: portainer-swarm                          |
   +===========================================================+
-  |  Host Name:     s01                                       |
-  |  IP Addr:       192.168.100.2                             |
-  |  Expose:        9001 (agent)                              |
+  |  Host Name:      s01                                      |
+  |  IP Addr:        192.168.100.2                            |
+  |  Expose:         9001 (agent)                             |
   +===========================================================+
   |  Running Apps:   swarm, agent                             |
   +===========================================================+
@@ -118,9 +118,9 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
   +===========================================================+
   |  Container Name: portainer-docker                         |
   +===========================================================+
-  |  Host Name:     d01                                       |
-  |  IP Addr:       192.168.100.3                             |
-  |  Expose:        9001 (agent)                              |
+  |  Host Name:      d01                                      |
+  |  IP Addr:        192.168.100.3                            |
+  |  Expose:         9001 (agent)                             |
   +===========================================================+
   |  Running Apps:   docker, agent                            |
   +===========================================================+
