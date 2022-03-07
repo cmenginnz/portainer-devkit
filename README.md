@@ -41,12 +41,23 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 
 ### 5. Visit Portainer EE http://localhost:9000
 
+## Debug Agent in K8s
+### 1. Open Folder of Agent
+![B01.open-agent](/images/B01.open-agent.png)
+
+### 2. Run Agent in K8s
+![B02.run-agent-in-k8s](/images/B02.run-agent-in-k8s.png)
+
+### 3. Building Agent and Starting K8s
+![B03.building-agent-and-start-k8s](/images/B03.building-agent-and-start-k8s.png)
+
+### 4. Add a K8s Agent Environment
+![B04.add-k8s-environment](/images/B04.add-k8s-environment.png)
+
+### 5. Check the K8s Agent Environment is Up
+![B05.environment-up](/images/B05.environment-up.png)
 
 
-A01.open-portainer-ee
-A02.add-breakpoint
-A03.run-portainer
-A04.debug-portainer
 
 B01.open-agent
 B02.run-agent-in-k8s
