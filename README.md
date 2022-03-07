@@ -12,11 +12,10 @@
 ## Get Started
 ### 1. start portainer workspace
 ```
-      mkdir /tmp/devkit
-      PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
-      bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`"
+mkdir /tmp/devkit
+PORTAINER_WORKSPACE="/tmp/devkit" DEVKIT_DEBUG="false" \
+bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/main/devkit/devkit`"
 ```
-    
 ### 2. open vscode http://localhost:3000
 
 
@@ -28,11 +27,42 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 ```
 
 ## Debug Portainer EE in Workspace
-### 1. Open Portainer EE
+### 1. Open Folder of Portainer EE
 ![open-portainer-ee](/images/A01.open-portainer-ee.png)
 
-### 2. Open Portainer EE
+### 2. Add a Breakpoint
 ![add-breakpoint](/images/A02.add-breakpoint.png)
+
+### 3. Run Portainer EE in Workspace
+![run-portainer](/images/A03.run-portainer.png)
+
+### 4. Debug Portainer EE
+![debug-portainer](/images/A04.debug-portainer.png)
+
+### 5. Visit Portainer EE http://localhost:9000
+
+
+
+A01.open-portainer-ee
+A02.add-breakpoint
+A03.run-portainer
+A04.debug-portainer
+
+B01.open-agent
+B02.run-agent-in-k8s
+B03.building-agent-and-start-k8s
+B04.add-k8s-environment
+B05.environment-up
+
+C01.create-edge-environment
+C02.copy-edge-token
+C03.past-edge-token-to-tasks-json
+C04.run-edge-agent-in-k8s
+C05.edge-associated
+
+
+
+
 
 # Below is Deprecated
 
