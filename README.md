@@ -5,9 +5,13 @@
 2. One-click to run and debug Portainer in Docker and K8s
 3. One-click to run and debug Agent and Edge-Agent in Docker, Swarm and K8s
 
+<br/>
+
 ## B. Prerequisites
 * Install [Docker](https://docs.docker.com/get-docker/)
 * Install curl
+
+<br/>
 
 ## C. Get Started
 ### 1. start portainer workspace
@@ -18,6 +22,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 ```
 ### 2. open vscode http://localhost:3000
 
+<br/>
 
 ## D. Debug Portainer EE in Workspace
 ### 1. Open Folder of Portainer EE
@@ -34,7 +39,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 
 ### 5. Visit Portainer EE http://localhost:9000
 
-
+<br/>
 
 ## E. Debug Agent in K8s
 ### 1. Open Folder of Agent
@@ -52,7 +57,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 ### 5. Check the K8s Agent Environment is Up
 ![B05.environment-up](/images/B05.environment-up.png)
 
-
+<br/>
 
 ## F. Debug Edge Agent in K8s for Portainer EE
 ### 1. Create an Edge Agent Environment
@@ -70,6 +75,7 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 ### 5. Check the K8s Edge Agent Environment is Associated
 ![C05.edge-associated](/images/C05.edge-associated.png)
 
+<br/>
 
 ## G. Containers Overview
 ~~~~
@@ -126,6 +132,12 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
   +===========================================================+
 ~~~~
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 # Below is Deprecated
 
