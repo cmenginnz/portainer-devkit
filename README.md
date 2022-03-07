@@ -133,6 +133,13 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/ma
 <br/>
 <br/>
 
+
+
+
+
+
+<!--
+
 # Below is Deprecated
 
 ### Dev Mode (For Maintainer Only)
@@ -190,4 +197,6 @@ bash -c "`curl -s https://raw.githubusercontent.com/mcpacino/portainer-devkit/de
 * How to check output of background processes  
   run `tmux attach` in vscode terminal then press `ctrl+b s` to select output  
 * how to run `yarn install`  
-Using `tmux` to stop `yarn` results in running `yarn install` next time 
+Using `tmux` to stop `yarn` results in running `yarn install` next time
+
+-->
