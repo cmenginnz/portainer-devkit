@@ -68,7 +68,7 @@ COMMAND | SUB_CMD | PROJECT   | TARGET    | SUB_TARGET     |                    
         |         |           |           |                |                    ||                  |                                                                                                                                      
 
 
-Common Caculated Global Vars: 
+Common Calculated Global Vars: 
 CURRENT_FILE_PATH=/home/workspace/devkit/agent/.vscode/devkit/scripts
 PROJECT_ROOT_PATH=/home/workspace/devkit/agent
 WORKSPACE_PATH=/home/workspace/devkit
@@ -79,13 +79,30 @@ IMAGE_NAME_WORKSPACE=mcpacino/portainer-devkit-workspace:dev
 TARGET_IP
 TARGET_NAME
 
-Caculated Vars for run command:
+Calculated Vars for run command:
 TARGET_IP=192.168.100.10
 TARGET_NAME=portainer-workspace
 DLV_PORT=23451
 PROJECT_VER=ee
 DATA_PATH=/home/workspace/devkit/data-ee
 DLV_WORK_DIR=~/home/workspace/app-portainer-ee
+
+
+Exmaples:
+# Run portainer server in workspace or k8s
+devkit.sh run portainer workspace|k8s
+
+# Run portainer agent in docker, swarm or k8s
+devkit.sh run agent docker|swarm|k8s
+
+# Run portainer edge agent in docker, swarm or k8s
+devkit.sh run edge docker|swarm|k8s <edge_key>
+
+
+# Start docker target 
+devkit.sh ensure docker
+# Start agent in docker target 
+devkit.sh ensure docker agent 
 
 ```
 

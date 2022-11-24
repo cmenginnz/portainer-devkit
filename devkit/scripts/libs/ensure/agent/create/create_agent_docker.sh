@@ -8,6 +8,7 @@ create_agent_docker() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/lib/docker/volumes:/var/lib/docker/volumes \
     -v portainer_agent_data:/data \
+    -v /:/host \
     --restart always \
     --hostname "${AGENT_NAME_DOCKER}" \
     --name "${AGENT_NAME_DOCKER}" \
