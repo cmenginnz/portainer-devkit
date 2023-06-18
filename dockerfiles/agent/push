@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# usage:
+#
+# push with tag latest
+#   ./push latest
+#
+# push with tag dev
+#   ./push
+
 set -x
 
 if [[ "$1" == "latest" ]]; then

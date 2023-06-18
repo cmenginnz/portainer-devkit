@@ -7,23 +7,23 @@ RUN apt update && apt install -y --no-install-recommends \
     less \
     augeas-tools \
     rsync \
-    openssh-server
-
-RUN apt install -y --no-install-recommends \
-    tmux \
     psmisc \
     iproute2 \
-    iputils-ping && \
+    wget \
+    openssh-server \
+    iputils-ping \
+    ca-certificates
+
+
+RUN \
     apt autoremove -y && \
     apt clean
 
-# copy some binary files such as `docker` from original agent image
-RUN mkdir -p /home/workspace
-COPY --from=original_agent /app /home/workspace/app
 
-EXPOSE 22
+# copy some binary files such as `docker` from original agent image
+COPY --from=original_agent /app /app
+
+EXPOSE 22 9001
 
 COPY agent/entry /entry
-COPY workspace/devkit/libs/init_hosts.sh /entry/libs
-COPY workspace/devkit/libs/start_sshd.sh /entry/libs
 ENTRYPOINT ["/entry/entry.sh"]
