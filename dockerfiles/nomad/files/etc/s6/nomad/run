@@ -1,7 +1,0 @@
-#!/bin/sh
-
-#exec /usr/local/bin/nomad agent -dev -bind=$IPADDRESS -network-interface=docker0
-mkdir /tmp/a
-mkdir /tmp/b
-exec /usr/sbin/nomad agent -dev -bind 0.0.0.0 -log-level INFO -state-dir /tmp/s -alloc-dir /tmp/a
-#-config=/etc/nomad.d/nomad.hcl

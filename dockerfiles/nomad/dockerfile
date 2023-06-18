@@ -1,9 +1,0 @@
-FROM docker:20.10.12-dind-alpine3.15
-
-RUN \
-    apk update && \
-    apk add nomad s6
-
-ADD files/etc /etc
-
-CMD ["s6-svscan", "/etc/s6/"]
