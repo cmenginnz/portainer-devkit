@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 
-docker stop portainer-devkit-agent
+docker stop devkit-docker

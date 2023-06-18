@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-minikube delete
+minikube delete --profile devkit-k8s

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-minikube status minikube || minikube start --ports=127.0.0.1:30022:30022
+minikube status --profile=devkit-k8s || minikube start --ports=127.0.0.1:30022:30022 --profile=devkit-k8s
 
 kubectl apply -f portainer-k8s-agent.yaml
 
