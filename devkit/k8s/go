@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+minikube profile minikube || minikube start --ports=127.0.0.1:30022:30022
+
+kubectl apply -f portainer-k8s-agent.yaml
+

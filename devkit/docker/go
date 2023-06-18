@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+docker run -d --rm \
+  --name portainer-devkit-agent \
+  --hostname agent \
+  -p 29022:22 -p 29001:9001 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  mcpacino/portainer-devkit-agent
