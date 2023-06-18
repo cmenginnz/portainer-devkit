@@ -19,6 +19,9 @@ RUN \
     apt autoremove -y && \
     apt clean
 
+# Generate HostKey /etc/ssh/ssh_host_*_key for sshd
+# Doing so in dockerfile can keep the SSH fingerprint unchanged
+RUN ssh-keygen -A
 
 # copy some binary files such as `docker` from original agent image
 COPY --from=original_agent /app /app
