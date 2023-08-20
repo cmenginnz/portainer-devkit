@@ -19,6 +19,22 @@ RUN \
     apt autoremove -y && \
     apt clean
 
+
+## Install Golang
+#ARG TARGETOS=linux
+#ARG TARGETARCH=arm64
+#ARG GO_VERSION=go1.20.6.${TARGETOS}-${TARGETARCH}
+#RUN cd /tmp \
+#	&& wget -q https://dl.google.com/go/${GO_VERSION}.tar.gz \
+#	&& tar -xf ${GO_VERSION}.tar.gz \
+#	&& mv go /usr/local \
+#    && rm ${GO_VERSION}.tar.gz
+#
+## Configuring Golang PATH
+#ENV PATH "$PATH:/usr/local/go/bin:/root/go/bin"
+#RUN echo 'PATH="$PATH:/usr/local/go/bin:/root/go/bin"' >> /etc/profile
+
+
 # Generate HostKey /etc/ssh/ssh_host_*_key for sshd
 # Doing so in dockerfile can keep the SSH fingerprint unchanged
 RUN ssh-keygen -A

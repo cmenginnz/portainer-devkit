@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
 
+docker inspect devkit-docker || \
 docker run -d --rm \
   --name devkit-docker \
   --hostname devkit-docker \
-  -p 29022:22 -p 29001:9001 \
+  -p 29022:22 \
+  -p 29000:9000 \
+  -p 28000:8000 \
+  -p 29001:9001 \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /Users/cmeng/Work/devkit/portainer-ee/dist/public:/app/public \
   mcpacino/portainer-devkit-agent
